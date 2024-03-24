@@ -1,0 +1,56 @@
+---
+title: "Master Seminar Paper Outline"
+author: "Fabian Aiolfi (LUMACSS, University of Lucerne)"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    extra_dependencies: "microtype"
+mainfont: Times New Roman
+bibliography: references.bib
+csl: american-journal-of-political-science.csl
+classoption: a4paper
+lang: en-UK
+header-includes:
+   - \usepackage{hyperref}
+   - \usepackage{setspace}
+   - \onehalfspacing
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+Parties and their members in parliament often introduce bills as a way to communicate with their voters [@lazarusIssueSalienceBill2013 215-216]. By converting these bills into word embeddings – a method in natural language processing that represents the meaning of texts numerically – I can analyze party positions on various topics. This approach enables the examination of how parties’ stances on issues converge or diverge over time.
+
+## Research Question
+Why do parties converge or diverge on a topic over time? In this paper, I will explore the reasons behind a party introducing bills that are similar in content to those of another party. 
+
+## Academic and Societal Relevance
+From an academic standpoint, the use of word embeddings in the context of political science research is relatively novel, as natural language processing has focused on topic modelling and supervised machine learning in the past decade [@rodriguezWordEmbeddingsWhat2022 4]. Word embeddings are notable for its ability to capture detailed linguistic information, effectively representing party positions @rodriguezWordEmbeddingsWhat2022 5; caseMeasuringStrategicPositioning 11].
+
+On a societal level, considering the vast number of bills introduced in parliament, which are publicly accessible yet overwhelming in volume, this paper aims to distill a party’s stance on issues, providing clarity on their positions relative to other parties. This approach can empower voters with the knowledge to make more informed decisions at the ballot box.
+
+## Theories and Hypotheses
+Parties adjust their policies in response to changes by other parties, especially those that are ideologically closer to them [@adamsPolicyAdjustmentParties2009 827-828]. A topic’s saliency [@damoreIssueConvergencePresidential2005] and public opinion on the topic [@PartyDifferentiationCongress2024 43] also play a role in whether parties converge on certain issues. Convergence tends to intensify during election campaigns, as parties aim to match the views of the majority of voters [@spiliotesCampaignAdvertisingPartisan2002 250]. Based on this understanding, I put forward two hypotheses:  
+  
+**H1**: The increased saliency of a topic leads to greater convergence among ideologically similar parties on that topic.  
+**H2**: Topic convergence between parties is more pronounced in the run up to an election.
+
+## Approach and Structure of the Paper
+I will investigate bills related to environmental issues introduced in the Swiss Federal Assembly, focusing on bills put forward by the Social Democratic Party (SP) and the Green Party (GPS), which are ideologically close. My analysis utilizes data from the Swiss parliament, accessible through swissparl [@zumbachSwissparlInterfaceWebservices2021]. A bill’s association with a party is determined by its author's party affiliation. Additionally, the Swiss parliament categorizes bills by topics, facilitating the extraction of bills concerning environmental issues.
+
+The period of study spans from XXXX to XXXX, covering a total of N bills (SP: N; GPS: N). Bills will be grouped based on their submission during the parliamentary “Session”” a three-week meeting phase of the Swiss parliament, with at least four sessions held annually. The timeframe under examination includes approximately XX sessions.
+
+Using word embeddings, the content of a bill is transformed into a numeric value, placing the document within a high-dimensional vector space. In this space, bills that are proximate to each other are considered more similar in terms of content, whereas those positioned further apart are less similar. To determine a party’s position on a topic, the average position of all bills introduced by that party on a topic is calculated. Thus parties closer to one another share more similarities in their positions, while those further apart have less in common.
+
+Due to the limited size of the bill corpus, it is not feasible to train my own embeddings. Therefore, I plan to use pretrained models such as fastText^[https://fasttext.cc/, retrieved 24 March 2024] or GloVe.^[https://nlp.stanford.edu/projects/glove/, retrieved 24 March 2024] The parliamentary bills are in German, thus German language models must be used, which are available for both fastText and GloVe. If technically possible, I aim to fine-tune these models to achieve more precise results.
+
+To measure topic saliency, I will employ data from Google Trends,^[https://trends.google.com/trends/, retrieved 24 March 2024] a tool that enables the evaluation of public interest in specific search terms and topics [@nghiemAnalysisCapacityGoogle2016 10].
+
+The structure of this paper will follow the conventional format of a political science research paper. Following the introduction of the topic, there will be a literature review leading into a theoretical section, which concludes with the statement of my hypotheses. Subsequently, I will detail the methods and data employed to test these hypotheses. The paper will conclude with a discussion of the results and suggestions for future research.
+
+\pagebreak
+
+## Literature

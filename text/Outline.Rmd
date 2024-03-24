@@ -7,15 +7,21 @@ output:
     latex_engine: xelatex
     extra_dependencies: "microtype"
 mainfont: Times New Roman
+fontsize: 12pt
 bibliography: references.bib
 csl: american-journal-of-political-science.csl
 classoption: a4paper
-lang: en-UK
+lang: en-US
 header-includes:
    - \usepackage{hyperref}
    - \usepackage{setspace}
    - \onehalfspacing
+   # Prevent orphans and widows
+   - \widowpenalty10000
+   - \clubpenalty10000
 ---
+
+\onehalfspacing
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -28,15 +34,18 @@ Parties and their members in parliament often introduce bills as a way to commun
 Why do parties converge or diverge on a topic over time? In this paper, I will explore the reasons behind a party introducing bills that are similar in content to those of another party. 
 
 ## Academic and Societal Relevance
-From an academic standpoint, the use of word embeddings in the context of political science research is relatively novel, as natural language processing has focused on topic modelling and supervised machine learning in the past decade [@rodriguezWordEmbeddingsWhat2022 4]. Word embeddings are notable for its ability to capture detailed linguistic information, effectively representing party positions @rodriguezWordEmbeddingsWhat2022 5; caseMeasuringStrategicPositioning 11].
+From an academic standpoint, the use of word embeddings in the context of political science research is relatively novel, as natural language processing has focused on topic modelling and supervised machine learning in the past decade [@rodriguezWordEmbeddingsWhat2022 4]. Word embeddings are notable for its ability to capture detailed linguistic information, effectively representing party positions [@rodriguezWordEmbeddingsWhat2022 5; @caseMeasuringStrategicPositioning2023 11].
 
 On a societal level, considering the vast number of bills introduced in parliament, which are publicly accessible yet overwhelming in volume, this paper aims to distill a party’s stance on issues, providing clarity on their positions relative to other parties. This approach can empower voters with the knowledge to make more informed decisions at the ballot box.
 
 ## Theories and Hypotheses
-Parties adjust their policies in response to changes by other parties, especially those that are ideologically closer to them [@adamsPolicyAdjustmentParties2009 827-828]. A topic’s saliency [@damoreIssueConvergencePresidential2005] and public opinion on the topic [@PartyDifferentiationCongress2024 43] also play a role in whether parties converge on certain issues. Convergence tends to intensify during election campaigns, as parties aim to match the views of the majority of voters [@spiliotesCampaignAdvertisingPartisan2002 250]. Based on this understanding, I put forward two hypotheses:  
+Parties adjust their policies in response to changes by other parties, especially those that are ideologically closer to them [@adamsPolicyAdjustmentParties2009 827-828]. A topic’s saliency [@damoreIssueConvergencePresidential2005] and public opinion on the topic [@lowryPartyDifferentiationCongress2002 43] also play a role in whether parties converge on certain issues. Convergence tends to intensify during election campaigns, as parties aim to match the views of the majority of voters [@spiliotesCampaignAdvertisingPartisan2002 250]. Based on this understanding, I put forward two hypotheses:  
   
-**H1**: The increased saliency of a topic leads to greater convergence among ideologically similar parties on that topic.  
-**H2**: Topic convergence between parties is more pronounced in the run up to an election.
+**Hypothesis 1**  
+The increased saliency of a topic leads to greater convergence among ideologically similar parties on that topic.  
+
+**Hypothesis 2**  
+Topic convergence between parties is more pronounced in the run up to an election.
 
 ## Approach and Structure of the Paper
 I will investigate bills related to environmental issues introduced in the Swiss Federal Assembly, focusing on bills put forward by the Social Democratic Party (SP) and the Green Party (GPS), which are ideologically close. My analysis utilizes data from the Swiss parliament, accessible through swissparl [@zumbachSwissparlInterfaceWebservices2021]. A bill’s association with a party is determined by its author's party affiliation. Additionally, the Swiss parliament categorizes bills by topics, facilitating the extraction of bills concerning environmental issues.

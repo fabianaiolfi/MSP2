@@ -34,4 +34,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 *.log
-Outline.pdf
+/data
+sandbox.R

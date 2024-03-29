@@ -1,5 +1,10 @@
 # Master Seminar Paper 2
 
+## Documentation
+- Download all bills from 2004 to today
+- Only keep bills introduced by MPs or parliamentary parties (associations or "Interessensgruppen" can also introduce bills)
+
+
 ## To Dos
 
 ### Data Analysis

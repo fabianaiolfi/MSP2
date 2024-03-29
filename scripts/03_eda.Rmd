@@ -1,0 +1,241 @@
+---
+title: "Exploratory Data Analysis"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidyr)
+library(here)
+
+load(file = here("data", "all_sessions.Rda"))
+load(file = here("data", "all_businesses.Rda"))
+load(file = here("data", "all_MemberCouncil.Rda"))
+load(file = here("data", "all_businesses_party.Rda"))
+```
+
+
+## Count Overview
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+all <- nrow(all_businesses_party)
+```
+
+|             | All Bills | Environmental Bills |
+|-------------|:----------|---------------------|
+| All Parties |`r all`    |                     |
+| SP          |           |                     |
+| Green Party |           |                     |
+
+
+
+
+## Tags Available in Parliamentary Data
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+all_tags <- all_businesses %>% distinct(TagNames) %>% drop_na()
+
+# Assuming your dataframe is named df
+tags_list <- strsplit(all_tags$TagNames, split = "\\|") # Step 1: Split the strings
+tags_vector <- unlist(tags_list) # Step 2: Unlist to get a vector
+unique_tags <- unique(tags_vector) # Step 3: Extract unique tags
+unique_tags
+```
+
+
+## Plots
+Dotted black vertical lines mark parliamentary elections.  
+Dashed red vertical lines mark crises: The Fukushima nuclear accident (2011) and Greta Thunberg's climate strike (2018).
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+all_businesses_eda <- all_businesses %>% select(BusinessShortNumber, SubmissionSession, TagNames)
+
+eda <- all_businesses_party %>%
+  left_join(all_businesses_eda, by = "BusinessShortNumber") %>% 
+  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  mutate(year_session = year(StartDate)) %>% 
+  dplyr::filter(year_session != 2024) %>% 
+  # mutate(year_session = as.Date(paste(year_session, "01", "01", sep = "-")))
+  mutate(year_session = as.Date(paste(year_session, "12", "31", sep = "-")))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+eda_all_bills <- eda %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_all_bills" = "n")
+
+eda_sp_bills <- eda %>% 
+  dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_sp_bills" = "n")
+
+eda_gps_bills <- eda %>% 
+  dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_gps_bills" = "n")
+
+eda_plot <- eda_all_bills %>% 
+  left_join(eda_sp_bills, by = "year_session") %>% 
+  left_join(eda_gps_bills, by = "year_session") %>% 
+  pivot_longer(cols = c(count_all_bills, count_sp_bills, count_gps_bills), names_to = "bill_type", values_to = "count")
+
+ggplot(eda_plot, aes(x = year_session, y = count, color = bill_type)) +
+  geom_line() + geom_point() + 
+  scale_color_manual(values = c("count_gps_bills" = "springgreen3", "count_sp_bills" = "red", "count_all_bills" = "black"), 
+                     labels = c("count_gps_bills" = "Green Party", "count_sp_bills" = "SP", "count_all_bills" = "All Bills")) +
+  labs(title = "Number of Bills Introduced by MPs or Parties", x = " ", y = " ", color = " ") +
+  # Mark elections
+  geom_vline(xintercept = as.Date("2019-10-20"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2015-10-18"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2011-10-23"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2007-10-21"), linetype = "dotted", color = "#333333", size = 0.25) +
+  # Mark crisis
+  geom_vline(xintercept = as.Date("2011-03-11"), linetype = "dashed", color = "red", size = 0.25) +
+  geom_vline(xintercept = as.Date("2018-08-20"), linetype = "dashed", color = "red", size = 0.25) +
+  theme_minimal() +
+  theme(legend.position = "bottom", legend.direction = "horizontal", panel.grid.minor = element_blank())
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+eda_environment_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_bills" = "n")
+
+eda_plot <- eda_all_bills %>% 
+  left_join(eda_environment_bills, by = "year_session") %>% 
+  pivot_longer(cols = c(count_all_bills, count_environment_bills), names_to = "bill_type", values_to = "count")
+
+ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.factor(bill_type))) +
+  geom_line() + geom_point() + 
+  scale_color_manual(values = c("count_environment_bills" = "springgreen3", "count_all_bills" = "black"), 
+                     labels = c("count_environment_bills" = "Bills incl. Environment Tag", "count_all_bills" = "All Bills")) +
+  labs(title = "Number of Bills Introduced by MPs or Parties", x = " ", y = " ", color = " ") +
+  # Mark elections
+  geom_vline(xintercept = as.Date("2019-10-20"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2015-10-18"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2011-10-23"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2007-10-21"), linetype = "dotted", color = "#333333", size = 0.25) +
+  # Mark crisis
+  geom_vline(xintercept = as.Date("2011-03-11"), linetype = "dashed", color = "red", size = 0.25) +
+  geom_vline(xintercept = as.Date("2018-08-20"), linetype = "dashed", color = "red", size = 0.25) +
+  theme_minimal() +
+  theme(legend.position = "bottom", legend.direction = "horizontal", panel.grid.minor = element_blank())
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+set_tag <- "Umwelt"
+# set_tag <- "Landwirtschaft"
+# set_tag <- "Energie"
+
+eda_environment_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_bills" = "n")
+
+eda_environment_sp_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_sp_bills" = "n")
+
+eda_environment_gps_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_gps_bills" = "n")
+
+eda_environment_svp_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^SVP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_svp_bills" = "n")
+
+eda_environment_mitte_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^M-E$|^CVP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_mitte_bills" = "n")
+
+eda_environment_fdp_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("FDP", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_fdp_bills" = "n")
+
+eda_environment_glp_bills <- eda %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("glp", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  rename("count_environment_glp_bills" = "n")
+
+eda_plot <- eda_environment_bills %>% 
+  left_join(eda_environment_sp_bills, by = "year_session") %>% 
+  left_join(eda_environment_gps_bills, by = "year_session") %>% 
+  left_join(eda_environment_svp_bills, by = "year_session") %>% 
+  left_join(eda_environment_mitte_bills, by = "year_session") %>% 
+  left_join(eda_environment_fdp_bills, by = "year_session") %>% 
+  left_join(eda_environment_glp_bills, by = "year_session") %>% 
+  pivot_longer(cols = c(
+    count_environment_bills,
+    count_environment_sp_bills,
+    count_environment_gps_bills,
+    count_environment_svp_bills,
+    count_environment_mitte_bills,
+    count_environment_glp_bills,
+    count_environment_fdp_bills
+    ), names_to = "bill_type", values_to = "count")
+
+ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.factor(bill_type))) +
+  geom_line() + geom_point() + 
+  scale_color_manual(values = c("count_environment_bills" = "black",
+                                "count_environment_sp_bills" = "red",
+                                "count_environment_svp_bills" = "light green",
+                                "count_environment_mitte_bills" = "orange",
+                                "count_environment_fdp_bills" = "blue",
+                                "count_environment_glp_bills" = "aquamarine4",
+                                "count_environment_gps_bills" = "springgreen3"), 
+                     labels = c("count_environment_bills" = "All Bills incl. Environment Tag",
+                                "count_environment_sp_bills" = "SP",
+                                "count_environment_svp_bills" = "SVP",
+                                "count_environment_mitte_bills" = "Mitte",
+                                "count_environment_fdp_bills" = "FDP",
+                                "count_environment_glp_bills" = "GLP",
+                                "count_environment_gps_bills" = "Green Party")) +
+  labs(title = "Number of Environmental Bills Introduced by MPs or Parties", x = " ", y = " ", color = " ") +
+  # Mark elections
+  geom_vline(xintercept = as.Date("2019-10-20"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2015-10-18"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2011-10-23"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = as.Date("2007-10-21"), linetype = "dotted", color = "#333333", size = 0.25) +
+  # Mark crisis
+  geom_vline(xintercept = as.Date("2011-03-11"), linetype = "dashed", color = "red", size = 0.25) +
+  geom_vline(xintercept = as.Date("2018-08-20"), linetype = "dashed", color = "red", size = 0.25) +
+  theme_minimal() +
+  theme(legend.position = "bottom", legend.direction = "horizontal", panel.grid.minor = element_blank())
+```
+
+
+
+
+
+
+
+

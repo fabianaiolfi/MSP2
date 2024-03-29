@@ -68,3 +68,5 @@ all_businesses_party <- all_businesses_party %>%
   left_join(submitters_with_party, by = "SubmittedBy") %>% 
   drop_na(PartyAbbreviation) %>% 
   select(BusinessShortNumber, PartyAbbreviation)
+
+save(all_businesses_party, file = here("data", "all_businesses_party.Rda"))

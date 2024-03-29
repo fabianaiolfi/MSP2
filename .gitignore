@@ -36,3 +36,4 @@ rsconnect/
 *.log
 /data
 sandbox.R
+*.html

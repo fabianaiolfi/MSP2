@@ -9,6 +9,8 @@ all_sessions <- swissparl::get_data(
 
 session_list <- all_sessions$ID
 
+save(all_sessions, file = here("data", "all_sessions.Rda"))
+
 
 ## Get Data for each Session --------------------------
 

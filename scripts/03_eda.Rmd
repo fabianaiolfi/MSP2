@@ -18,18 +18,41 @@ load(file = here("data", "all_MemberCouncil.Rda"))
 load(file = here("data", "all_businesses_party.Rda"))
 ```
 
-
-## Count Overview
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-all <- nrow(all_businesses_party)
+# Setup
+all_businesses_eda <- all_businesses %>% select(BusinessShortNumber, SubmissionSession, TagNames)
+
+eda <- all_businesses_party %>%
+  left_join(all_businesses_eda, by = "BusinessShortNumber") %>% 
+  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  mutate(year_session = year(StartDate)) %>% 
+  dplyr::filter(year_session != 2024) %>% 
+  mutate(year_session = as.Date(paste(year_session, "01", "01", sep = "-")))
 ```
 
-|             | All Bills | Environmental Bills |
-|-------------|:----------|---------------------|
-| All Parties |`r all`    |                     |
-| SP          |           |                     |
-| Green Party |           |                     |
+## Counts
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+n_all_environmental <- all_businesses_eda %>% dplyr::filter(grepl("Umwelt", TagNames))
 
+n_sp_all <- all_businesses_party %>% dplyr::filter(grepl("SP", PartyAbbreviation))
+n_sp_environmental <- n_all_environmental %>% inner_join(n_sp_all, by = "BusinessShortNumber")
+
+n_gps_all <- all_businesses_party %>% dplyr::filter(grepl("GRÜNE", PartyAbbreviation))
+n_gps_environmental <- n_all_environmental %>% inner_join(n_gps_all, by = "BusinessShortNumber")
+
+n_all <- nrow(all_businesses_eda)
+n_sp_all <- nrow(n_sp_all)
+n_gps_all <- nrow(n_gps_all)
+n_all_environmental <- nrow(n_all_environmental)
+n_sp_environmental <- nrow(n_sp_environmental)
+n_gps_environmental <- nrow(n_gps_environmental)
+```
+
+|             | All Bills       | Environmental Bills   |
+|:------------|:----------------|:----------------------|
+| All Parties | `r n_all`       | `r n_all_environmental` |
+| SP          | `r n_sp_all`    | `r n_sp_environmental`  |
+| Green Party | `r n_gps_all`   | `r n_gps_environmental` |
 
 
 
@@ -50,20 +73,6 @@ unique_tags
 ## Plots
 Dotted black vertical lines mark parliamentary elections.  
 Dashed red vertical lines mark crises: The Fukushima nuclear accident (2011) and Greta Thunberg's climate strike (2018).
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-
-all_businesses_eda <- all_businesses %>% select(BusinessShortNumber, SubmissionSession, TagNames)
-
-eda <- all_businesses_party %>%
-  left_join(all_businesses_eda, by = "BusinessShortNumber") %>% 
-  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
-  mutate(year_session = year(StartDate)) %>% 
-  dplyr::filter(year_session != 2024) %>% 
-  # mutate(year_session = as.Date(paste(year_session, "01", "01", sep = "-")))
-  mutate(year_session = as.Date(paste(year_session, "12", "31", sep = "-")))
-```
-
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 eda_all_bills <- eda %>% 
   group_by(year_session) %>% 
@@ -118,7 +127,7 @@ eda_plot <- eda_all_bills %>%
 ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.factor(bill_type))) +
   geom_line() + geom_point() + 
   scale_color_manual(values = c("count_environment_bills" = "springgreen3", "count_all_bills" = "black"), 
-                     labels = c("count_environment_bills" = "Bills incl. Environment Tag", "count_all_bills" = "All Bills")) +
+                     labels = c("count_environment_bills" = "Environmental Bills", "count_all_bills" = "All Bills")) +
   labs(title = "Number of Bills Introduced by MPs or Parties", x = " ", y = " ", color = " ") +
   # Mark elections
   geom_vline(xintercept = as.Date("2019-10-20"), linetype = "dotted", color = "#333333", size = 0.25) +
@@ -212,7 +221,7 @@ ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.
                                 "count_environment_fdp_bills" = "blue",
                                 "count_environment_glp_bills" = "aquamarine4",
                                 "count_environment_gps_bills" = "springgreen3"), 
-                     labels = c("count_environment_bills" = "All Bills incl. Environment Tag",
+                     labels = c("count_environment_bills" = "Environmental Bills",
                                 "count_environment_sp_bills" = "SP",
                                 "count_environment_svp_bills" = "SVP",
                                 "count_environment_mitte_bills" = "Mitte",

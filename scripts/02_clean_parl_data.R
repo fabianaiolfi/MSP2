@@ -70,3 +70,31 @@ all_businesses_party <- all_businesses_party %>%
   select(BusinessShortNumber, PartyAbbreviation)
 
 save(all_businesses_party, file = here("data", "all_businesses_party.Rda"))
+
+
+# Count Bill Length --------------------------
+
+test_df <- all_businesses_party %>% 
+  left_join(select(all_businesses, BusinessShortNumber, Title, Description, InitialSituation, Proceedings, DraftText, SubmittedText, ReasonText, DocumentationText, MotionText), by = "BusinessShortNumber") %>%
+  dplyr::filter(is.na(SubmittedText) == T)
+
+sum(is.na(test_df$Title)) # 0
+sum(is.na(test_df$Description)) # 42215
+sum(is.na(test_df$InitialSituation)) # 42007
+sum(is.na(test_df$Proceedings)) # 41996
+sum(is.na(test_df$DraftText)) # 42220
+sum(is.na(test_df$SubmittedText)) # 194
+sum(is.na(test_df$ReasonText)) # 25636
+sum(is.na(test_df$DocumentationText)) # 42219
+sum(is.na(test_df$MotionText)) # 42221
+
+
+
+
+
+
+
+
+
+
+

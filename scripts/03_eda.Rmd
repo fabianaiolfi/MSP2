@@ -11,11 +11,13 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidyr)
 library(here)
+library(gridExtra)
 
 load(file = here("data", "all_sessions.Rda"))
 load(file = here("data", "all_businesses.Rda"))
 load(file = here("data", "all_MemberCouncil.Rda"))
 load(file = here("data", "all_businesses_party.Rda"))
+load(file = here("data", "all_businesses_wc.Rda"))
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -70,7 +72,7 @@ unique_tags
 ```
 
 
-## Plots
+## Number of Bills over Time
 Dotted black vertical lines mark parliamentary elections.  
 Dashed red vertical lines mark crises: The Fukushima nuclear accident (2011) and Greta Thunberg's climate strike (2018).
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -243,8 +245,85 @@ ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.
 
 
 
+## Bill Length
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+wc_plot <- all_businesses_wc %>% 
+  left_join(all_businesses_eda, by = "BusinessShortNumber") %>% 
+  left_join(all_businesses_party, by = "BusinessShortNumber")
+
+wc_all_bills <- wc_plot %>% select(BusinessShortNumber, SubmittedText_clean_wc)
+
+wc_all_sp_bills <- wc_plot %>% dplyr::filter(grepl("SP", PartyAbbreviation))
+wc_all_gps_bills <- wc_plot %>% dplyr::filter(grepl("GRÜNE", PartyAbbreviation))
+
+wc_environmental_bills <- wc_plot %>% 
+  select(BusinessShortNumber, SubmittedText_clean_wc, TagNames) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames))
+
+wc_environmental_sp_bills <- wc_plot %>% 
+  select(BusinessShortNumber, SubmittedText_clean_wc, TagNames, PartyAbbreviation) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("SP", PartyAbbreviation))
+
+wc_environmental_gps_bills <- wc_plot %>% 
+  select(BusinessShortNumber, SubmittedText_clean_wc, TagNames, PartyAbbreviation) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("GRÜNE", PartyAbbreviation))
 
 
+# Party Plots
+all_bills_plot <- ggplot(wc_all_bills, aes(x = SubmittedText_clean_wc)) +
+  geom_boxplot() + coord_flip() +
+  scale_y_continuous(breaks = NULL) + # remove y-axis labels
+  xlab("Word Count") + ggtitle("All Bills") + 
+  xlim(0, 1000) +
+  theme_minimal()
 
+all_sp_bills_plot <- ggplot(wc_all_sp_bills, aes(x = SubmittedText_clean_wc)) +
+  geom_boxplot() + coord_flip() +
+  scale_y_continuous(breaks = NULL) + # remove y-axis labels
+  xlab("") + ggtitle("All SP Bills") +
+  xlim(0, 1000) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank())
+
+all_gps_bills_plot <- ggplot(wc_all_gps_bills, aes(x = SubmittedText_clean_wc)) +
+  geom_boxplot() + coord_flip() +
+  scale_y_continuous(breaks = NULL) + # remove y-axis labels
+  xlab("") + ggtitle("All Green Bills") +
+  xlim(0, 1000) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank())
+
+grid.arrange(all_bills_plot, all_sp_bills_plot, all_gps_bills_plot, ncol = 3)
+
+# Environmental Plots
+environmental_bills_plot <- ggplot(wc_environmental_bills, aes(x = SubmittedText_clean_wc)) +
+  geom_boxplot() + coord_flip() +
+  scale_y_continuous(breaks = NULL) + # remove y-axis labels
+  xlab("Word Count") + ggtitle("All Environmental Bills") +
+  xlim(0, 1000) +
+  theme_minimal()
+
+environmental_sp_bills_plot <- ggplot(wc_environmental_sp_bills, aes(x = SubmittedText_clean_wc)) +
+  geom_boxplot() + coord_flip() +
+  scale_y_continuous(breaks = NULL) + # remove y-axis labels
+  xlab("") + ggtitle("SP Environmental Bills") +
+  xlim(0, 1000) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank())
+
+environmental_gps_bills_plot <- ggplot(wc_environmental_gps_bills, aes(x = SubmittedText_clean_wc)) +
+  geom_boxplot() + coord_flip() +
+  scale_y_continuous(breaks = NULL) + # remove y-axis labels
+  xlab("") + ggtitle("Green Environmental Bills") +
+  xlim(0, 1000) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank())
+
+grid.arrange(environmental_bills_plot, environmental_sp_bills_plot, environmental_gps_bills_plot, ncol = 3)
+```
 
 

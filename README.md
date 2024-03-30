@@ -9,14 +9,7 @@
 
 ### Data Analysis
 
-- [ ] Number of bills
-
-|  | All Bills | Bills including Environmental Issues | Only Environmental Bills |
-|---|---|---|
-| All Parties |  |  |
-| SP |  |  |
-| GPS |  |  |
-
+- [x] Number of bills
 - [ ] Plots
   - [ ] Number of bills per session over time
   - [ ] Bill word length (boxplot); maybe also over time?

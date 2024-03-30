@@ -74,10 +74,7 @@ save(all_businesses_party, file = here("data", "all_businesses_party.Rda"))
 
 # Count Bill Length --------------------------
 
-test_df <- all_businesses_party %>% 
-  left_join(select(all_businesses, BusinessShortNumber, Title, Description, InitialSituation, Proceedings, DraftText, SubmittedText, ReasonText, DocumentationText, MotionText), by = "BusinessShortNumber") %>%
-  dplyr::filter(is.na(SubmittedText) == T)
-
+# Which columns contain how much information?
 sum(is.na(test_df$Title)) # 0
 sum(is.na(test_df$Description)) # 42215
 sum(is.na(test_df$InitialSituation)) # 42007
@@ -88,13 +85,14 @@ sum(is.na(test_df$ReasonText)) # 25636
 sum(is.na(test_df$DocumentationText)) # 42219
 sum(is.na(test_df$MotionText)) # 42221
 
+# We're only interested in items of businesses associated with a party
+all_businesses_wc <- all_businesses_party %>% 
+  # Get Title and SubmittedText
+  left_join(select(all_businesses, BusinessShortNumber, Title, SubmittedText), by = "BusinessShortNumber") %>% 
+  # Remove HTML tags from SubmittedText
+  mutate(SubmittedText_clean = gsub("<.*?>", "", SubmittedText)) %>% 
+  # Count words in SubmittedText_clean
+  mutate(SubmittedText_clean_wc = str_count(SubmittedText_clean, "\\w+")) %>% 
+  select(BusinessShortNumber, SubmittedText_clean_wc)
 
-
-
-
-
-
-
-
-
-
+save(all_businesses_wc, file = here("data", "all_businesses_wc.Rda"))

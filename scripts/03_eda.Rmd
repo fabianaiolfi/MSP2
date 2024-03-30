@@ -245,7 +245,7 @@ ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.
 
 
 
-## Bill Length
+## Overall Bill Length
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -326,4 +326,18 @@ environmental_gps_bills_plot <- ggplot(wc_environmental_gps_bills, aes(x = Submi
 grid.arrange(environmental_bills_plot, environmental_sp_bills_plot, environmental_gps_bills_plot, ncol = 3)
 ```
 
+
+## Bill Length Over Time
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+plot_time <- wc_all_bills %>% left_join(select(eda, BusinessShortNumber, StartDate), by = "BusinessShortNumber")
+
+ggplot(plot_time, aes(x = as.factor(StartDate), y = SubmittedText_clean_wc)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Word Count", title = "Word Count by Session") +
+  scale_x_discrete(breaks = NULL) + # remove y-axis labels
+  theme_minimal()
+
+```
 

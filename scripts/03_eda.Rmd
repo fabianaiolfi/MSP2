@@ -330,14 +330,78 @@ grid.arrange(environmental_bills_plot, environmental_sp_bills_plot, environmenta
 ## Bill Length Over Time
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot_time <- wc_all_bills %>% 
+  left_join(select(eda, BusinessShortNumber, year_session), by = "BusinessShortNumber") %>% 
+  drop_na(year_session) %>% 
+  mutate(year_session = year(year_session))
 
-plot_time <- wc_all_bills %>% left_join(select(eda, BusinessShortNumber, StartDate), by = "BusinessShortNumber")
+plot_time_environment <- wc_all_bills %>% 
+  left_join(select(eda, BusinessShortNumber, year_session, TagNames), by = "BusinessShortNumber") %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  drop_na(year_session) %>% 
+  mutate(year_session = year(year_session))
 
-ggplot(plot_time, aes(x = as.factor(StartDate), y = SubmittedText_clean_wc)) +
+plot_time_sp <- wc_all_bills %>% 
+  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
+  dplyr::filter(grepl("SP", PartyAbbreviation)) %>% 
+  drop_na(year_session) %>% 
+  mutate(year_session = year(year_session))
+
+plot_time_greens <- wc_all_bills %>% 
+  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
+  dplyr::filter(grepl("GRÜNE", PartyAbbreviation)) %>% 
+  drop_na(year_session) %>% 
+  mutate(year_session = year(year_session))
+
+plot_time_sp_environment <- wc_all_bills %>% 
+  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
+  dplyr::filter(grepl("SP", PartyAbbreviation)) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  drop_na(year_session) %>% 
+  mutate(year_session = year(year_session))
+
+plot_time_greens_environment <- wc_all_bills %>% 
+  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
+  dplyr::filter(grepl("GRÜNE", PartyAbbreviation)) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  drop_na(year_session) %>% 
+  mutate(year_session = year(year_session))
+
+# Plots
+ggplot(plot_time, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "Word Count by Session") +
-  scale_x_discrete(breaks = NULL) + # remove y-axis labels
+  labs(x = " ", y = "Word Count", title = "All Bills: Word Count by Session (Limited to 900 words)") +
+  ylim(0, 900) +
   theme_minimal()
 
+ggplot(plot_time_environment, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Word Count", title = "Environment Bills: Word Count by Session") +
+  ylim(0, 900) +
+  theme_minimal()
+
+ggplot(plot_time_sp, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Word Count", title = "SP Bills: Word Count by Session") +
+  ylim(0, 900) +
+  theme_minimal()
+
+ggplot(plot_time_greens, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Word Count", title = "Green Bills: Word Count by Session") +
+  ylim(0, 900) +
+  theme_minimal()
+
+ggplot(plot_time_sp_environment, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Word Count", title = "SP Environment Bills: Word Count by Session") +
+  ylim(0, 900) +
+  theme_minimal()
+
+ggplot(plot_time_greens_environment, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Word Count", title = "Green Environment Bills: Word Count by Session") +
+  ylim(0, 900) +
+  theme_minimal()
 ```
 

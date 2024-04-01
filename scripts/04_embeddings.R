@@ -22,3 +22,43 @@
 # 
 # save(embeddings, file = here("data", "embeddings.Rda"))
 load(file = here("data", "embeddings.Rda"))
+
+
+# Calculate Embedding Distances ---------------------------------
+
+# Green environmental bills, grouped by Session
+green_environmental_bills <- eda %>% 
+  select(-c(StartDate, year_session)) %>% 
+  dplyr::filter(PartyAbbreviation == "GRÜNE") %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  select(BusinessShortNumber, SubmissionSession) %>% 
+  left_join(embeddings, by = "BusinessShortNumber") %>% 
+  group_by(SubmissionSession) %>% 
+  summarise(across(matches("^[0-9]"), \(x) mean(x, na.rm = TRUE))) %>% 
+  # Add a "V" to column names that are digits
+  rename_with(~paste0("V_green_", .), matches("^[0-9]"))
+
+# SP environmental bills, grouped by Session
+sp_environmental_bills <- eda %>% 
+  select(-c(StartDate, year_session)) %>% 
+  dplyr::filter(grepl("SP", PartyAbbreviation)) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  select(BusinessShortNumber, SubmissionSession) %>% 
+  left_join(embeddings, by = "BusinessShortNumber") %>% 
+  group_by(SubmissionSession) %>% 
+  summarise(across(matches("^[0-9]"), \(x) mean(x, na.rm = TRUE))) %>% 
+  # Add a "V" to column names that are digits
+  rename_with(~paste0("V_sp_", .), matches("^[0-9]"))
+
+# Merge the dataframes on the index column
+environmental_bills_joined <- inner_join(green_environmental_bills, sp_environmental_bills, by = "SubmissionSession")
+
+# Calculate Euclidean distances
+# Add a new column `distance` with the calculated Euclidean distance between each pair of rows
+sp_greens_environmental_bills_distance <- environmental_bills_joined %>%
+  rowwise() %>%
+  mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  ungroup() %>% 
+  select(SubmissionSession, distance)
+
+save(sp_greens_environmental_bills_distance, file = here("data", "sp_greens_environmental_bills_distance.Rda"))

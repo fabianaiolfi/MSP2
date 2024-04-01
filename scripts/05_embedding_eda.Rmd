@@ -20,6 +20,7 @@ library(gridExtra)
 # load(file = here("data", "all_businesses_wc.Rda"))
 
 load(file = here("data", "sp_greens_environmental_bills_distance.Rda"))
+load(file = here("data", "sp_greens_all_bills_distance.Rda"))
 load(file = here("data", "all_sessions.Rda"))
 ```
 
@@ -28,9 +29,55 @@ load(file = here("data", "all_sessions.Rda"))
 # …
 ```
 
+## Distance between Bills
+
+**Average Distance between All Bills introduced by SP and Greens**
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_plot <- sp_greens_all_bills_distance %>% 
+  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  mutate(session_year = year(StartDate))
 
+session_year_mapping <- df_plot %>%
+  select(SubmissionSession, session_year) %>%
+  distinct() %>%
+  arrange(SubmissionSession)
+
+# Generate labels, leaving blanks for repeated years
+unique_labels <- session_year_mapping$session_year
+# Keep only the first occurrence of each year, replace others with ""
+labels_for_plot <- ifelse(duplicated(unique_labels), "", as.character(unique_labels))
+
+# Make sure SubmissionSession is a factor in the order you want
+df_plot$SubmissionSession <- factor(df_plot$SubmissionSession,
+                                    levels = unique(session_year_mapping$SubmissionSession))
+
+# Plot
+ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
+  geom_line(group = 1) +
+  geom_point(shape = 21, fill = "white", color = "black") + 
+  scale_x_discrete(labels = labels_for_plot) + 
+  ylim(0, 15) +
+  # ggtitle("Average Distance between All Bills introduced by SP and Greens") +
+  labs(subtitle = "Bills grouped by Session") +
+  xlab("") + ylab("") + 
+  # Mark elections
+  geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "5019"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "4920"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "4820"), linetype = "dotted", color = "#333333", size = 0.25) +
+  geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "4718"), linetype = "dotted", color = "#333333", size = 0.25) +
+  # Mark crisis
+  geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "4817"), linetype = "dashed", color = "red", size = 0.25) +
+  geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "5014"), linetype = "dashed", color = "red", size = 0.25) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+```
+
+**Average Distance between Environmental Bills introduced by SP and Greens**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 df_plot <- sp_greens_environmental_bills_distance %>% 
   left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))
@@ -55,7 +102,7 @@ ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
   geom_point(shape = 21, fill = "white", color = "black") + 
   scale_x_discrete(labels = labels_for_plot) + 
   ylim(0, 15) +
-  ggtitle("Average Distance between Environmental Bills introduced by SP and Greens") +
+  # ggtitle("Average Distance between Environmental Bills introduced by SP and Greens") +
   labs(subtitle = "Bills grouped by Session") +
   xlab("") + ylab("") + 
   # Mark elections
@@ -68,6 +115,6 @@ ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
   geom_vline(xintercept = which(levels(df_plot$SubmissionSession) == "5014"), linetype = "dashed", color = "red", size = 0.25) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
-        panel.grid.major.x = element_blank(), # Remove major vertical grid lines
+        panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
 ```

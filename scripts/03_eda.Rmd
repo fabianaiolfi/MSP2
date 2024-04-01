@@ -22,14 +22,7 @@ load(file = here("data", "all_businesses_wc.Rda"))
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Setup
-all_businesses_eda <- all_businesses %>% select(BusinessShortNumber, SubmissionSession, TagNames)
 
-eda <- all_businesses_party %>%
-  left_join(all_businesses_eda, by = "BusinessShortNumber") %>% 
-  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
-  mutate(year_session = year(StartDate)) %>% 
-  dplyr::filter(year_session != 2024) %>% 
-  mutate(year_session = as.Date(paste(year_session, "01", "01", sep = "-")))
 ```
 
 ## Counts

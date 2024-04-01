@@ -75,15 +75,15 @@ save(all_businesses_party, file = here("data", "all_businesses_party.Rda"))
 # Count Bill Length --------------------------
 
 # Which columns contain how much information?
-sum(is.na(test_df$Title)) # 0
-sum(is.na(test_df$Description)) # 42215
-sum(is.na(test_df$InitialSituation)) # 42007
-sum(is.na(test_df$Proceedings)) # 41996
-sum(is.na(test_df$DraftText)) # 42220
-sum(is.na(test_df$SubmittedText)) # 194
-sum(is.na(test_df$ReasonText)) # 25636
-sum(is.na(test_df$DocumentationText)) # 42219
-sum(is.na(test_df$MotionText)) # 42221
+# sum(is.na(all_businesses$Title)) # 0
+# sum(is.na(all_businesses$Description)) # 42215
+# sum(is.na(all_businesses$InitialSituation)) # 42007
+# sum(is.na(all_businesses$Proceedings)) # 41996
+# sum(is.na(all_businesses$DraftText)) # 42220
+# sum(is.na(all_businesses$SubmittedText)) # 194
+# sum(is.na(all_businesses$ReasonText)) # 25636
+# sum(is.na(all_businesses$DocumentationText)) # 42219
+# sum(is.na(all_businesses$MotionText)) # 42221
 
 # We're only interested in items of businesses associated with a party
 all_businesses_wc <- all_businesses_party %>% 
@@ -96,3 +96,18 @@ all_businesses_wc <- all_businesses_party %>%
   select(BusinessShortNumber, SubmittedText_clean_wc)
 
 save(all_businesses_wc, file = here("data", "all_businesses_wc.Rda"))
+
+
+# Create EDA dataframe --------------------------
+
+all_businesses_eda <- all_businesses %>% select(BusinessShortNumber, SubmissionSession, TagNames)
+save(all_businesses_eda, file = here("data", "all_businesses_eda.Rda"))
+
+eda <- all_businesses_party %>%
+  left_join(all_businesses_eda, by = "BusinessShortNumber") %>% 
+  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  mutate(year_session = year(StartDate)) %>% 
+  dplyr::filter(year_session != 2024) %>% 
+  mutate(year_session = as.Date(paste(year_session, "01", "01", sep = "-")))
+
+save(eda, file = here("data", "eda.Rda"))

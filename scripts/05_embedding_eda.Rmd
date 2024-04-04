@@ -13,12 +13,6 @@ library(tidyr)
 library(here)
 library(gridExtra)
 
-# load(file = here("data", "all_sessions.Rda"))
-# load(file = here("data", "all_businesses.Rda"))
-# load(file = here("data", "all_MemberCouncil.Rda"))
-# load(file = here("data", "all_businesses_party.Rda"))
-# load(file = here("data", "all_businesses_wc.Rda"))
-
 sp_greens_all_bills_distance_ft_embeddings <- readRDS(file = here("data", "sp_greens_all_bills_distance_ft_embeddings.Rda"))
 sp_greens_all_bills_distance_glove_embeddings <- readRDS(file = here("data", "sp_greens_all_bills_distance_glove_embeddings.Rda"))
 
@@ -28,14 +22,12 @@ sp_greens_environmental_bills_distance_glove_embeddings <- readRDS(file = here("
 load(file = here("data", "all_sessions.Rda"))
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Setup
-# …
-```
+## Distance between Bills in Vector Space
+Lower distance = Bills have more similar content.  
+Dotted black vertical lines mark parliamentary elections.  
+Dashed red vertical lines mark crises: The Fukushima nuclear accident (2011) and Greta Thunberg's climate strike (2018).
 
-## Distance between Bills
-
-**Average Distance between All Bills introduced by SP and Greens: FastText**
+**Average distance between all bills introduced by SP and Greens using pre-trained FastText embeddings**
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 df_plot <- sp_greens_all_bills_distance_ft_embeddings %>% 
@@ -79,9 +71,9 @@ ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
         panel.grid.minor.x = element_blank())
 ```
 
-**Average Distance between All Bills introduced by SP and Greens: GloVe**
+<!-- **Average Distance between All Bills introduced by SP and Greens: GloVe** -->
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 df_plot <- sp_greens_all_bills_distance_glove_embeddings %>% 
   left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))
@@ -123,7 +115,7 @@ ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
         panel.grid.minor.x = element_blank())
 ```
 
-**Average Distance between Environmental Bills introduced by SP and Greens: FastText**
+**Average distance between environmental bills introduced by SP and Greens using pre-trained FastText embeddings**
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 df_plot <- sp_greens_environmental_bills_distance_ft_embeddings %>% 
@@ -168,9 +160,9 @@ ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
 ```
 
 
-**Average Distance between Environmental Bills introduced by SP and Greens: GloVe**
+<!-- **Average Distance between Environmental Bills introduced by SP and Greens: GloVe** -->
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 df_plot <- sp_greens_environmental_bills_distance_glove_embeddings %>% 
   left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))

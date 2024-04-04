@@ -15,14 +15,11 @@ library(gridExtra)
 
 load(file = here("data", "all_sessions.Rda"))
 load(file = here("data", "all_businesses.Rda"))
+load(file = here("data", "all_businesses_eda.Rda"))
+load(file = here("data", "eda.Rda"))
 load(file = here("data", "all_MemberCouncil.Rda"))
 load(file = here("data", "all_businesses_party.Rda"))
 load(file = here("data", "all_businesses_wc.Rda"))
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Setup
-
 ```
 
 ## Counts
@@ -362,37 +359,37 @@ plot_time_greens_environment <- wc_all_bills %>%
 # Plots
 ggplot(plot_time, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "All Bills: Word Count by Session (Limited to 900 words)") +
+  labs(x = " ", y = "Word Count", title = "All Bills: Word Count (Limited to 900 words)") +
   ylim(0, 900) +
   theme_minimal()
 
 ggplot(plot_time_environment, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "Environment Bills: Word Count by Session") +
+  labs(x = " ", y = "Word Count", title = "Environment Bills: Word Count") +
   ylim(0, 900) +
   theme_minimal()
 
 ggplot(plot_time_sp, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "SP Bills: Word Count by Session") +
+  labs(x = " ", y = "Word Count", title = "SP Bills: Word Count") +
   ylim(0, 900) +
   theme_minimal()
 
 ggplot(plot_time_greens, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "Green Bills: Word Count by Session") +
+  labs(x = " ", y = "Word Count", title = "Green Bills: Word Count") +
   ylim(0, 900) +
   theme_minimal()
 
 ggplot(plot_time_sp_environment, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "SP Environment Bills: Word Count by Session") +
+  labs(x = " ", y = "Word Count", title = "SP Environment Bills: Word Count") +
   ylim(0, 900) +
   theme_minimal()
 
 ggplot(plot_time_greens_environment, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +
   geom_boxplot() +
-  labs(x = " ", y = "Word Count", title = "Green Environment Bills: Word Count by Session") +
+  labs(x = " ", y = "Word Count", title = "Green Environment Bills: Word Count") +
   ylim(0, 900) +
   theme_minimal()
 ```

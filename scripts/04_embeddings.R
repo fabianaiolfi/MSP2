@@ -42,16 +42,16 @@ load(file = here("data", "ft_embeddings.Rda"))
 # glove_embeddings <- doc2vec(glove_model, all_businesses_embeddings$bill_content, type = "embedding")
 # glove_embeddings <- cbind(all_businesses_embeddings_bsn, glove_embeddings)
 # save(glove_embeddings, file = here("data", "glove_embeddings.Rda"))
-load(file = here("data", "glove_embeddings.Rda"))
+# load(file = here("data", "glove_embeddings.Rda"))
 
 
 # Calculate Embedding Distances ---------------------------------
 
 # Select Model
-# embeddings <- ft_embeddings
-# model_name <- "ft_embeddings"
-embeddings <- glove_embeddings
-model_name <- "glove_embeddings"
+embeddings <- ft_embeddings
+model_name <- "ft_embeddings"
+# embeddings <- glove_embeddings
+# model_name <- "glove_embeddings"
 
 
 # All Green bills, grouped by Session
@@ -79,11 +79,13 @@ all_sp_bills <- eda %>%
 # Merge the dataframes on the index column
 all_bills_joined <- inner_join(all_green_bills, all_sp_bills, by = "SubmissionSession")
 
-# Calculate Euclidean distances
-# Add a new column `distance` with the calculated Euclidean distance between each pair of rows
+# Add a new column `distance` with the calculated distance between each pair of rows
 sp_greens_all_bills_distance <- all_bills_joined %>%
   rowwise() %>%
-  mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  # Calculate Euclidean distances
+  # mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  # Calculate cosine similarity
+  mutate(distance = 1 - sum(c_across(starts_with("V_green")) * c_across(starts_with("V_sp"))) / (sqrt(sum(c_across(starts_with("V_green"))^2)) * sqrt(sum(c_across(starts_with("V_sp"))^2)))) %>%
   ungroup() %>% 
   select(SubmissionSession, distance)
 
@@ -119,11 +121,13 @@ sp_environmental_bills <- eda %>%
 # Merge the dataframes on the index column
 environmental_bills_joined <- inner_join(green_environmental_bills, sp_environmental_bills, by = "SubmissionSession")
 
-# Calculate Euclidean distances
-# Add a new column `distance` with the calculated Euclidean distance between each pair of rows
+# Add a new column `distance` with the calculated distance between each pair of rows
 sp_greens_environmental_bills_distance <- environmental_bills_joined %>%
   rowwise() %>%
-  mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  # Calculate Euclidean distances
+  # mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  # Calculate cosine similarity
+  mutate(distance = 1 - sum(c_across(starts_with("V_green")) * c_across(starts_with("V_sp"))) / (sqrt(sum(c_across(starts_with("V_green"))^2)) * sqrt(sum(c_across(starts_with("V_sp"))^2)))) %>%
   ungroup() %>% 
   select(SubmissionSession, distance)
 

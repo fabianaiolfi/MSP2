@@ -14,6 +14,7 @@
   - [ ] Number of bills per session over time
   - [ ] Bill word length (boxplot); maybe also over time?
   - [ ] Google Trends on environmental topics
+- [ ] Include cosine similarity in analysis, next to distance
 
 ### Admin
 - [ ] When is paper's grade submission due?

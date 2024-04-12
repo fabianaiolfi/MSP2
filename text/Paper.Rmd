@@ -1,0 +1,21 @@
+# Paper
+
+## Abstract
+
+## Introduction
+
+## Literature Review
+- issue competition: which topics are placed on the agenda and how do parties react to this?
+- embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value
+
+## Theory
+- parties react to issues put forward by other parites
+
+## Data & Methods
+- using embeddings, measure difference between texts
+	- euclidean distance
+	- cosine similarity
+
+## Conclusion
+- Future research:
+	- Use fine tuned embeddings

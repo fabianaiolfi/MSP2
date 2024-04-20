@@ -12,7 +12,18 @@
 ## Theory
 - schattschneider (1960): choice of conflicts allocates power
 - parties react to issues put forward by other parites: what makes parties put forward certain topics?
+
+causal chain
+- a topic becomes salient amongst the public. in our case, it is green/environmental topics
+- 2006 sides p. 407: candidates place salient topics on their agenda (that are salient amgonst the public?)
+- 2014 spoon p. 374: parties (=candidates) react to each other in the “party system agenda”
+- 2014 green p. 760: parties in the same bloc tend to be more responsive to each other than parties in different blocs. this is called the “party bloc effect”
+- 2014 spoon p. 375: if left-wing parties highlight green issues, they can reap potential electoral benefits
+- this goes together with 2007 green pedersen p. 610: “Dominance principle”, where it’s advantageous for a party to draw attention to an issue where there is a conflict with other parties and where it has the electorate on its side
+- thus we expect the sp to attack the greens by taking over their issues, because “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat” (2014 spoon p. 366, via meguid)
+
 - introducing parliamentary bills as a form of political communication: when a party introduces a bill in parliament, it communicates to other parties and also to its voter base
+
 - Set up hypotheses
 
 ## Data & Methods
@@ -26,6 +37,7 @@
 - measuring distance between SP and greens over time 
 	- on all topics: distance is constant
 	- on environmental topics: distance decreases
+	- differentiate between bills that only have the tag “environment” and bills with the most common co-tag, e.g. “environment” and “finance” 
 - does one party move closer to the other party or do both parties move?
 
 ### Operationalisation

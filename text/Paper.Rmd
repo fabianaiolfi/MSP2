@@ -7,13 +7,18 @@
 ## Literature Review
 - issue competition: which topics are placed on the agenda and how do parties react to this?
 - embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value
+- most papers use party manifesto data (manually tagged?) (e.g. 2014 Green (see p. 752 for description of manual approach))
 
 ## Theory
 - schattschneider (1960): choice of conflicts allocates power
 - parties react to issues put forward by other parites: what makes parties put forward certain topics?
 - introducing parliamentary bills as a form of political communication: when a party introduces a bill in parliament, it communicates to other parties and also to its voter base
+- Set up hypotheses
 
 ## Data & Methods
+- exploratory data analysis
+	- current analysis (number of bills over time etc)
+	- show number of bills by party strength; divide number of bills from a party by seats in parliament
 - using embeddings, measure difference between texts
 	- euclidean distance
 	- cosine similarity

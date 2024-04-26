@@ -13,27 +13,29 @@
 - what makes parties put forward certain topics?
 
 ### causal chain
-- a topic becomes salient amongst the public. in our case, it is green/environmental topics since the turn of the century (add sources showing increase in environmental topics since 2000)
-
-- 2022 lüth, p. 171: between 2002 and 2022, the electoral importance of energy and environmental issues increases amongst voters in CH
-
-- agendas are considered to be a hierarchy of issues (2010 green pedersen p. 260), where more salient issues are placed further at the top.
+- agendas are considered to be a hierarchy of issues (2010 green pedersen p. 260), that relevant actors have to pay attention to and can also influence
 - 2006 sides p. 407: candidates place salient topics on their agenda (that are salient amgonst the public?) because setting a (policy) agenda and thus determining what politics is about is a form of wielding political power (1960 Schattschneider, p. 68; 1999 edwards, p. 327.)
 
-- once the topics are on the agenda, parties (=candidates) react to each other’s agendas in the context of the “party system agenda” (2014 spoon p. 374)
+- once the topics are on the agenda, parties (=candidates) react to each other’s agendas in the context of the “party system agenda” (2014 spoon p. 374). this is an “agenda-setting model of issue competition among political parties” (2010 green pedersen, p. 257).
+- parties try to “emphasis advantageous issues in order to influence the party-system agenda” but “parties must also respond to whatever issues are salient at any given time” (2010 green pedersen p. 261).
 
-- parties who are in the same bloc tend to react more responsively to each other than parties in different blocs. this is called the “party bloc effect” (2014 green p. 760). this is due to ideological closeness within a bloc and between parties. this closeness allows for parties to poach voter’s from another ideologically close party.
+- parties who are in the same bloc tend to react more responsively to each other than parties in different blocs. this is called the “party bloc effect” (2014 green p. 760). this is due to ideological closeness within a bloc and between parties. this closeness allows for parties to poach voters from another ideologically close party.
 
 - an example of this poaching is provided by (2014 spoon p. 375), who shows that if left-wing parties highlight green issues, they can reap potential electoral benefits.
 
-- (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by poaching (back) their voters by addressing green issues.
+- how do parties place issues in the party-system agenda?
+- 2010 green pedersen describe how the “party system agenda emerges from the continuous political debate among political parties” (p. 260) which is “institutionalised in various […] ways” (p. 261), one of which is the proposal of new bills (p. 266).
 
-- how do parties address issues?
-- in the context of “real-politik”, this is putting parliamentary bills forward, as this sends signals over different channels to other parties and their own voter base
-- introducing parliamentary bills as a form of political communication: when a party introduces a bill in parliament, it communicates to other parties and also to its voter base
+- thus i argue that introducing a new bill in parliament is a way to react to the party-system agenda and also allows for a party to react to the salient topics in the public
 
 
 ### Hypotheses
+- environmental topics have become more important in the past 20 years
+	- 2022 lüth, p. 171: between 2002 and 2022, the electoral importance of energy and environmental issues increases amongst voters in CH; p. 184: the salience of environmental topics is driven by voters
+
+- SP has an interest in poaching green voters
+	- (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by poaching (back) their voters by addressing green issues.
+
 - an increase in the salience in public opinion of green topics leads to an increase in the similarity of parliamentary bills on green topics put forward by the greens and the social democrats
 
 

@@ -7,13 +7,16 @@
 ## Literature Review
 - issue competition: which topics are placed on the agenda and how do parties react to this?
 - embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value
-- most papers use party manifesto data (manually tagged?) (e.g. 2014 Green (see p. 752 for description of manual approach))
+- most papers use party manifesto data (manually tagged?) (e.g. 2014 Green (see p. 752 for description of manual approach) or 2022 Lüth p. 177)
 
 ## Theory
 - what makes parties put forward certain topics?
 
 ### causal chain
 - a topic becomes salient amongst the public. in our case, it is green/environmental topics since the turn of the century (add sources showing increase in environmental topics since 2000)
+
+- 2022 lüth, p. 171: between 2002 and 2022, the electoral importance of energy and environmental issues increases amongst voters in CH
+
 - agendas are considered to be a hierarchy of issues (2010 green pedersen p. 260), where more salient issues are placed further at the top.
 - 2006 sides p. 407: candidates place salient topics on their agenda (that are salient amgonst the public?) because setting a (policy) agenda and thus determining what politics is about is a form of wielding political power (1960 Schattschneider, p. 68; 1999 edwards, p. 327.)
 

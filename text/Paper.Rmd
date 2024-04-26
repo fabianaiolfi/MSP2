@@ -10,16 +10,15 @@
 - most papers use party manifesto data (manually tagged?) (e.g. 2014 Green (see p. 752 for description of manual approach))
 
 ## Theory
-- schattschneider (1960): choice of conflicts allocates power
-- parties react to issues put forward by other parites: what makes parties put forward certain topics?
+- what makes parties put forward certain topics?
 
 causal chain
-- a topic becomes salient amongst the public. in our case, it is green/environmental topics
-- 2006 sides p. 407: candidates place salient topics on their agenda (that are salient amgonst the public?)
+- a topic becomes salient amongst the public. in our case, it is green/environmental topics since the turn of the century (add sources showing increase in environmental topics since 2000)
+- 2006 sides p. 407: candidates place salient topics on their agenda (that are salient amgonst the public?) because setting a (policy) agenda and thus determining what politics is about is a form of wielding political power (1960 Schattschneider, p. 68; 1999 edwards, p. 327.)
 
 - once the topics are on the agenda, parties (=candidates) react to each other’s agendas in the context of the “party system agenda” (2014 spoon p. 374)
 
-- parties who are in the same bloc tend to react more responsively to each other than parties in different blocs. this is called the “party bloc effect” (2014 green p. 760). this is due to ideological closeness within a party. this closeness allows for parties to poach voter’s from another ideologically close party.
+- parties who are in the same bloc tend to react more responsively to each other than parties in different blocs. this is called the “party bloc effect” (2014 green p. 760). this is due to ideological closeness within a bloc and between parties. this closeness allows for parties to poach voter’s from another ideologically close party.
 
 - an example of this poaching is provided by (2014 spoon p. 375), who shows that if left-wing parties highlight green issues, they can reap potential electoral benefits.
 

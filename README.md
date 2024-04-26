@@ -8,13 +8,17 @@
 ## To Dos
 
 ### Data Analysis
-
 - [x] Number of bills
+- [ ] Bill selection
+	- [ ] Compare bills labeled “Umwelt” and bills labeled “Energie”, as this can also be associated with climate topics (2022 Lüth, p. 172)
+	- [ ] Select bills containing environmental keywords, such as “CO2” etc.
 - [ ] Plots
   - [ ] Number of bills per session over time
   - [ ] Bill word length (boxplot); maybe also over time?
   - [ ] Google Trends on environmental topics
 - [ ] Include cosine similarity in analysis, next to distance
+- [ ] Furhter turning points in time:
+	- [ ] 2015 Paris Agreement
 
 ### Admin
 - [ ] When is paper's grade submission due?

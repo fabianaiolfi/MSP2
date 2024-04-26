@@ -17,8 +17,10 @@
   - [ ] Bill word length (boxplot); maybe also over time?
   - [ ] Google Trends on environmental topics
 - [ ] Include cosine similarity in analysis, next to distance
-- [ ] Furhter turning points in time:
-	- [ ] 2015 Paris Agreement
+- [ ] Further turning points in time:
+	- [ ] 2015 Paris Agreement; CH ratifies in 2017
+	- [ ] Week of 20 Sept 2019: Worldwide demonstrations for climate policies (https://www.theguardian.com/environment/2019/sep/27/climate-crisis-6-million-people-join-latest-wave-of-worldwide-protests)
+	- [ ] CO2-Gesetz (Bundesgesetz vom 25. September 2020), vote on 13 June 2021
 
 ### Admin
 - [ ] When is paper's grade submission due?

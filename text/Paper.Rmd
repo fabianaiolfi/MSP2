@@ -26,18 +26,20 @@
 - this closeness allows for parties to poach voters from another ideologically close party.
 - an example of this poaching is provided by (2014 spoon p. 375), who shows that if left-wing parties highlight green issues, they can reap potential electoral benefits.
 
-- 
+- in the specific context of swiss politics, there are two further reasons why left-wing parties would want to highlight green issues
 
-- one of these green issues can be environmental topics. environmental topics have become more important in the past 20 years in switzerland.
-	- 2022 lüth, p. 171: between 2002 and 2022, the electoral importance of energy and environmental issues increases amongst voters in CH; p. 184: the salience of environmental topics is driven by voters
+1. environmental issues have become more salient in ch in the past 20 years
+- 2022 lüth, p. 171: between 2002 and 2022, the electoral importance of energy and environmental issues increases amongst voters in CH; p. 184: the salience of environmental topics is driven by voters
 
-- SP has an interest in poaching green voters
-	- (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by poaching (back) their voters by addressing green issues.
+2. sp can consider greens to be a threat
+- (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by poaching (back) their voters by addressing green issues.
+
+- add somewhere: only take into account the salience of environmental topics amongst left of centre voters → mobilisation
 
 
 ### Hypotheses
-
-- an increase in the salience in public opinion of green topics leads to an increase in the similarity of parliamentary bills on green topics put forward by the greens and the social democrats
+- an increase in the salience in public opinion amongst left of centre voters of green topics leads to an increase in the similarity of parliamentary bills on green topics put forward by the greens and the social democrats
+- … leads to sp putting forward parliamentary bills that are content-wise closer to green bills
 
 
 ## Data & Methods
@@ -60,6 +62,11 @@
 - Environmental Topic saliency
 	- Google Trends?
 	- Worry Barometer?
+	- selects survey, as done by 2022 Lütch p. 171
+
+### Model
+y = distance between sp and greens
+x = (lagged?) topic salience
 
 ## Conclusion
 - Future research:

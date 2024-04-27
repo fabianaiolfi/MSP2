@@ -1,0 +1,17 @@
+\begin{center}
+
+[Add Title Here]\\  
+Master Seminar Paper\\  
+University of Lucerne\\  
+\vspace{1em}
+\vspace{1em}
+Fabian Aiolfi\\
+Matrikelnummer: 09-566-019\\
+\vspace{1em}
+\vspace{1em}
+Submitted on : June 1st, 2024
+
+\end{center}
+
+\vspace*{\fill}
+Supervisor: Dr. Álvaro Canalejo-Molero

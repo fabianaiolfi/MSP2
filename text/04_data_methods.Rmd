@@ -1,0 +1,26 @@
+## Data & Methods
+
+- back up statement that embeddings can be used to measure distance between texts and that using this method is legit in the context of comparing parliamentary bills
+
+- exploratory data analysis
+	- current analysis (number of bills over time etc)
+	- show number of bills by party strength; divide number of bills from a party by seats in parliament
+- using embeddings, measure difference between texts
+	- euclidean distance
+	- cosine similarity
+	- show difference between grouped by session and grouped by year, as there are outlier session where only few bills are introduced; maybe also filter out “Sondersessionen”, as these are very short and sometimes only cover a certain topic
+- measuring distance between SP and greens over time 
+	- on all topics: distance is constant
+	- on environmental topics: distance decreases
+	- differentiate between bills that only have the tag “environment” and bills with the most common co-tag, e.g. “environment” and “finance” 
+- does one party move closer to the other party or do both parties move?
+
+### Operationalisation
+- Environmental Topic saliency
+	- Google Trends?
+	- Worry Barometer?
+	- selects survey, as done by 2022 Lütch p. 171
+
+### Model
+y = distance between sp and greens
+x = (lagged?) topic salience

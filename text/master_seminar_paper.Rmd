@@ -1,0 +1,123 @@
+---
+title: "[Master Seminar Paper Title]"
+output: 
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    extra_dependencies:
+      - microtype
+      - float
+    toc: false
+    toc_depth: 4
+    number_sections: false
+mainfont: Times New Roman
+fontsize: 12pt
+bibliography: references.bib
+csl: american-journal-of-political-science.csl
+classoption: a4paper
+lang: en-UK
+header-includes:
+   - \usepackage{float}
+   - \floatstyle{plaintop}
+   - \restylefloat{figure}
+   - \usepackage{hyperref}
+   - \usepackage{setspace}
+   - \onehalfspacing
+   - \usepackage{placeins}
+   - \usepackage{booktabs}
+   - \usepackage{geometry}
+   - \usepackage{caption}
+   - \pagenumbering{gobble} # Suppress page numbers
+   - \usepackage{times}
+   - \usepackage{pdflscape}
+   - \usepackage[utf8]{inputenc}
+   - \usepackage[hang,flushmargin]{footmisc}
+   # Prevent orphans and widows
+   - \widowpenalty10000
+   - \clubpenalty10000
+---
+
+\onehalfspacing
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## Setup
+library(tidyverse)
+library(here)
+library(sf)
+library(shiny)
+library(lubridate)
+library(haven)
+library(here)
+# library(strucchange) # Chow test in MA_Thesis/scripts/preliminary_exploration/02_fom_emigration/04_models.R
+# library(readxl) # Read in .xls files
+library(scales) # This will ensure that numbers on the y-axis are formatted with commas and without scientific notation.
+# library(plm) # Panel data analysis
+library(stargazer) # Exporting nice tables
+# library(eurostat) # NUTS3 names
+# library(slider) # Rolling averages
+
+library(knitr)
+library(kableExtra)
+library(memisc)
+library(pandoc)
+library(pander)
+library(scales)
+library(fixest)
+library(modelsummary)
+library(bookdown)
+library(gridExtra)
+library(politicsR)
+library(scales)
+
+options(scipen = 0) # Enable scientific notation
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+
+# Add setup script here
+
+```
+
+```{r, child = '00_title.Rmd'}
+```
+
+<!-- Add this line to generate the title -->
+\maketitle
+
+<!-- Start new page after title -->
+\newpage
+
+<!-- Restart page numbering in Arabic numerals -->
+\pagenumbering{arabic} 
+
+```{r, child = '01_abstract.Rmd'}
+```
+
+\newpage
+
+```{r, child = '02_introduction.Rmd'}
+```
+
+```{r, child = '03_literature_theory.Rmd'}
+```
+
+```{r, child = '04_data_methods.Rmd'}
+```
+
+```{r, child = '05_results.Rmd'}
+```
+
+```{r, child = '06_conclusion.Rmd'}
+```
+
+\newpage
+
+## References
+
+<div id="refs"></div>
+
+\newpage
+
+```{r, child = '07_appendix.Rmd'}
+```

@@ -36,8 +36,11 @@
 `embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
 
 - there are different ways of measuring different party’s policy positions.
-	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach);2022 Lüth p. 177), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour to 
+	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach); 2022 Lüth p. 177; 2013 Dolezal, p. 63), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour, which limits the scope of available data.
 
+	- ==[other techniques?]==
+
+	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29)
 
 
 
@@ -75,4 +78,4 @@ x = (lagged?) topic salience
 ## Conclusion
 - Future research:
 	- Use fine tuned embeddings
-	- look at topic saliency more specifically amongst left-wing and green voters
+	- look at topic saliency more specifically amongst left-wing and green voters, i.e. their own voters, as described by (2013 Lazarus, p. 226, 227)

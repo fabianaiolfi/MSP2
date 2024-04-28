@@ -26,6 +26,10 @@
 2. sp can consider greens to be a threat
 - (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by poaching (back) their voters by addressing green issues.
 
+- following this framework, i argue that parties place topics in the “party system agenda” by putting forward parliamentary bills that touch upon topics that are advantageous for themselves
+- following the arguments displayed above, i argue that the sp puts forward  bills that touch upon green topics to benefit themselves electorally
+- in order to sucessfully poach green voters, i assume that the sp puts forward bills that are substantively similar to the bills put forward by the green party in terms of green issues.
+
 ### embeddings
 `embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
 
@@ -34,7 +38,11 @@
 
 	- ==[other techniques?]==
 
-	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29)
+	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29).
+
+- thus i combine two approaches
+	- bills put forward by parties as a way to measure their ideology on a specific topic at a specific point in time
+	- i use word embeddings to measure semantic distances between different bills: the more similar two bills, the smaller the distance between them
 
 
 

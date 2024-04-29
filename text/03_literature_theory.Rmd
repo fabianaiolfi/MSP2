@@ -1,8 +1,6 @@
 ## Literature Review and Theory
 
-### causal chain issue competition
-- what makes parties put forward certain topics?
-- issue competition: which topics are placed on the agenda and how do parties react to this?
+- How do parties pick the topics to place on their agenda? And how do parties react to these topics?
 
 - agendas are considered to be a hierarchy of issues (2010 green pedersen p. 260), that relevant actors have to pay attention to and can also influence
 - 2006 sides p. 407: candidates place salient topics on their agenda (that are salient amgonst the public?) because setting a (policy) agenda and thus determining what politics is about is a form of wielding political power (1960 Schattschneider, p. 68; 1999 edwards, p. 327.)
@@ -24,26 +22,11 @@
 - thus by highlighting salient issues, left-wing parties can set the agenda and determine what politics is about
 
 2. sp can consider greens to be a threat
-- (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by poaching (back) their voters by addressing green issues.
+- (2014 spoon p. 366, via meguid) “mainstream parties are more likely to respond to issue when niche parties are perceived to be an electoral threat”. as the swiss greens are in the same party bloc as / ideologically close to the social demoracts and have increased their vote share in the swiss national parliament from x% to y% from 2004 to 2019, they can be perceived to be an electoral threat to the sp. thus we can expect the sp to counter this threat by attempting to win over Green voters by addressing green issus.
 
-- following this framework, i argue that parties place topics in the “party system agenda” by putting forward parliamentary bills that touch upon topics that are advantageous for themselves
-- following 2014 spoon p. 375 described above, in switzerland, the sp puts forward bills that touch upon green topics to benefit themselves electorally
-- thus, i argue that in an attempt to win over green voters, the sp puts forward bills that are substantively similar to bills put forward by the greens.
-
-### embeddings
-`embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
-
-- there are different ways of measuring different party’s policy positions.
-	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach); 2022 Lüth p. 177; 2013 Dolezal, p. 63), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour, which limits the scope of available data.
-
-	- ==[other techniques?]==
-
-	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29).
-
-- thus i combine two approaches
-	- bills put forward by parties as a way to measure their ideology on a specific topic at a specific point in time
-	- i use word embeddings to measure semantic distances between different bills: the more similar two bills, the smaller the distance between them
-
+- following this framework, i argue that parties place topics in the “party system agenda” by putting forward parliamentary bills that touch upon topics that are salient amongst the public and advantageous for the parties themselves
+- following 2014 spoon p. 375 described above, left-wing parties put forward bills that touch upon green topics for electoral benefit
+- thus, i argue that in an attempt to win over green voters, the sp highlights green issues. the sp does this by putting forward bills that are substantively similar to bills put forward by the greens.
 
 ### Hypotheses
-An increase in environmental topic salience leads to the SP putting forward parliamentary bills that are more similar to Green bills.
+An increase in environmental topic salience amongst the public leads to an increase in similarity between SP and Green bills on green topics.

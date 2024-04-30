@@ -121,3 +121,8 @@ options(scipen = 0) # Enable scientific notation
 
 ```{r, child = '07_appendix.Rmd'}
 ```
+
+\newpage
+
+```{r, child = '08_authorship.Rmd'}
+```

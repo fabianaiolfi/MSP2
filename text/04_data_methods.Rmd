@@ -1,4 +1,4 @@
-## Data & Methods
+## Data and Methods
 `back up statement that embeddings can be used to measure distance between texts and that using this method is legit in the context of comparing parliamentary bills`
 
 ### embeddings

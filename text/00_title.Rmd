@@ -1,17 +1,18 @@
 \begin{center}
 
-[Add Title Here]\\  
 Master Seminar Paper\\  
-University of Lucerne\\  
+University of Lucerne, Spring Term 2024\\  
 \vspace{1em}
 \vspace{1em}
-Fabian Aiolfi\\
-Matrikelnummer: 09-566-019\\
+Supervisor: Dr. Álvaro Canalejo-Molero\\
 \vspace{1em}
 \vspace{1em}
-Submitted on : June 1st, 2024
+Student: Fabian Aiolfi\\
+Schaffhauserstr. 32, 8006 Zürich\\
+fabian.aiolfi@gmail.com\\
+Matriculation No. 09-566-019\\
+\vspace{1em}
+\vspace{1em}
+Deadline: 1 June 2024
 
 \end{center}
-
-\vspace*{\fill}
-Supervisor: Dr. Álvaro Canalejo-Molero

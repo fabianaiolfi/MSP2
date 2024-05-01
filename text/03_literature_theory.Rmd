@@ -30,11 +30,15 @@ H1: An increase in the salience of environmental topics among the public leads t
 `embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
 
 - In order to test the hypothesis, the substantive similarity between parliamentary bills has to be measured.
-- the *content* of the bills have to be taken into account when comparing parliamentary bills.
+- this means that the *content* of the bills have to be taken into account when comparing parliamentary bills
+- this is an issue in the realm of natural language processing: how can the semantic similarity between documents be calculated? (2018 Ali, p. 907)
 
-- clustering: document in same cluster will have similar content (2008 Huang)
+- 2020 wang p. 4: use “word mover’s distance” as a way to measure semantic distance between documents
 
-- in the realm of political science 
+- there are different methods of comparing document similarity, whereby a parliamentary bill is considered to be a document
+	- clustering: document in same cluster will have similar content (2008 Huang)
+
+- in the realm of political science …
 
 - there are different ways of measuring different party’s policy positions.
 	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach); 2022 Lüth p. 177; 2013 Dolezal, p. 63), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour, which limits the scope of available data.

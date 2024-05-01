@@ -10,4 +10,4 @@ rmd_files <- list.files(path = main_folder_path,
                         recursive = TRUE, 
                         full.names = TRUE)
 
-sc <- spelling::spell_check_files(rmd_files, lang = "en-US", ignore = c("embeddings", "fasttext", "fastText", "GloVe", "https", "modelling"))
+sc <- spelling::spell_check_files(rmd_files, lang = "en-GB", ignore = c("embeddings", "fasttext", "fastText", "GloVe", "https", "modelling"))

@@ -22,29 +22,17 @@ Following @spoonGoingGreenExplaining2014 [375], left-wing parties put forward bi
 
 H1: An increase in the salience of environmental topics among the public leads to an increase in the substantive similarity between SP and Green bills on green topics.
 
-
-### embeddings
-
-`back up statement that embeddings can be used to measure distance between texts and that using this method is legit in the context of comparing parliamentary bills`
-
-`embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
+### Word Embeddings
 
 - In order to test the hypothesis, the substantive similarity between parliamentary bills has to be measured.
 - this means that the *content* of the bills have to be taken into account when comparing parliamentary bills
-- this is an issue in the realm of natural language processing: how can the semantic similarity between documents be calculated? (2018 Ali, p. 907)
+- this is an issue in the realm of natural language processing, using a text-as-data approach (2022 Rodriguez): how can the semantic similarity between documents, in this case parliamentary bills, be calculated? (2018 Ali, p. 907)
 
-- 2020 wang p. 4: use “word mover’s distance” as a way to measure semantic distance between documents
+- 2020 wang p. 4: use “word mover’s distance” as a way to measure semantic distance between documents. this technique uses the concept of text representation in vector space to measure semantic distances between documents. this technique places documents in vector space. semantically similar documents are closer to each other than disimilar documents. thus the distance between two documents in this vector space allows to make a statement about the similarity of two documents.
 
-- there are different methods of comparing document similarity, whereby a parliamentary bill is considered to be a document
-	- clustering: document in same cluster will have similar content (2008 Huang)
+- in order to place documents in vector space, word embeddings have to be used. word embeddings are ….
+- combining all word embeddings of a document, e.g. their average, they convey the meaning of a document as a numerical value.
+- this numerical value are the “coordinates” of a document in vector space
+- in the realm of political science, word embeddings have also been used to measure candidate positions (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29). they are thus an adequat / tried and tested technique to use to analyse political texts.
 
-- in the realm of political science …
-
-- there are different ways of measuring different party’s policy positions.
-	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach); 2022 Lüth p. 177; 2013 Dolezal, p. 63), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour, which limits the scope of available data.
-
-	- ==[other techniques?]==
-
-	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29).
-
-- i use word embeddings to measure semantic distances between different bills: the more similar two bills, the smaller the distance between them
+- in sum: i place parliamentary bills in vector space in order to measure the similarity between them. the more similar two bills, the smaller the distance between them in vector space.

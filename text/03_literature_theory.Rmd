@@ -24,25 +24,12 @@ Following @spoonGoingGreenExplaining2014 [375], left-wing parties put forward bi
 
 ### Calculating Document Similarity with Word Embeddings
 
-In order to test the hypothesis, the semantic similarity between parliamentary bills needs to be measured. This means that the bills’ *content* must be taken into account when performing this comparison. This leads to the realm of natural language processing, short NLP, and text-as-data approaches (2022 Rodriguez). 
+In order to test the hypothesis, the semantic similarity between parliamentary bills needs to be measured. This means that the bills’ *content* must be taken into account when performing this comparison. This leads to the realm of natural language processing, short NLP, and approaches that use text as data (2022 Rodriguez). In the context of NLP, how can the semantic similarity between documents, more specifically parliamentary bills, be calculated (2018 Ali, p. 907)?
 
-- In order to test the hypothesis, the semantic similarity between parliamentary bills has to be measured.
-- this means that the *content* of the bills have to be taken into account when comparing parliamentary bills
-- this is an issue in the realm of natural language processing, using a text-as-data approach (2022 Rodriguez): how can the semantic similarity between documents, in this case parliamentary bills, be calculated? (2018 Ali, p. 907)
+Wang (2020, p. 4) suggests the “Word Mover’s Distance” as a way to measure semantic distance between documents. This technique applies the concept of text representation in semantic space as a way to measure semantic distance between documents. The idea behind this is to represent a text, or also simply a single word, as a point in a multidimensional semantic space (2024 Jurafsky p. 109). In this space, semantically similar words are closer to each other than disimilar words. Thus the distance between two words in this space allows to make a statement about their semantic similarity.
 
-- 2020 wang p. 4: use “word mover’s distance” as a way to measure semantic distance between documents. 
-	- this technique uses the concept of text representation in vector space to measure semantic distances between documents.
-	- this technique places documents in vector space.
-	- “the idea of vector semantics is to represent a word as a point in a multidimensional semantic space” (2024 Jurafsky p. 109)
-	- semantically similar documents are closer to each other than disimilar documents. thus the distance between two documents in this vector space allows to make a statement about the similarity of two documents.
+In order to place text in this semantic space, a text’s meaning needs to be converted into embeddings. These embeddings are learned representations of word meanings (2024 Jurafsky, p. 105). in short, representations are calculated using the likelihood that a word appears near another word in the same text (2024 Jurafsky, p. 122). representations take the form of vectors (2024 Jurafsky, p. 109), which are simply a list of numbers (2024 Jurafsky, p. 111) that provide a text’s coordinates in semantic space.
 
-- in order to place documents in vector space, a document’s content needs to be converted into word embeddings.
-- word embeddings are
-	- learned representations of word meanings (2024 Jurafsky, p. 105). in summary, these representations are calculated using the likelihood that a word appears near another word in the same text (2024 Jurafsky, p. 122).
-	- these representations take the form of vectors (2024 Jurafsky, p. 109). a vector is simply a list of numbers (2024 Jurafsky, p. 111) that provide a word’s coordinates in vector space.
-- word embeddings are good at capturing synonymy, e.g., showing that the words “car” and “automobile” have high semantic similarity (2024 Jurafsky, p. 121). 
-- for this reason it is sensible to use word embeddings to measure the semantic distance between documents, in this case parliamentary bills.
-- in the realm of political science, word embeddings have also been used to measure candidate positions (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29). they are thus an adequat / tried and tested technique to use to analyse political texts.
-- this principle of word embeddings can be translated onto documents, whereby an entire document forms a point in vector space instead of a single word (2014 Le)
+Embeddings are good at capturing synonymy, e.g., showing that the words “car” and “automobile” have high semantic similarity (2024 Jurafsky, p. 121). for this reason it makes sense to use word embeddings to measure the semantic distance between documents, in this case parliamentary bills. furthermore, in the realm of political science, word embeddings have also been used to measure candidate positions (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29). they are thus a tried and tested technique to use to analyse political texts. the principle of word embeddings can be translated onto documents, whereby an entire document forms a point in semantic space instead of a single word (2014 Le). 
 
-- in sum: i place parliamentary bills in vector space in order to measure the similarity between them. the more similar two bills, the smaller the distance between them in vector space.
+In sum, i will place parliamentary bills in semantic space in order to measure the similarity between them. the more similar two bills, the smaller the distance between them in the semantic space. The next section explains the technical details behind this approach.

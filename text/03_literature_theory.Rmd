@@ -2,7 +2,7 @@
 
 - How do parties pick the topics to place on their agenda? And how do parties react to these topics?
 
-Agendas are considered as a hierarchy of issues [@green-pedersenWhoSetsAgenda2010 260]. Relevant actors, e.g., political parties, can influence but must also pay attention to these issues. These actors place topics on their agenda that are salient amongst the public [@sidesOriginsCampaignAgendas2006 407]. They do this because setting an agenda, and thus determining what politics is about, is a form of wielding political power [@schattschneiderSemisovereignPeopleRealist1975 68; @edwardsWhoInfluencesWhom1999 327].
+Agendas are considered to be a hierarchy of issues [@green-pedersenWhoSetsAgenda2010 260]. Relevant actors, e.g., political parties, can influence but must also pay attention to these issues. These actors place topics on their agenda that are salient amongst the public [@sidesOriginsCampaignAgendas2006 407]. They do this because setting an agenda, and thus determining what politics is about, is a form of wielding political power [@schattschneiderSemisovereignPeopleRealist1975 68; @edwardsWhoInfluencesWhom1999 327].
 
 One way of placing topics on the agenda is by touching upon these topics in parliamentary bills. These bills are put forward by a variety of actors, one of them being political parties that aim at influencing the “party system agenda”. This is a model that describes how political parties set the agenda in the context of issue competition [@green-pedersenWhoSetsAgenda2010 257]. In this model, the “party system agenda” is influenced by permanent debate among political parties [@green-pedersenWhoSetsAgenda2010 260]. This debate takes on many forms, one of which is the proposal of new bills [@green-pedersenWhoSetsAgenda2010 266].
 
@@ -20,4 +20,27 @@ Following this argumentation, I posit that parties place topics in the “party 
 
 Following @spoonGoingGreenExplaining2014 [375], left-wing parties put forward bills that touch upon “green topics” in order to gain an electoral benefit. Therefore, in an effort to win over GPS voters, the SP highlights “green issues”. The SP does this by putting forward parliamentary bills that are substantively similar to bills put forward by the GPS. This leads to my hypothesis:
 
-An increase in the salience of environmental topics among the public leads to an increase in the similarity between SP and Green bills on green topics.
+H1: An increase in the salience of environmental topics among the public leads to an increase in the substantive similarity between SP and Green bills on green topics.
+
+
+### embeddings
+
+`back up statement that embeddings can be used to measure distance between texts and that using this method is legit in the context of comparing parliamentary bills`
+
+`embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
+
+- In order to test the hypothesis, the substantive similarity between parliamentary bills has to be measured.
+- the *content* of the bills have to be taken into account when comparing parliamentary bills.
+
+- clustering: document in same cluster will have similar content (2008 Huang)
+
+- in the realm of political science 
+
+- there are different ways of measuring different party’s policy positions.
+	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach); 2022 Lüth p. 177; 2013 Dolezal, p. 63), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour, which limits the scope of available data.
+
+	- ==[other techniques?]==
+
+	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29).
+
+- i use word embeddings to measure semantic distances between different bills: the more similar two bills, the smaller the distance between them

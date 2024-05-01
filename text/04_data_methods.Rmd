@@ -1,18 +1,4 @@
 ## Data and Methods
-`back up statement that embeddings can be used to measure distance between texts and that using this method is legit in the context of comparing parliamentary bills`
-
-### embeddings
-`embeddings: how they show the similarity between texts; how they can encompass/convey the meaning of a text as a numerical value `
-
-- there are different ways of measuring different party’s policy positions.
-	- one way is to use party manifestos (2014 Green (see p. 752 for description of manual approach); 2022 Lüth p. 177; 2013 Dolezal, p. 63), e.g. using the Comparative Manifesto Project (CMP) (2009 adams p. 829). however, this approach relies on manual labour, which limits the scope of available data.
-
-	- ==[other techniques?]==
-
-	- another way is a text-as-data-approach using natural language processing (NLP) techniques (2022 Rodriguez), whereby the specific NLP technique of “word embeddings” is “well-suited to pick up on important semantic relationships in text related to political phenomenon such as candidate positioning” (2023 Case, p. 11) or party ideology (2019 Rheault, p. 29).
-
-- i use word embeddings to measure semantic distances between different bills: the more similar two bills, the smaller the distance between them
-
 
 - exploratory data analysis
 	- current analysis (number of bills over time etc)

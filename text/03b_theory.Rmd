@@ -1,0 +1,11 @@
+## Theory and Hypothesis
+
+First, “green issues” have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and put “green issues” on their agenda.
+
+Second, I argue that the Swiss Social Democrats (German “Sozialdemokratische Partei der Schweiz”, SP) perceive the Swiss Green Party (German “Grüne Schweiz”, GPS) as an electoral threat. Both parties are ideologically close, i.e., in the same “party bloc” as described above. The GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period. According to @spoonGoingGreenExplaining2014 [366], a mainstream party like the SP is more likely to engage with issues owned by niche parties if these niche parties, such as the GPS, are perceived as an electoral threat. We can therefore expect the SP to counter this threat by addressing “green issues” with the aim of attracting GPS voters.
+
+Following this line of argument, I argue that parties place issues on the "party system agenda" by proposing parliamentary bills that, first, touch on issues that are salient to the public and, second, are advantageous to the parties themselves.
+
+According to @spoonGoingGreenExplaining2014 [375], left-wing parties introduce bills that touch upon “green topics” in order to gain an electoral advantage. The SP therefore emphasises “green issues” in an effort to win over GPS voters. The SP does this by proposing parliamentary bills that are similar in content to GPS bills. This leads to my hypothesis:
+
+**H1**: An increase in the public salience of environmental issues leads to an increase in the content similarity between SP and GPS parliamentary bills on “green issues”.

@@ -1,0 +1,15 @@
+## Literature Review
+
+Agendas are seen as a hierarchy of issues [@green-pedersenWhoSetsAgenda2010 260]. Relevant actors, including political parties, influence these issues, but must also pay attention to them. Actors put issues on their agenda that are salient to the public [@sidesOriginsCampaignAgendas2006 407]. Defining and influencing agendas is important because it determines what politics is about. It is therefore a way of exercising political power [@schattschneiderSemisovereignPeopleRealist1975 68; @edwardsWhoInfluencesWhom1999 327].
+
+One way of putting issues on the agenda is to raise them in parliamentary bills. These bills are introduced by, e.g., political parties, who aim to influence the “party system agenda”. This is a model that describes how political parties set the agenda in the context of issue competition [@green-pedersenWhoSetsAgenda2010 257]. In this model, the ongoing debate between political parties influences the “party system agenda” [@green-pedersenWhoSetsAgenda2010 260]. This debate takes many forms, one of which is the proposal of new bills [@green-pedersenWhoSetsAgenda2010 266].
+
+Parties respond to each other’s agendas as part of this “party system agenda” [@spoonGoingGreenExplaining2014 374]. On the one hand, parties emphasise issues that are to their advantage. However, parties also have to respond to all salient issues in the “party system agenda” at all times [@green-pedersenWhoSetsAgenda2010 261], even if they are potentially damaging.
+
+Parties with similar ideologies tend to be more responsive to each other than parties with less similar ideologies. This phenomenon, called the “party bloc effect” [@green-pedersenAvoidanceEngagementIssue2015 760; @adamsPolicyAdjustmentParties2009 842], is due to the ideological proximity between parties within the same bloc.
+
+This proximity allows parties to attract voters from other, ideologically closer parties. An example of this “poaching” is provided by @spoonGoingGreenExplaining2014 [375], who shows that when left-wing parties highlight issues typically dominated by green parties (in short, “green issues”), these left-wing parties can reap potential electoral benefits. In the specific context of Swiss politics, there are two further reasons why left-wing parties would want to highlight “green issues”.
+
+```
+In the next section, I develop theoretical expectations about how this framewrok may apply in the Swiss case
+```

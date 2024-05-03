@@ -10,11 +10,17 @@
 - Analyzing centroids allows me to capture the general direction of the bills in a group.
 
 ----------------------
+```
+ACM: why bills are particularly suited to test your hypothesis
+```
+One way of putting issues on the agenda is to raise them in parliamentary bills. These bills are introduced by, e.g., political parties, who aim to influence the “party system agenda”. This is a model that describes how political parties set the agenda in the context of issue competition [@green-pedersenWhoSetsAgenda2010 257]. In this model, the ongoing debate between political parties influences the “party system agenda” [@green-pedersenWhoSetsAgenda2010 260]. This debate takes many forms, one of which is the proposal of new bills [@green-pedersenWhoSetsAgenda2010 266].
+
+----------------------
 
 ### Data Description
 …
 
-### CH as a Case Description
+### CH as a Case: Description
 ```
 ACM: introduce the Swiss case and why you are deciding to focus on it (why is it relevant?) somewhere in the paper. It should ideally be after the literature review and hypotheses.
 ```

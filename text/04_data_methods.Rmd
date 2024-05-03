@@ -1,5 +1,13 @@
 ## Data and Methods
 
+- in order to test the hypothesis, i will place parliamentary bills from the swiss national assemby into semantic space using document embeddings.
+- specifically, i will examine parliamentary bills introduced either by the SP and GPS parties themselves or their members of parliament (MPs) that cover “green issues”
+	- footnote: a range of different actors can put forward bills in parliament
+
+- in order to capture the content similarity between bills introduced by the two parties, i group bills by party and by session and calculate their average position. this average position captures the average semantic meaning of all bills in a group.
+	- footnote: explain what a parliamentary session is
+
+
 - exploratory data analysis
 	- current analysis (number of bills over time etc)
 	- show number of bills by party strength; divide number of bills from a party by seats in parliament

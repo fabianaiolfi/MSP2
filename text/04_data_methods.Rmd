@@ -4,8 +4,11 @@
 - specifically, i will examine parliamentary bills introduced either by the SP and GPS parties themselves or their members of parliament (MPs) that cover “green issues”
 	- footnote: a range of different actors can put forward bills in parliament
 
-- in order to capture the content similarity between bills introduced by the two parties, i group bills by party and by session and calculate their average position. this average position captures the average semantic meaning of all bills in a group.
+- in order to capture the content similarity between bills introduced by the two parties, i group bills by party and by session. this means that a group contains parliamentary bills introduced by a party in a single session.
 	- footnote: explain what a parliamentary session is
+- i then calculate the average position of all bills in a group, i.e., the “middle point” or centroid of a group of bills in semantic space. this centroid represents the overall semantic content of all bills in a group, i.e., a summary that reflects the overall semantic content within a group. It effectively summarizes the collective characteristics or the "average" bill within that group, helping to identify the group’s central tendencies
+- Analyzing centroids allows me to capture the general direction of the bills in a group.
+
 
 
 - exploratory data analysis

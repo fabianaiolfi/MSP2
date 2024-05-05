@@ -4,7 +4,7 @@ Agendas are seen as a hierarchy of issues [@green-pedersenWhoSetsAgenda2010 260]
 - issues are “problems of concern to voters” (1996 Petrocik, p. 826)
 Relevant actors, including political parties, influence these issues, but must also pay attention to them. Actors put issues on their agenda that are salient to the public [@sidesOriginsCampaignAgendas2006 407]. Defining and influencing agendas is important because it determines what politics is about. It is therefore a way of exercising political power [@schattschneiderSemisovereignPeopleRealist1975 68; @edwardsWhoInfluencesWhom1999 327].
 
-- one way of putting issues on the agenda is through the news media, manifestos or by introducing bills in parliament [@green-pedersenWhoSetsAgenda2010 266] (get more examples from this paper) → bills as an example of a way to place issues on the agenda
+- one way of putting issues on the agenda is through the news media, manifestos or by introducing bills in parliament [@green-pedersenWhoSetsAgenda2010 266] (get more examples from this paper: does it also include manifestos?) → bills as an example of a way to place issues on the agenda
 
 
 
@@ -15,9 +15,12 @@ Parties with similar ideologies tend to be more responsive to each other than pa
 ACM: Could you develop more the theoretical underpinnings of this effect?
 ```
 
-This proximity allows parties to attract voters from other, ideologically closer parties. An example of this “poaching” is provided by @spoonGoingGreenExplaining2014 [375], who shows that when left-wing parties highlight issues typically dominated by green parties (in short, “green issues”), these left-wing parties can reap potential electoral benefits.
+This proximity allows parties to attract voters from other, ideologically closer parties. An example of this “poaching” is provided by @spoonGoingGreenExplaining2014 [372, 373, 375], who shows that when left-wing parties highlight issues typically dominated by green parties (in short, “green issues”), these left-wing parties can reap potential electoral benefits.
 ```
 ACM: Why would we expect electoral benefits? See 2014 Abou-Chadi
+- because left-wing parties are potential coalition partners of greens? (2014 abou-chadi p. 423)
+- but abou-chadi also shows, that all mainstream parties (incl. left-wing ones) de-emphasise green issues, as green parties already own the issue
+- method used by abou-chadi is different: so which one applies better to my case?
 ```
 
 - In the specific context of Swiss politics, there are two further reasons why left-wing parties would want to highlight “green issues”.

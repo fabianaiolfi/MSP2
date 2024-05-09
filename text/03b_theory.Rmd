@@ -3,9 +3,12 @@
 ACM: remove explicit references to Switzerland here (you can just talk of Social Democrats and Green parties in general). 
 ```
 
+- In the specific context of Swiss politics, there are two further reasons why left-wing parties would want to highlight “green issues”.
+
 First, “green issues” have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and put “green issues” on their agenda.
 
 Second, I argue that the Swiss Social Democrats (German “Sozialdemokratische Partei der Schweiz”, SP) perceive the Swiss Green Party (German “Grüne Schweiz”, GPS) as an electoral threat.
+- this is a condition described by @spoonGoingGreenExplaining2014 for left-wing parties to highlight green issues for electoral benefit
 ```
 ACM: why an electoral threat?
 ```

@@ -1,36 +1,19 @@
 ## Theory and Hypothesis
+How do political parties respond to the increased salience of environmental issues? Research shows that when environmental issues become more important to voters, political parties adjust their agendas to address these issues. Specifically, under the condition that left-wing parties consider the green parties to be an electoral threat, we expect mainstream left-wing parties to place environmental issues on the “party system agenda” through the introduction of parliamentary bills. 
 
-```
-ACM: remove explicit references to Switzerland here (you can just talk of Social Democrats and Green parties in general). 
-```
+In order to win over green party voters, the left-wing parties will introduce parliamentary bills that are similar in content to bills proposed by the green party. By winning over these voters, left-wing parties gain an electoral advantage. This leads to the following hypothesis:
 
+**H1**: An increase in the public salience of environmental issues leads to an increase in the content similarity between parliamentary bills of mainstream left-wing parties and those of green parties on environmental issues.
 
-Theoretical Framework
+### Applying the Hypothesis to Switzerland
+In order to test this hypothesis, I turn to Switzerland. Specifically, I examine the Swiss mainstream left-wing party (Swiss Social Democrats, German: “Sozialdemokratische Partei der Schweiz”, SP) and the Swiss green party (Swiss Green Party, German: “Grüne Schweiz”, GPS). Switzerland, the SP and the GPS are suited for the following reasons.
 
-- How do political parties respond to the increased salience of environmental issues? Research shows that when these issues become more important to voters, political parties adjust their agendas to address these issues.
-- More specifically, left-wing parties will adopt green issues.
-- Specifically, we expect that a mainstream left-wing party, when perceiving a green party as a direct electoral threat, place issues on the "party system agenda" by proposing parliamentary bills that, first, touch on issues that are salient to the public and, second, are advantageous to the parties themselves
-- these bills will be more similar in content to those proposed by the green party. This strategy is aimed at attracting voters who might otherwise support the green party.
-- This adoption is thought to be a strategic move to attract voters from green parties.
-- left-wing parties thus do this to gain electoral benefits.
-- left-wing parties introduce bills that touch upon “green topics” in order to gain an electoral advantage.
+First, environemental issues have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and place environemental issues on their agenda.
 
-**H1**: An increase in the public salience of environmental issues leads to an increase in the content similarity between parliamentary bills of mainstream left-wing parties and those of green parties on "green issues."
+Second, Switzerland has an electoral system that accommodates smaller parties, as highlighted by @linderSchweizerischeDemokratieInstitutionen2017a [102]. The electoral success of small parties such as the GPS (see figure X !!ADD FIGURE!!) further highlights how the Swiss electoral system accommodates and fosters small parties.
 
+Third, I argue that the SP perceive the GPS as an electoral threat. The GPS has increased their vote share in the past 20 years, while the SP have lost vote share. Specifically, the GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period. 
 
-to test this hypothesis, i turn to the swiss case. the swiss case fits well into this framework because
+I consider this electoral success of the GPS to have occurred at the expense of the SP. This is because both parties belong to the same party family and are thus ideologically close. Both parties highlight issues such as social welfare and gender equality and both are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]. When examining both parties in a two-dimensional left-right/liberal-authoritarian ideological space, the SP and GPS are their closest neighbors (see figure X [ADD FIGURE!!]). Following this spatial argument, both parties are interested in canvassing the same group of voters.
 
-- swiss public salience on green issues has increased in the past two decades
-	- First, “green issues” have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and put “green issues” on their agenda.
-
-- switzerland has a multi-party system with an electoral system that is open to smaller parties, as highlighted by @linderSchweizerischeDemokratieInstitutionen2017a [102]. the greens count as one of these smaller parties and has proven to be open to such smaller parties, as the electoral success of the greens over the past 20 years has shown.
-
-
-- Second, I argue that the Swiss Social Democrats (German “Sozialdemokratische Partei der Schweiz”, SP) perceive the Swiss Green Party (German “Grüne Schweiz”, GPS) as an electoral threat.
-- the gps has increased their vote share in the past 20 years, while the social democrats have lost vote share.
-- specifically, The GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period. 
-- this electoral success of the greens can be seens as an electoral threat to the social democrats.
-- this is because both parties are ideologically close
-	- both parties highlight “soziale sicherheit” and “gleichstellung von mann und frau” and are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]
-	- both parties are their closest neighbors in an ideological space when using “overall ideological stance” (lrgen) and “social and cultural values” (galtan) (Chapel Hill Expert Survey). Following this spatial argumentation, both parties are in the same party bloc as described above and are thus interested in the same group of voters
-In sum, the SP emphasises “green issues” in an effort to win over voters from the GPS, a party that it perceives to be a threat. The SP does this by proposing parliamentary bills that are similar in content to GPS bills.
+In sum, the SP emphasises environmental issues in an effort to win over voters from the GPS, a small party that it perceives to be a threat. The SP does this by proposing parliamentary bills that are similar in content to GPS bills.

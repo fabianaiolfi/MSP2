@@ -1,4 +1,5 @@
 ## Theory and Hypothesis
+
 How do political parties respond to the increased salience of environmental issues? Research shows that when environmental issues become more important to voters, political parties adjust their agendas to address these issues. Specifically, under the condition that left-wing parties consider the green parties to be an electoral threat, we expect mainstream left-wing parties to place environmental issues on the “party system agenda” through the introduction of parliamentary bills. 
 
 In order to win over green party voters, the left-wing parties will introduce parliamentary bills that are similar in content to bills proposed by the green party. By winning over these voters, left-wing parties gain an electoral advantage. This leads to the following hypothesis:
@@ -6,6 +7,7 @@ In order to win over green party voters, the left-wing parties will introduce pa
 **H1**: An increase in the public salience of environmental issues leads to an increase in the content similarity between parliamentary bills of mainstream left-wing parties and those of green parties on environmental issues.
 
 ### Applying the Hypothesis to Switzerland
+
 In order to test this hypothesis, I turn to Switzerland. Specifically, I examine the Swiss mainstream left-wing party (Swiss Social Democrats, German: “Sozialdemokratische Partei der Schweiz”, SP) and the Swiss green party (Swiss Green Party, German: “Grüne Schweiz”, GPS). Switzerland, the SP and the GPS are suited for the following reasons.
 
 First, environemental issues have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and place environemental issues on their agenda.

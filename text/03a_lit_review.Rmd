@@ -9,6 +9,18 @@ Relevant actors, including political parties, influence these issues, but must a
 Parties respond to each other’s agendas as part of this “party system agenda” [@spoonGoingGreenExplaining2014 374]. On the one hand, parties emphasise issues that are to their advantage. However, parties also have to respond to all salient issues in the “party system agenda” at all times [@green-pedersenWhoSetsAgenda2010 261], even if they are potentially damaging.
 
 Parties with similar ideologies tend to be more responsive to each other than parties with less similar ideologies. This phenomenon, called the “party bloc effect” [@green-pedersenAvoidanceEngagementIssue2015 760; @adamsPolicyAdjustmentParties2009 842], is due to the ideological proximity between parties within the same bloc.
+
+@green-pedersenAvoidanceEngagementIssue2015 750
+- parties from same party family / party bloc have similar issue preferences. thus they have a common interest in focusing on these issues
+- in a multiparty system, parties from same party bloc are likely to be governmental coalition partners. so to present themselves as a credible government alternative, parties from the same bloc need to show likeness by focusing on similar issues.
+
+@adamsPolicyAdjustmentParties2009 828:
+- the authors use a spatial argument why parties in the same bloc react more to each other. the authors explain how parties that are close to each other on an ideological continuum shift their policy positions when other parties in close proximity change their policy positions, as both parties want to attract the same set of voters. however, when a party that’s ideologically further away changes its position, this will not affect the policy positions of the first party. 
+
+
+- parties from the same bloc come from the same party family and thus have high prospects of becoming coalition partners 
+
+
 ```
 ACM: Could you develop more the theoretical underpinnings of this effect?
 ```

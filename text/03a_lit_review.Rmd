@@ -15,15 +15,7 @@ Parties with similar ideologies tend to be more responsive to each other than pa
 - in a multiparty system, parties from same party bloc are likely to be governmental coalition partners. so to present themselves as a credible government alternative, parties from the same bloc need to show likeness by focusing on similar issues.
 
 @adamsPolicyAdjustmentParties2009 828:
-- the authors use a spatial argument why parties in the same bloc react more to each other. the authors explain how parties that are close to each other on an ideological continuum shift their policy positions when other parties in close proximity change their policy positions, as both parties want to attract the same set of voters. however, when a party that’s ideologically further away changes its position, this will not affect the policy positions of the first party. 
-
-
-- parties from the same bloc come from the same party family and thus have high prospects of becoming coalition partners 
-
-
-```
-ACM: Could you develop more the theoretical underpinnings of this effect?
-```
+- the authors use a spatial argument why parties in the same bloc react more to each other. the authors explain how parties that are close to each other on an ideological continuum shift their policy positions when other parties in close proximity change their policy positions, as both parties want to attract the same set of voters. however, when a party that’s ideologically further away changes its position, this will not affect the policy positions of the first party.
 
 This proximity allows parties to attract voters from other, ideologically closer parties.
 

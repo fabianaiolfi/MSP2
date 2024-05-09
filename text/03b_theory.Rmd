@@ -23,14 +23,14 @@ to test this hypothesis, i turn to the swiss case. the swiss case fits well into
 - swiss public salience on green issues has increased in the past two decades
 	- First, “green issues” have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and put “green issues” on their agenda.
 
-- switzerland has a multi-party system with an electoral system that is open to smaller parties, as highlighted by @linderSchweizerischeDemokratieInstitutionen2017a [102]. the greens count as one of these smaller parties.
-
-- greens are an electoral threat to the sp
-	- Second, I argue that the Swiss Social Democrats (German “Sozialdemokratische Partei der Schweiz”, SP) perceive the Swiss Green Party (German “Grüne Schweiz”, GPS) as an electoral threat.
-```
-ACM: why an electoral threat?
-```
-Both parties are ideologically close, i.e., in the same “party bloc” as described above. The GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period. According to @spoonGoingGreenExplaining2014 [366], a mainstream party like the SP is more likely to engage with issues owned by niche parties if these niche parties, such as the GPS, are perceived as an electoral threat. We can therefore expect the SP to counter this threat by addressing “green issues” with the aim of attracting GPS voters.
+- switzerland has a multi-party system with an electoral system that is open to smaller parties, as highlighted by @linderSchweizerischeDemokratieInstitutionen2017a [102]. the greens count as one of these smaller parties and has proven to be open to such smaller parties, as the electoral success of the greens over the past 20 years has shown.
 
 
-The SP emphasises “green issues” in an effort to win over GPS voters. The SP does this by proposing parliamentary bills that are similar in content to GPS bills.
+- Second, I argue that the Swiss Social Democrats (German “Sozialdemokratische Partei der Schweiz”, SP) perceive the Swiss Green Party (German “Grüne Schweiz”, GPS) as an electoral threat.
+- the gps has increased their vote share in the past 20 years, while the social democrats have lost vote share.
+- specifically, The GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period. 
+- this electoral success of the greens can be seens as an electoral threat to the social democrats.
+- this is because both parties are ideologically close
+	- both parties highlight “soziale sicherheit” and “gleichstellung von mann und frau” and are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]
+	- both parties are their closest neighbors in an ideological space when using “overall ideological stance” (lrgen) and “social and cultural values” (galtan) (Chapel Hill Expert Survey). Following this spatial argumentation, both parties are in the same party bloc as described above and are thus interested in the same group of voters
+In sum, the SP emphasises “green issues” in an effort to win over voters from the GPS, a party that it perceives to be a threat. The SP does this by proposing parliamentary bills that are similar in content to GPS bills.

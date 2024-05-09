@@ -99,16 +99,19 @@ options(scipen = 0) # Enable scientific notation
 ```{r, eval=FALSE, child = '02_introduction.Rmd'}
 ```
 
-```{r, child = '03_literature_theory.Rmd'}
+```{r, child = '03_lit_review.Rmd'}
 ```
 
-```{r, eval=FALSE, child = '04_data_methods.Rmd'}
+```{r, child = '04_theory.Rmd'}
 ```
 
-```{r, eval=FALSE, child = '05_results.Rmd'}
+```{r, eval=FALSE, child = '05_data_methods.Rmd'}
 ```
 
-```{r, eval=FALSE, child = '06_conclusion.Rmd'}
+```{r, eval=FALSE, child = '06_results.Rmd'}
+```
+
+```{r, eval=FALSE, child = '07_conclusion.Rmd'}
 ```
 
 \newpage
@@ -119,10 +122,10 @@ options(scipen = 0) # Enable scientific notation
 
 <!-- \newpage -->
 
-```{r, eval=FALSE, child = '07_appendix.Rmd'}
+```{r, eval=FALSE, child = '08_appendix.Rmd'}
 ```
 
 <!-- \newpage -->
 
-```{r, eval=FALSE, child = '08_authorship.Rmd'}
+```{r, eval=FALSE, child = '09_authorship.Rmd'}
 ```

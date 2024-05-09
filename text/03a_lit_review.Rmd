@@ -1,23 +1,14 @@
 ## Literature Review
 
-Agendas are seen as a hierarchy of issues [@green-pedersenWhoSetsAgenda2010 260].
-- issues are “problems of concern to voters” (1996 Petrocik, p. 826)
-Relevant actors, including political parties, influence these issues, but must also pay attention to already existing issues. Actors put issues on their agenda that are salient to the public [@sidesOriginsCampaignAgendas2006 407]. Defining and influencing agendas is important because it determines what politics is about and therefore a way of exercising political power [@schattschneiderSemisovereignPeopleRealist1975 68; @edwardsWhoInfluencesWhom1999 327].
+Political agendas are a hierarchy of issues [@green-pedersenWhoSetsAgenda2010 260], whereby issues constitute problems that are important to voters (1996 Petrocik, p. 826). Relevant actors, such as political parties, influence this hierarchy of issues. Actors put issues on their agendas that are salient to the public [@sidesOriginsCampaignAgendas2006 407]. Defining and influencing agendas is important because it determines what politics is about and is therefore a way of exercising political power [@schattschneiderSemisovereignPeopleRealist1975 68; @edwardsWhoInfluencesWhom1999 327].
 
-- one way of putting issues on the agenda is through the news media, manifestos or by introducing bills in parliament [@green-pedersenWhoSetsAgenda2010 266] (get more examples from this paper: does it also include manifestos?) → bills as an example of a way to place issues on the agenda
+Parties respond to each other’s agendas as part of the “party system agenda” [@spoonGoingGreenExplaining2014 374]. On the one hand, parties emphasise issues that are to their advantage. However, parties also have to respond to all salient issues in the “party system agenda” at all times [@green-pedersenWhoSetsAgenda2010 261], even if they are potentially damaging.
 
-Parties respond to each other’s agendas as part of this “party system agenda” [@spoonGoingGreenExplaining2014 374]. On the one hand, parties emphasise issues that are to their advantage. However, parties also have to respond to all salient issues in the “party system agenda” at all times [@green-pedersenWhoSetsAgenda2010 261], even if they are potentially damaging.
+Parties with similar ideologies tend to be more responsive to each other than parties with less similar ideologies. This phenomenon, called the “party bloc effect” [@green-pedersenAvoidanceEngagementIssue2015 760; @adamsPolicyAdjustmentParties2009 842], is due to the ideological proximity between parties within the same bloc or party family.
 
-Parties with similar ideologies tend to be more responsive to each other than parties with less similar ideologies. This phenomenon, called the “party bloc effect” [@green-pedersenAvoidanceEngagementIssue2015 760; @adamsPolicyAdjustmentParties2009 842], is due to the ideological proximity between parties within the same bloc.
+What underpins this phenomenon? First, @green-pedersenAvoidanceEngagementIssue2015 [750] show that parties in the same bloc share issue preferences and thus have a common interest in focusing on the same issues. Second, the authors also explain that in a multiparty system, parties from the same party bloc are likely to be governmental coalition partners. In order to present themselves as a credible government alternative, parties from the same bloc need to show likeness by focusing on similar issues. Third, @adamsPolicyAdjustmentParties2009 [828] show how an ideological spatial argument supports the “party bloc effect”. The authors explain how parties that are close to each other in an ideological space, shift their policy positions when other parties in close proximity change their policy positions, as both parties, due to their ideological proximity, compete for a very similar set of voters. On the other hand, if a party that is ideologically further away shifts its policy position, the first party has no immediate reason to adjust its own position as a reaction.
 
-@green-pedersenAvoidanceEngagementIssue2015 750
-- parties from same party family / party bloc have similar issue preferences. thus they have a common interest in focusing on these issues
-- in a multiparty system, parties from same party bloc are likely to be governmental coalition partners. so to present themselves as a credible government alternative, parties from the same bloc need to show likeness by focusing on similar issues.
-
-@adamsPolicyAdjustmentParties2009 828:
-- the authors use a spatial argument why parties in the same bloc react more to each other. the authors explain how parties that are close to each other on an ideological continuum shift their policy positions when other parties in close proximity change their policy positions, as both parties want to attract the same set of voters. however, when a party that’s ideologically further away changes its position, this will not affect the policy positions of the first party.
-
-This proximity allows parties to attract voters from other, ideologically closer parties.
+	
 
 - however, when looking at green parties and issues typically dominated by green parties (in short, “green issues”), literature shows diverging results when it comes to agenda response within the same party bloc
 - on the one hand, 2014 abou-chadi shows that all left-wing mainstream parties de-emphasise green issues (p. 431), as green parties are considered successful green issue owners

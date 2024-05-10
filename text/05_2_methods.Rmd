@@ -1,0 +1,18 @@
+### Methods
+
+```
+In this section, you will describe the precise method that you use to test the relationship between your dependent variable and your independent variable.
+```
+
+- to test the relationship between the dependent and independent variable, i specify the following models
+- i model selects and google trends separately, as i assume them to be highly correlated
+
+Model Specification 1
+Semantic distance between sp and greens = beta + selects Topic Salience + error
+
+Model Specification 2
+Semantic distance between sp and greens = beta + google trends Topic Salience + error
+
+Tentative Model Specification 3: lagged?
+
+- I test the relationship between semantic distance between bills and topic salience using linear regression. Given the data, this is the best-suited method because it allows me to test the relationship between two continuous variables.

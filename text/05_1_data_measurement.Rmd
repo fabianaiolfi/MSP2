@@ -1,0 +1,74 @@
+### Data
+
+```
+Step 1: State what data you use and why. Justify your choice of data. Cite the data and say where it is available
+```
+
+#### Parliamentary Bills
+- my analysis contains N parliamentary bills introduced by SP and GPS members of parliament or the parties themselves between xx.xx.2004 and xx.xx.2024 that includes the content tag “Environment” ("Umwelt")
+- parliamentary bills from both chambers of Swiss parliament: National Council (“Nationalrat”) and the Council of States (“Ständerat”)
+```
+- footnote: parliamentary bills cover the following nine categories in the swiss parliament (translation provided by the Swiss Parliament unless stated otherwise): Parliamentary Initiative (“Parlamentarische Initiative”), Question (“Anfrage”), Urgent Question (own translation, “Dringliche Anfrage”), Interpellation (“Interpellation”), Urgent Interpellation (own translation, “Dringliche Interpellation”), Motions (“Motion”), Postulates (“Postulat”), Question Time. Question (“Fragestunde. Frage”), Petitions (“Petition”)
+```
+- data is provided by XX through the R package YY
+- explaining how a bill receives a tag and that a bill can contain several tags
+```
+- footnote: list of available tags (own translation from German to English): National Policy ("Staatspolitik"), General Law ("Recht Allgemein"), International Politics ("Internationale Politik"), Economy ("Wirtschaft"), Parliament ("Parlament"), Finance ("Finanzwesen"), Social Issues ("Soziale Fragen"), Transportation ("Verkehr"), Environment ("Umwelt"), Urban Planning and Housing ("Raumplanung und Wohnungswesen"), Health ("Gesundheit"), Education ("Bildung"), Media and Communication ("Medien und Kommunikation"), Security Policy ("Sicherheitspolitik"), Agriculture ("Landwirtschaft"), Migration ("Migration"), Science and Research ("Wissenschaft und Forschung"), European Policy ("Europapolitik"), Culture ("Kultur"), Energy ("Energie"), Civil Law ("Zivilrecht"), Employment and Labor ("Beschäftigung und Arbeit"), Human Rights ("Menschenrechte"), Criminal Law ("Strafrecht"), International Law ("Internationales Recht"), Taxation ("Steuer"), Social Protection ("Sozialer Schutz"), Judiciary ("Gerichtswesen")
+```
+
+- i pick this time frame because it coincides with the electoral rise of the GPS and covers a substantial time frame before the increased salience of environmental issues starting in the beginning of the 2010s. this allows for a before/after comparison.
+- the bills are available in [which languages?]
+- i pick german because…?
+- EDA
+	- number of all/environmental bills over time
+	- number of SP/GPS bills over time
+	- show number of bills by party strength; divide number of bills from a party by seats in parliament
+	- word counts of different groups of bills over time to show that the bills are roughly all the same length
+
+#### Topic Salience
+- selects survey, as done by 2022 Lütch p. 171
+- google trends
+
+
+### Operationalisation
+```
+Step 2: Measurement – if you create a new measure using the data, explain how you do so. This could include describing coding procedures, the creation of an index, or other forms of measurement.
+```
+
+#### Dependent Variable: Semantic Similarity using Word Embeddings
+
+- in order to test the hypothesis, i will place parliamentary bills described aboce into semantic space using document embeddings.
+
+In order to test the hypothesis, it is necessary to measure the content similarity between parliamentary bills. This leads into the realm of natural language processing, short NLP, and approaches that use text as data [@rodriguezWordEmbeddingsWhat2022]. In NLP terms, how can the semantic similarity between documents, in particular parliamentary bills, be calculated [@aliSemanticSimilarityMeasures2018 907]?
+
+The “Word Mover's Distance” is a method proposed by @wangMeasurementTextSimilarity2020 [4] for measuring the semantic distance between documents. This technique applies the concept of text representation in semantic space as a means of measuring similarity. The underlying principle is to represent a text as a point in a multidimensional semantic space [@jurafskySpeechLanguageProcessing2009 109]. In this space, texts that are semantically similar are positioned closer to each other than texts that are dissimilar. Consequently, the distance between two texts in this space can be used to make a statement about their semantic similarity.
+
+In order to place text in this semantic space, the meaning of a text must be converted into embeddings. These embeddings are learned representations of word meanings [@jurafskySpeechLanguageProcessing2009 97]. In short, these representations are computed using the probability of a word appearing near another word in the same text [@jurafskySpeechLanguageProcessing2009 122]. The representations take the form of vectors [@jurafskySpeechLanguageProcessing2009 109], which are simply a list of numbers [@jurafskySpeechLanguageProcessing2009 111] that represent the location of a text in semantic space.
+
+Embeddings are good at recognising synonyms, e.g. showing that the words “car” and “automobile” have a high semantic similarity [@jurafskySpeechLanguageProcessing2009 121]. For this reason, it makes sense to use embeddings to measure the similarity between documents, in this case parliamentary bills. In political science, embeddings have also been used to measure the positions of candidates [@caseMeasuringStrategicPositioning2023 11] and party ideology [@rheaultWordEmbeddingsAnalysis2020 29]. They are thus a tried and tested technique for analysing political texts. Finally, this principle of embedding single words can be extended to whole documents, where a document represents a point in the semantic space instead of a single word [@leDistributedRepresentationsSentences2014].
+
+To sum up, in order to measure the similarity between two parliamentary bills, I will place them in semantic space. The more similar the bills are, the smaller the distance between them in semantic space.
+
+
+- in order to capture the content similarity between bills introduced by the two parties, i group bills by party and by session. this means that a group contains parliamentary bills introduced by a party in a single parliamentary session.
+```
+	- footnote: The Swiss parliament meets in four ordinary three-week sessions per year. Additionally, the parliament assembles for further sessions, named “special” or “extraordinary” sessions that deal with issues that were not dealt with in the ordinary sessions (https://www.parlament.ch/en/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=197, retrieved 10 May 2024)
+```
+- i then calculate the average position of all bills in a group, i.e., the “middle point” or centroid of a group of bills in semantic space. this centroid represents the overall semantic content of all bills in a group, i.e., a summary that reflects the overall semantic content of a party in a session. It effectively summarizes the collective characteristics or the "average" bill within that group, helping to identify the group’s central tendencies
+- Analyzing centroids allows me to capture the general direction of the bills in a group.
+
+- i use the euclidean distance to measure two points in multidimensional space
+
+- EDA
+	- descriptive statistics of distance between the two parties
+	- measuring distance between SP and greens over time 
+		- on all topics: distance is constant
+		- on environmental topics: distance decreases
+		- differentiate between bills that only have the tag “environment” and bills with the most common co-tag, e.g. “environment” and “finance” 
+	- does one party move closer to the other party or do both parties move?
+
+- nice to have: show difference between grouped by session and grouped by year, as there are outlier session where only few bills are introduced; maybe also filter out “Sondersessionen”, as these are very short and sometimes only cover a certain topic
+
+#### Independent Variable: environmental topic salience
+- Selects
+- google trends

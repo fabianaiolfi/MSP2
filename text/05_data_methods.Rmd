@@ -1,6 +1,10 @@
 ## Data and Methods
 
-### Description of the Data
+```
+Step 1: State what data you use and why. Justify your choice of data. Cite the data and say where it is available
+```
+
+### Parliamentary Bills
 - my analysis contains N parliamentary bills introduced by SP and GPS members of parliament or the parties themselves between xx.xx.2004 and xx.xx.2024 that includes the content tag “Environment” ("Umwelt")
 ```
 - footnote: parliamentary bills cover the following nine categories in the swiss parliament: Parliamentary Initiative (“Parlamentarische Initiative”), Question (“Anfrage”), Urgent Question (own translation, “Dringliche Anfrage”), Interpellation (“Interpellation”), Urgent Interpellation (own translation, “Dringliche Interpellation”), Motions (“Motion”), Postulates (“Postulat”), Question Time. Question (“Fragestunde. Frage”), Petitions (“Petition”)

@@ -27,6 +27,7 @@ Step 1: State what data you use and why. Justify your choice of data. Cite the d
 
 #### Topic Salience
 - selects survey, as done by 2022 Lütch p. 171
+	- disadvantage: data only contain measurements in an election year, thus every 4 years, while sessions occur several times per year
 - google trends
 
 

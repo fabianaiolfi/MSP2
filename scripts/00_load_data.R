@@ -24,3 +24,12 @@ ches_2019 <- haven::read_dta(here("data", "CHES2019V3.dta"))
 # 2014 Chapel Hill expert survey
 # https://www.chesdata.eu/s/2014_CHES_dataset_means-2.dta
 ches_2014 <- haven::read_dta(here("data", "2014_CHES_dataset_means-2.dta"))
+
+
+# Selects -----------------------------------------------------------
+
+# https://www.swissubase.ch/en/researcher/my-downloads/107981/19952/download-details
+selects <- haven::read_dta(here("data", "swissubase_495_6_0", "495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.dta"))
+
+# 495_Selects_CumulativeFile_Doc_1971-2019_EN.html#file_backg3_mip1
+mip_labels <- read_csv(here("data", "swissubase_495_6_0", "mip_labels.csv"))

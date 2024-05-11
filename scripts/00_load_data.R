@@ -33,3 +33,15 @@ selects <- haven::read_dta(here("data", "swissubase_495_6_0", "495_Selects_Cumul
 
 # 495_Selects_CumulativeFile_Doc_1971-2019_EN.html#file_backg3_mip1
 mip_labels <- read_csv(here("data", "swissubase_495_6_0", "mip_labels.csv"))
+
+
+# Google Trends -----------------------------------------------------------
+
+# Climate Change (search term)
+gt_climate_change_2004_2022 <- read_csv(here("data", "google_trends", "search_term", "climate_change_2004_2022.csv"), skip = 1)
+gt_climate_change_2004_2022$Month <- as.Date(paste0(gt_climate_change_2004_2022$Month, "-01"), format = "%Y-%m-%d")
+gt_climate_change_2004_2022 <- gt_climate_change_2004_2022 %>% rename(climate_change = `Climate change: (Switzerland)`)
+
+gt_climate_change_2004_2024 <- read_csv(here("data", "google_trends", "search_term", "climate_change_2004_2024.csv"), skip = 1)
+gt_climate_change_2004_2024$Month <- as.Date(paste0(gt_climate_change_2004_2024$Month, "-01"), format = "%Y-%m-%d")
+gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>% rename(climate_change = `Climate Change: (Switzerland)`)

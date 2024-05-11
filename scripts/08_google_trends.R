@@ -19,6 +19,8 @@ gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>%
   mutate(climate_change_new = case_when(climate_change_new > 100 ~ 100,
                                         T ~ climate_change_new))
 
+save(gt_climate_change_2004_2024, file = here("data", "google_trends", "search_term", "gt_climate_change_2004_2024.Rda"))
+
 # Sanity plot
 ggplot() +
   geom_line(data = gt_climate_change_2004_2022, aes(x = Month, y = climate_change), color = "red") +

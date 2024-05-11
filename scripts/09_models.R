@@ -23,124 +23,33 @@ gt_embeddings <- gt_climate_change_2004_2024 %>%
   select(-SubmissionSession) %>% 
   drop_na()
 
+# Calculate differences between rows
+gt_embeddings$climate_change_new_diff <- c(NA, diff(gt_embeddings$climate_change_new))
+gt_embeddings$distance_diff <- c(NA, diff(gt_embeddings$distance))
+
+hist(gt_embeddings$climate_change_new_diff)
+hist(gt_embeddings$distance_diff)
+
+# Add lag
+gt_embeddings <- gt_embeddings %>% mutate(distance_diff_lagged = dplyr::lag(distance_diff, n = 1, default = NA))
+  
+# Clean up dataframe
+gt_embeddings <- gt_embeddings %>% drop_na()
+
 
 # Correlation -----------------------------------------------------------
 
-
-# Linear Regression for Time Series Data -----------------------------------------------------------
-# https://quantifyinghealth.com/linear-regression-example-for-time-series-data-in-r/
-
-model <- lm(distance ~ climate_change_new, gt_embeddings)
-plot(model)
-
-gt_embeddings$climate_change_new_diff <- c(NA, diff(gt_embeddings$climate_change_new))
-gt_embeddings$distance_diff <- c(NA, diff(gt_embeddings$distance))
-gt_embeddings <- gt_embeddings %>% 
-  mutate(distance_diff_lagged = dplyr::lag(distance_diff, n = 1, default = NA)) %>% 
-  drop_na()
-
-plot(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
+cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff)
 cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
-summary(lm(distance_diff ~ climate_change_new_diff, gt_embeddings))
-summary(lm(distance_diff_lagged ~ climate_change_new_diff, gt_embeddings))
 
 
-###################
+# Linear Regression -----------------------------------------------------------
 
+model1 <- lm(distance_diff ~ climate_change_new_diff, gt_embeddings)
+model2 <- lm(distance_diff_lagged ~ climate_change_new_diff, gt_embeddings)
 
+summary(model1)
+summary(model2)
 
-library(tseries)
-library(forecast)
-adf.test(gt_embeddings$climate_change_new)
-hist(gt_embeddings$climate_change_new)
-acf(gt_embeddings$climate_change_new)
-ndiffs(x = gt_embeddings$climate_change_new)
-auto.arima(x = gt_embeddings$climate_change_new)
-
-adf.test(gt_embeddings$distance)
-hist(log(gt_embeddings$distance))
-acf(gt_embeddings$distance)
-ndiffs(x = gt_embeddings$distance)
-auto.arima(x = gt_embeddings$distance)
-
-# If non-stationary, difference the series
-gt_embeddings$climate_change_new_diff <- c(NA, diff(gt_embeddings$climate_change_new))
-gt_embeddings$distance_diff <- c(NA, diff(gt_embeddings$distance))
-gt_embeddings <- na.omit(gt_embeddings)
-adf.test(gt_embeddings$climate_change_new_diff)
-
-cor(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff, method = "pearson")
-cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff, method = "pearson")
-
-cor.test(gt_embeddings$climate_change_new, log(gt_embeddings$distance), method = "pearson")
-plot(gt_embeddings$climate_change_new, log(gt_embeddings$distance))
-summary(lm(log(distance) ~ climate_change_new, gt_embeddings))
-
-cor.test(gt_embeddings$climate_change_new_diff, log(gt_embeddings$distance_diff), method = "pearson")
-summary(lm(log(distance_diff) ~ climate_change_new_diff, gt_embeddings))
-
-# lag distance
-gt_embeddings <- gt_embeddings %>% 
-  mutate(distance_lagged = dplyr::lag(distance, n = 1, default = NA))
-
-cor.test(gt_embeddings$climate_change_new, log(gt_embeddings$distance_lagged), method = "pearson")
-summary(lm(log(distance_lagged) ~ climate_change_new_diff, gt_embeddings))
-
-###########
-library(forecast)
-# y <- ts(rnorm(120,0,3) + 1:120 + 20*sin(2*pi*(1:120)/12), frequency=12)
-# summary(fit) <- tslm(y ~ trend + season)
-# plot(forecast(fit, h=20))
-
-ts_df <- gt_embeddings %>% select(Month, climate_change_new, distance, distance_lagged)
-
-# You might need to interpolate or handle missing values if the data is not continuous
-# Convert the 'Month' column to Date type if it's not already
-# df$Month <- as.Date(df$Month)
-
-# Assume the data is monthly starting from the first date in your dataset
-start_date <- min(ts_df$Month)
-end_date <- max(ts_df$Month)
-
-# Calculate the frequency
-frequency <- 12  # Monthly data
-
-# Create a ts object for 'climate_change_new' and 'distance' considering starting time and frequency
-climate_change_ts <- ts(ts_df$climate_change_new, start = c(format(start_date, "%Y"), format(start_date, "%m")), frequency = frequency)
-distance_lagged_ts <- ts(ts_df$distance_lagged, start = c(format(start_date, "%Y"), format(start_date, "%m")), frequency = frequency)
-distance_ts <- ts(ts_df$distance, start = c(format(start_date, "%Y"), format(start_date, "%m")), frequency = frequency)
-
-# Fit a linear model using tslm() on the time series data
-model_lagged <- tslm(distance_lagged_ts ~ climate_change_ts)
-model <- tslm(distance_ts ~ climate_change_ts)
-summary(model)
-summary(model_lagged)
-
-residuals <- residuals(model)
-plot(fitted(model), residuals, xlab = "Fitted Values", ylab = "Residuals", main = "Residuals vs Fitted")
-abline(h = 0, col = "red")
-
-# QQ plot
-qqnorm(residuals)
-qqline(residuals, col = "red")
-
-# Shapiro-Wilk test for normality
-shapiro.test(residuals)
-
-acf(residuals, main = "ACF of Residuals")
-
-plot(fitted(model), sqrt(abs(residuals)), xlab = "Fitted values", ylab = "Square root of Absolute Residuals", main = "Scale-Location Plot")
-abline(h = 0, col = "red")
-
-# Diagnostic plots
-par(mfrow = c(2, 2))  # Arrange plots in 2x2 grid
-plot(model)
-
-
-
-
-
-
-
-
-
+plot(model1)
+plot(model2)

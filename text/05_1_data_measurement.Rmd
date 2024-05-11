@@ -27,9 +27,13 @@ Step 1: State what data you use and why. Justify your choice of data. Cite the d
 
 #### Topic Salience
 - selects survey, as done by 2022 Lütch p. 171
+	- survey respondents are asked what the “most important problem” is. i look at the share of people who picked “environment & energy” from a list of wide range of issues as the most important issue to them at the time of the survey (footnote: add list of other reponse possibilities)
 	- disadvantage: data only contain measurements in an election year, thus every 4 years, while sessions occur several times per year
 	- i thus need a measurement that measures salience more often
-- google trends
+- google trends as an alternative
+	- compare selects with google trends, incl plot from `08_google_trends.R`
+	- i look at the monthly popularity of the search term “climate change” in Switzerland between Jan 2004 and May 2024
+	- i pick the search term “climate change” because it encompasses (the same question as the selects question)
 
 ### Operationalisation
 ```
@@ -72,4 +76,3 @@ To sum up, in order to measure the similarity between two parliamentary bills, I
 
 #### Independent Variable: environmental topic salience
 - google trends: explain re-indexing because of outlier in april 2022 that messes up entire timeline
-- compare selects with google trends, incl plot from `08_google_trends.R`

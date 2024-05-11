@@ -33,7 +33,7 @@ Step 1: State what data you use and why. Justify your choice of data. Cite the d
 - google trends as an alternative
 	- compare selects with google trends, incl plot from `08_google_trends.R`
 	- i look at the monthly popularity of the search term “climate change” in Switzerland between Jan 2004 and May 2024
-	- i pick the search term “climate change” because it encompasses (the same question as the selects question)
+	- i pick the search term “climate change” because it covers the same issue/context/grand scheme as the selects question above and also encompasses the salience of environmental topics amongst the public
 
 ### Operationalisation
 ```

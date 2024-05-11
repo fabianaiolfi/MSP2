@@ -28,8 +28,8 @@ Step 1: State what data you use and why. Justify your choice of data. Cite the d
 #### Topic Salience
 - selects survey, as done by 2022 Lütch p. 171
 	- disadvantage: data only contain measurements in an election year, thus every 4 years, while sessions occur several times per year
+	- i thus need a measurement that measures salience more often
 - google trends
-
 
 ### Operationalisation
 ```
@@ -71,5 +71,5 @@ To sum up, in order to measure the similarity between two parliamentary bills, I
 - nice to have: show difference between grouped by session and grouped by year, as there are outlier session where only few bills are introduced; maybe also filter out “Sondersessionen”, as these are very short and sometimes only cover a certain topic
 
 #### Independent Variable: environmental topic salience
-- Selects
-- google trends
+- google trends: explain re-indexing because of outlier in april 2022 that messes up entire timeline
+- compare selects with google trends, incl plot from `08_google_trends.R`

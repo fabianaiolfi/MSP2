@@ -10,8 +10,8 @@ selects_df <- selects %>%
   left_join(mip_labels, by = c("mip2" = "value")) %>% 
   rename(mip2_name = name)
 
-test_df <- selects_df %>% 
-  select(year, weighttot, mip1_name, mip2_name)
+# test_df <- selects_df %>% 
+  # select(year, weighttot, mip1_name, mip2_name)
 
 # Calculating the total weight for "environment&energy" per year
 env_energy_weights <- selects_df %>%

@@ -28,5 +28,17 @@ ggplot() +
   ylim(0, 100) +
   theme_minimal()
 
-
+# Compare Selects with Google Trends
+selects_yearly_share <- yearly_share %>% 
+  mutate(share = share * 100) %>% 
+  mutate(share = share + 49) %>%
+  mutate(year = as.Date(paste0(year, "-01-01"), format = "%Y-%m-%d"))
   
+ggplot() +
+  geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new)) +
+  geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new)) +
+  geom_line(data = selects_yearly_share, aes(x = year, y = share), color = "red") +
+  geom_point(data = selects_yearly_share, aes(x = year, y = share), color = "red") +
+  ylim(0, 100) +
+  xlim(as.Date("2003-01-01"), as.Date("2023-12-31")) +
+  theme_minimal()

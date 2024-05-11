@@ -23,6 +23,32 @@ gt_embeddings <- gt_climate_change_2004_2024 %>%
   select(-SubmissionSession) %>% 
   drop_na()
 
+
+# Correlation -----------------------------------------------------------
+
+
+# Linear Regression for Time Series Data -----------------------------------------------------------
+# https://quantifyinghealth.com/linear-regression-example-for-time-series-data-in-r/
+
+model <- lm(distance ~ climate_change_new, gt_embeddings)
+plot(model)
+
+gt_embeddings$climate_change_new_diff <- c(NA, diff(gt_embeddings$climate_change_new))
+gt_embeddings$distance_diff <- c(NA, diff(gt_embeddings$distance))
+gt_embeddings <- gt_embeddings %>% 
+  mutate(distance_diff_lagged = dplyr::lag(distance_diff, n = 1, default = NA)) %>% 
+  drop_na()
+
+plot(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
+cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
+summary(lm(distance_diff ~ climate_change_new_diff, gt_embeddings))
+summary(lm(distance_diff_lagged ~ climate_change_new_diff, gt_embeddings))
+
+
+###################
+
+
+
 library(tseries)
 library(forecast)
 adf.test(gt_embeddings$climate_change_new)

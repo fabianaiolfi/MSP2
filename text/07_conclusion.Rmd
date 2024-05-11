@@ -6,3 +6,4 @@
 	- further similarity measures
 		- 2016 Heidarian
 		- a more tried and tested / systematic approach: Word Mover’s Distance (2015 Kusner)
+	- find more refined ways of measuring public salience of environmental topics, e.g. using news sources

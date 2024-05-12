@@ -42,9 +42,6 @@ Step 2: Measurement – if you create a new measure using the data, explain how 
 -->
 
 #### Dependent Variable: Semantic Similarity using Word Embeddings
-
-- in order to test the hypothesis, i will place parliamentary bills described above into semantic space using document embeddings.
-
 In order to test the hypothesis, it is necessary to measure the content similarity between parliamentary bills. This leads into the realm of natural language processing, short NLP, and approaches that use text as data [@rodriguezWordEmbeddingsWhat2022]. In NLP terms, how can the semantic similarity between documents, in particular parliamentary bills, be calculated [@aliSemanticSimilarityMeasures2018 907]?
 
 The “Word Mover's Distance” is a method proposed by @wangMeasurementTextSimilarity2020 [4] for measuring the semantic distance between documents. This technique applies the concept of text representation in semantic space as a means of measuring similarity. The underlying principle is to represent a text as a point in a multidimensional semantic space [@jurafskySpeechLanguageProcessing2009 109]. In this space, texts that are semantically similar are positioned closer to each other than texts that are dissimilar. Consequently, the distance between two texts in this space can be used to make a statement about their semantic similarity.
@@ -53,17 +50,13 @@ In order to place text in this semantic space, the meaning of a text must be con
 
 Embeddings are good at recognising synonyms, e.g. showing that the words “car” and “automobile” have a high semantic similarity [@jurafskySpeechLanguageProcessing2009 121]. For this reason, it makes sense to use embeddings to measure the similarity between documents, in this case parliamentary bills. In political science, embeddings have also been used to measure the positions of candidates [@caseMeasuringStrategicPositioning2023 11] and party ideology [@rheaultWordEmbeddingsAnalysis2020 29]. They are thus a tried and tested technique for analysing political texts. Finally, this principle of embedding single words can be extended to whole documents, where a document represents a point in the semantic space instead of a single word [@leDistributedRepresentationsSentences2014].
 
-To sum up, in order to measure the similarity between two parliamentary bills, I will place them in semantic space. The more similar the bills are, the smaller the distance between them in semantic space.
+Parties introduce different numbers of bills in each parliamentary session. ^[The Swiss parliament meets in four ordinary three-week sessions per year. Additionally, the parliament assembles for further sessions, named “special” or “extraordinary” sessions that deal with issues that were not dealt with in the ordinary sessions (https://www.parlament.ch/en/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=197, retrieved 10 May 2024).] For this reason, and also because it does not make sense to compare single parliamentary bills with each other, I group all bills put forward by a party in a session and calculate the “middle point” of these bills in the semantic space. This middle point can be found by calculating the average position of all documents in a group.
+
+This centroid represents the overall semantic content of all bills in a group. In other words, the “middle point” reflects the overall semantic content of a party in a session. It effectively summarizes the collective characteristics or the “average” bill within a group, thus identifying the group’s central tendencies and general direction of content. The distance between two groups in semantic space, i.e., two middle points, can be calculated using the Euclidean distance measure. This measure requires the coordinates of two points in order to calculate the distance between these points. The coordinates of the middle points are given, thus calculating the distance can be performed with the function X in the programming language R.
+
+To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I first group the bills by party and session and then place them in semantic space. I calculate the middle point of each group and then use the Euclidean distance to measure the distance between two groups in the semantic space. The more semantically similar a group of bills are, the smaller the distance between them in semantic space.
 
 
-- in order to "average out” the similarity between bills introduced by the two parties, i group bills by party and by session. this means that a group contains parliamentary bills introduced by a party in a single parliamentary session.
-```
-	- footnote: The Swiss parliament meets in four ordinary three-week sessions per year. Additionally, the parliament assembles for further sessions, named “special” or “extraordinary” sessions that deal with issues that were not dealt with in the ordinary sessions (https://www.parlament.ch/en/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=197, retrieved 10 May 2024)
-```
-- i then calculate the average position of all bills in a group, i.e., the “middle point” or centroid of a group of bills in semantic space. this centroid represents the overall semantic content of all bills in a group, i.e., a summary that reflects the overall semantic content of a party in a session. It effectively summarizes the collective characteristics or the "average" bill within that group, helping to identify the group’s central tendencies
-- Analyzing centroids allows me to capture the general direction of the bills in a group.
-
-- i use the euclidean distance to measure two points in multidimensional space
 
 - EDA
 	- descriptive statistics of distance between the two parties

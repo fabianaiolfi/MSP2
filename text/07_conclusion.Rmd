@@ -1,5 +1,8 @@
 ## Conclusion
 
+…
+
+<!--
 - Future research:
 	- Use fine tuned embeddings
 	- look at topic saliency more specifically amongst left-wing and green voters, i.e. their own voters, as described by (2013 Lazarus, p. 226, 227)
@@ -8,3 +11,4 @@
 		- a more tried and tested / systematic approach: Word Mover’s Distance (2015 Kusner)
 		- delve into more time series specific analysis
 	- find more refined ways of measuring public salience of environmental topics, e.g. using news sources
+-->

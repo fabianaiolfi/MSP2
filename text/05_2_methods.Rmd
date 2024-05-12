@@ -19,7 +19,7 @@ Adding Time Lag
 - i examine the unlagged and lagged variable
 
 ### Linear Regression
-- in a second step, i model the relationship in a linear regression, to see if there is a linear relationship between the two variables, specifically the difference. Given the data, this is the best-suited method because it allows me to test the relationship between two continuous variables.
+- in a second step, i model the relationship in a linear regression, to see if there is a linear relationship between the two variables, ie the difference. Given the data, this is the best-suited method because it allows me to test the relationship between two continuous variables.
 
 i use this Model Specification:
 Change in semantic distance between sp and greens = beta + change in google trends Topic Salience + error

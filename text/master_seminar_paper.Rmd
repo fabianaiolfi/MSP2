@@ -91,12 +91,12 @@ options(scipen = 0) # Enable scientific notation
 <!-- Restart page numbering in Arabic numerals -->
 \pagenumbering{arabic} 
 
-```{r, eval=FALSE, child = '01_abstract.Rmd'}
+```{r, child = '01_abstract.Rmd'}
 ```
 
 \newpage
 
-```{r, eval=FALSE, child = '02_introduction.Rmd'}
+```{r, child = '02_introduction.Rmd'}
 ```
 
 ```{r, child = '03_lit_review.Rmd'}
@@ -105,13 +105,13 @@ options(scipen = 0) # Enable scientific notation
 ```{r, child = '04_theory.Rmd'}
 ```
 
-```{r, eval=FALSE, child = '05_data_methods.Rmd'}
+```{r, child = '05_data_methods.Rmd'}
 ```
 
-```{r, eval=FALSE, child = '06_results.Rmd'}
+```{r, child = '06_results.Rmd'}
 ```
 
-```{r, eval=FALSE, child = '07_conclusion.Rmd'}
+```{r, child = '07_conclusion.Rmd'}
 ```
 
 \newpage

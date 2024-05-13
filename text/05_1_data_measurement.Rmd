@@ -54,10 +54,9 @@ Parties introduce different numbers of bills in each parliamentary session. ^[Th
 
 This centroid represents the overall semantic content of all bills in a group. In other words, the “middle point” reflects the overall semantic content of a party in a session. It effectively summarizes the collective characteristics or the “average” bill within a group, thus identifying the group’s central tendencies and general direction of content. The distance between two groups in semantic space, i.e., two middle points, can be calculated using the Euclidean distance measure. This measure requires the coordinates of two points in order to calculate the distance between these points. The coordinates of the middle points are given, thus calculating the distance can be performed with the function X in the programming language R.
 
-To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I first group the bills by party and session and then place them in semantic space. I calculate the middle point of each group and then use the Euclidean distance to measure the distance between two groups in the semantic space. The more semantically similar a group of bills are, the smaller the distance between them in semantic space.
+To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I place these bills in semantic space. I then group the bills by party and session and then calculate the middle point of each group. Using the Euclidean distance measure, I calculate the distance between the middle points of groups in semantic space. The more semantically similar two groups of bills are, the smaller the distance between them in semantic space.
 
-
-
+<!--
 - EDA
 	- descriptive statistics of distance between the two parties
 	- measuring distance between SP and greens over time 
@@ -67,6 +66,27 @@ To sum up, in order to measure the semantic similarity between the parliamentary
 	- does one party move closer to the other party or do both parties move?
 
 - nice to have: show difference between grouped by session and grouped by year, as there are outlier session where only few bills are introduced; maybe also filter out “Sondersessionen”, as these are very short and sometimes only cover a certain topic
+-->
 
-#### Independent Variable: environmental topic salience
+#### Independent Variable: Salience of Environmental Issues with Google Trends
+
+```
 - google trends: explain re-indexing because of outlier in april 2022 that messes up entire timeline
+```
+
+- Google Trends provides a positive integer value to measure the “search interest” of a term within a specific time frame and geographic region.^[https://trends.google.com, retrieved 13 May 2024] 
+- The values are scaled between 0 and 100 “based on a topic’s proportion to all searches on all topics”^[https://support.google.com/trends/answer/4365533?hl=en&ref_topic=6248052&sjid=14532437735057784414-EU, retrieved 13 May 2024]
+- When examining the search term “climate change” in Switzerland between January 2004 and May 2024, there is an outlier in April 2022. I assume this outlier is due to the climate change report published by the United Nation’s Intergovernmental Panel on Climate Change (IPCC)^[https://www.ipcc.ch/report/sixth-assessment-report-working-group-3/] in April 2022, which was then picked up by mainstream media and thus widely discussed.
+- Due to this one outlier with a value of 100 and the way how Google Trends “squashes” values between 0 and 100, the rest of the data series displays a relative low amount of variation (see line A in Figure X _(add figure)_). This low variation becomes more clear when comparing the same Google Trends data for the time series up until March 2022 (see line B in Figure X _(add figure)_).
+- This low amount of variation is a problem when modelling the data, as effects are less pronounced when a variable’s variation is low. 
+- In order to restore the variation that gets lost in the time series that includes April 2022, I recalculate each value in the series by performing the following steps:
+	- First, I calculate the relative change of each value in the shorter series with respect to the first value. This gives me the “multiplicator”
+	- Second, I align the starting points of both series so they both have the same starting point. I do this by adding a value of X to the longer series.
+	- Third, I multiply each value in the longer series with the “mulitplicator” from the first step. This leads to the longer series have a more pronounced variation that follows the variation of the shorter series (see line C in Figure X _(add figure)_).
+
+```
+To restore the variation lost in a time series from April 2022, I recalculated each value using a three-step process. Initially, I computed the relative change of each value in the shorter series compared to its first value, which I refer to as the “multiplicator.” Next, I aligned the starting points of both series by adding a specific value, denoted as X, to the longer series to match the starting point of the shorter one. Finally, I applied the multiplicator to each value in the longer series. This adjustment enhanced the variation in the longer series so that it more accurately mirrored the variation observed in the shorter series, as illustrated in line C of Figure X.
+```
+
+
+

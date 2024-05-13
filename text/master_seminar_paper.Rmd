@@ -122,7 +122,7 @@ options(scipen = 0) # Enable scientific notation
 
 <!-- \newpage -->
 
-```{r, eval=FALSE, child = '08_appendix.Rmd'}
+```{r, child = '08_appendix.Rmd'}
 ```
 
 <!-- \newpage -->

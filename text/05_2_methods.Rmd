@@ -1,28 +1,25 @@
 ### Methods
 
-```
+<!--
 In this section, you will describe the precise method that you use to test the relationship between your dependent variable and your independent variable.
-```
+-->
 
-Differencing: using the difference between values
-- due to the limited scope of this seminar paper, i keep the analysis simple and will examine the change between variables between observations instead of creating a time series model
-- i thus calculate the change in both the independent and dependent variable from one session to the next and use these as my independent and dependent variables instead
-
-Adding Time Lag
-- i lag the dependent variable by 1 unit, ie by one session. by doing so, i try to model the time-lag effect of environmental topics amongst the public on parliamentary bills on sessions. this is a more realistic scenario, as i assume it takes a moment for parties to react to an increased public salience
+#### Differencing and Time Lag
+Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. To do this, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables. In the next step, I lag the dependent variable by one unit, i.e., by one session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and the parliamentary bills they introduce as a reaction. In other words, I assume a delay in parties reacting to an increase in public salience.
 
 ### Correlation
-- in a first step, i calculate the correlation between the dependent and independent variable using Pearson Correlation. 
-- this is adequat because its a first, simple examination to see if there is a correlation between the two variables
-	- assumptions: see https://ademos.people.uic.edu/Chapter22.html
-	- as both variables need to be normally distributed, i log-transform the distance variable
-- i examine the unlagged and lagged variable
+In a first step, I calculate the correlation between the dependent and independent variables using the Pearson Correlation. This method is appropriate as an initial, simple examination to see if there is a correlation between the two variables. Since both variables need to be normally distributed for the correlation to hold, I log-transform the dependent variable. 
+
+<!--
+- check assumptions: see https://ademos.people.uic.edu/Chapter22.html
+- I then compare the unlagged and lagged dependent variables.
+-->
 
 ### Linear Regression
-- in a second step, i model the relationship in a linear regression, to see if there is a linear relationship between the two variables, ie the difference. Given the data, this is the best-suited method because it allows me to test the relationship between two continuous variables.
+In a second step, I model the relationship of the differences using linear regression to determine if there is a linear relationship between the two variables. Given the data, this is the best-suited method because it allows me to test the relationship between two continuous variables.
 
-i use this Model Specification:
-Change in semantic distance between sp and greens = beta + change in google trends Topic Salience + error
+**Model Specifications**
 
-i use this Model Specification:
-lagged Change in semantic distance between sp and greens = beta + change in google trends Topic Salience + error
+Change in semantic distance between SP and Greens = β + change in Google Trends Topic Salience + error
+
+Lagged change in semantic distance between SP and Greens = β + change in Google Trends Topic Salience + error

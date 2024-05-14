@@ -1,6 +1,6 @@
 ## Results
 
-…
+[…]
 
 <!--
 This section describes the results of your analysis. It includes any relevant tables and figures. Wherever possible present figures rather than tables. Describe all figures and tables in words. They do not speak for themselves. But, at the same time, they should also be described well enough in the title, axis labels, and caption that readers can understand the necessary information by looking at the tables/figures alone.

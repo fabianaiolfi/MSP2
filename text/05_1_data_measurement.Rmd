@@ -7,14 +7,11 @@ Step 1: State what data you use and why. Justify your choice of data. Cite the d
 #### Parliamentary Bills
 My analysis covers 2841 parliamentary bills^[Parliamentary bills include the following nine types of parliamentary proposals that are possible to introduce in the Swiss parliament (translation provided by the Swiss parliament unless stated otherwise): Parliamentary Initiative (“Parlamentarische Initiative”), Question (“Anfrage”), Urgent Question (own translation: “Dringliche Anfrage”), Interpellation (“Interpellation”), Urgent Interpellation (own translation: “Dringliche Interpellation”), Motions (“Motion”), Postulates (“Postulat”), Question Time – Question (“Fragestunde – Frage”), Petitions (“Petition”)] that include the tag “Environment” (German: “Umwelt”).^[The Swiss parliament tags its bills with one or several of the following terms:(own translation from German to English): National Policy ("Staatspolitik"), General Law ("Recht Allgemein"), International Politics ("Internationale Politik"), Economy ("Wirtschaft"), Parliament ("Parlament"), Finance ("Finanzwesen"), Social Issues ("Soziale Fragen"), Transportation ("Verkehr"), Environment ("Umwelt"), Urban Planning and Housing ("Raumplanung und Wohnungswesen"), Health ("Gesundheit"), Education ("Bildung"), Media and Communication ("Medien und Kommunikation"), Security Policy ("Sicherheitspolitik"), Agriculture ("Landwirtschaft"), Migration ("Migration"), Science and Research ("Wissenschaft und Forschung"), European Policy ("Europapolitik"), Culture ("Kultur"), Energy ("Energie"), Civil Law ("Zivilrecht"), Employment and Labor ("Beschäftigung und Arbeit"), Human Rights ("Menschenrechte"), Criminal Law ("Strafrecht"), International Law ("Internationales Recht"), Taxation ("Steuer"), Social Protection ("Sozialer Schutz"), Judiciary ("Gerichtswesen”).] These bills were introduced by the SP and GPS party or by their members of parliament in both chambers of the Swiss parliament, namely the National Council (“Nationalrat”) or the Council of States (“Ständerat”). The parliamentary bills are provided by the open data webservices of the Swiss parliament.^[https://www.parlament.ch/de/%C3%BCber-das-parlament/fakten-und-zahlen/open-data-web-services, retrieved 12 May 2024] These webservices are made accessible through the R package “swissparl” [@zumbachSwissparlInterfaceWebservices2021].
 
-<!--
-- the bills are available in [which languages?]
-- i pick german because…?
--->
+Due to Switzerland’s four official languages, parliamentary items of business can be written either in German, French, Italian or Romansh. The Federal Administration (German: “Bundesverwaltung”) translates most items of business in  to German, French and Italian. Some are only translated into German and French.^[https://www.parlament.ch/de/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=206, retrieved 14 May 2024] In the context of this research, I have chosen to use parliamentary bills in German, as my German is more proficient than my French, simplifying the examination process.
 
 The bills under examination were introduced between March 2004 and December 2023. I choose this time frame because it coincides with the electoral rise of the GPS and also covers a substantial time frame before the increased salience of environmental issues starting in the beginning of the 2010s. This allows for a before-after comparison.
 
-I continue with a brief overview of descriptive statistics of the parliamentary bills. …
+I continue with a brief overview of descriptive statistics of the parliamentary bills. […]
 
 <!--
 - EDA
@@ -56,6 +53,8 @@ This centroid represents the overall semantic content of all bills in a group. I
 
 To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I place these bills in semantic space. I then group the bills by party and session and then calculate the middle point of each group. Using the Euclidean distance measure, I calculate the distance between the middle points of groups in semantic space. The more semantically similar two groups of bills are, the smaller the distance between them in semantic space.
 
+I continue with an overview of descriptive statistics of the semantic similarity between bills introduced by the two parties. […]
+
 <!--
 - EDA
 	- descriptive statistics of distance between the two parties
@@ -69,24 +68,6 @@ To sum up, in order to measure the semantic similarity between the parliamentary
 -->
 
 #### Independent Variable: Salience of Environmental Issues with Google Trends
+Google Trends provides a positive integer value to measure the “search interest” of a term within a specific time frame and geographic region^[https://trends.google.com, retrieved 13 May 2024]. These values are scaled between 0 and 100, reflecting a topic's proportion relative to all searches across all topics. ^[https://support.google.com/trends/answer/4365533?hl=en&ref_topic=6248052&sjid=14532437735057784414-EU, retrieved 13 May 2024]. When examining the search term "climate change" in Switzerland between January 2004 and May 2024, there is an outlier in April 2022. This is likely due to the United Nation’s Intergovernmental Panel on Climate Change (IPCC) report published in April 2022^[https://www.ipcc.ch/report/sixth-assessment-report-working-group-3/], which was widely discussed in the media.
 
-```
-- google trends: explain re-indexing because of outlier in april 2022 that messes up entire timeline
-```
-
-- Google Trends provides a positive integer value to measure the “search interest” of a term within a specific time frame and geographic region.^[https://trends.google.com, retrieved 13 May 2024] 
-- The values are scaled between 0 and 100 “based on a topic’s proportion to all searches on all topics”^[https://support.google.com/trends/answer/4365533?hl=en&ref_topic=6248052&sjid=14532437735057784414-EU, retrieved 13 May 2024]
-- When examining the search term “climate change” in Switzerland between January 2004 and May 2024, there is an outlier in April 2022. I assume this outlier is due to the climate change report published by the United Nation’s Intergovernmental Panel on Climate Change (IPCC)^[https://www.ipcc.ch/report/sixth-assessment-report-working-group-3/] in April 2022, which was then picked up by mainstream media and thus widely discussed.
-- Due to this one outlier with a value of 100 and the way how Google Trends “squashes” values between 0 and 100, the rest of the data series displays a relative low amount of variation (see line A in Figure X _(add figure)_). This low variation becomes more clear when comparing the same Google Trends data for the time series up until March 2022 (see line B in Figure X _(add figure)_).
-- This low amount of variation is a problem when modelling the data, as effects are less pronounced when a variable’s variation is low. 
-- In order to restore the variation that gets lost in the time series that includes April 2022, I recalculate each value in the series by performing the following steps:
-	- First, I calculate the relative change of each value in the shorter series with respect to the first value. This gives me the “multiplicator”
-	- Second, I align the starting points of both series so they both have the same starting point. I do this by adding a value of X to the longer series.
-	- Third, I multiply each value in the longer series with the “mulitplicator” from the first step. This leads to the longer series have a more pronounced variation that follows the variation of the shorter series (see line C in Figure X _(add figure)_).
-
-```
-To restore the variation lost in a time series from April 2022, I recalculated each value using a three-step process. Initially, I computed the relative change of each value in the shorter series compared to its first value, which I refer to as the “multiplicator.” Next, I aligned the starting points of both series by adding a specific value, denoted as X, to the longer series to match the starting point of the shorter one. Finally, I applied the multiplicator to each value in the longer series. This adjustment enhanced the variation in the longer series so that it more accurately mirrored the variation observed in the shorter series, as illustrated in line C of Figure X.
-```
-
-
-
+This outlier, with a value of 100, causes the rest of the data series to display relatively low variation due to the way Google Trends scales values (see line A in Figure X _(add figure)_). This low variation becomes more apparent when comparing the Google Trends data up until March 2022 (see line B in Figure X _(add figure)_). Low variation is problematic for modeling the data later on, as it makes effects less pronounced. To restore the variation lost in the time series that includes April 2022, I recalculated each value by following these steps: First, I calculate the relative change of each value in the shorter series with respect to the first value, obtaining the "multiplier." Second, I aligne the starting points of both series by adding a value of X to the longer series. Third, I multiply each value in the longer series by the "multiplier" from the first step. This results in a more pronounced variation in the longer series that mirrors the shorter series (see line C in Figure X _(add figure)_).

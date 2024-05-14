@@ -120,7 +120,7 @@ options(scipen = 0) # Enable scientific notation
 
 <div id="refs"></div>
 
-<!-- \newpage -->
+\newpage
 
 ```{r, child = '08_appendix.Rmd'}
 ```

@@ -13,17 +13,21 @@ The bills under examination were introduced between March 2004 and December 2023
 
 I continue with a brief overview of descriptive statistics of the parliamentary bills.
 
-- Table X provides an overview of the number of bills introduced in the Swiss parliament between March 2004 and December 2023. 
-![](../plots/placeholder_count_table.png)
+- Table \ref{tab:counts} provides an overview of the number of bills introduced in the Swiss parliament between March 2004 and December 2023. 
+```{r, child = 'tables/counts.Rmd'}
+```
 
-- Figure X shows how the number of all parliamentary bills has increased in the past 20 years. The number of bills introduced by the SP and GPS have mainly stayed constant, except for an uptick after the 2019 election, where the GPS had their best election result in their history
-![](../plots/placeholder_all_bills.png)
+- Figure \ref{fig:all-bills} shows how the number of all parliamentary bills has increased in the past 20 years. The number of bills introduced by the SP and GPS have mainly stayed constant, except for an uptick after the 2019 election, where the GPS had their best election result in their history
+```{r, child = 'figures/all_bills.Rmd'}
+```
 
-- When comparing the number of bills tagged with the environmental label to all bills, the number of environmental bills is mostly flat until the early 2010s, where we observe a slow increase up until the late 2010s, after which there is a strong increase
-![](../plots/placeholder_env_bills.png)
+- When comparing the number of bills tagged with the environmental label to all bills, the number of environmental bills is mostly flat until the early 2010s, where we observe a slow increase up until the late 2010s, after which there is a strong increase (see Figure \ref{fig:env-bills})
+```{r, child = 'figures/env_bills.Rmd'}
+```
 
-- If we break down the number of environmental bills by party, we can see that all parties introduced roughly the same number of bills up until the late 2010s, where the SP and GPS started introducing much more of these bills. Then all parties decrease again except for the GPS. this makes intuitive sense, as the green parties owns green topics and had their biggest success in the 2019 national elections, thus giving them a boost.
-![](../plots/placeholder_env_bills_by_party.png)
+- If we break down the number of environmental bills by party, we can see that all parties introduced roughly the same number of bills up until the late 2010s, where the SP and GPS started introducing much more of these bills. Then all parties decrease again except for the GPS. this makes intuitive sense, as the green parties owns green topics and had their biggest success in the 2019 national elections, thus giving them a boost. (see Figure \ref{fig:env-party-bills})
+```{r, child = 'figures/env_party_bills.Rmd'}
+```
 
 <!--
 nice to have:

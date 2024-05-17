@@ -1,0 +1,35 @@
+
+```{r all-bills, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "All Bills per Year"}
+
+eda_all_bills <- eda %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_all_bills" = "n")
+
+eda_sp_bills <- eda %>% 
+  dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_sp_bills" = "n")
+
+eda_gps_bills <- eda %>% 
+  dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_gps_bills" = "n")
+
+eda_plot <- eda_all_bills %>% 
+  left_join(eda_sp_bills, by = "year_session") %>% 
+  left_join(eda_gps_bills, by = "year_session") %>% 
+  pivot_longer(cols = c(count_all_bills, count_sp_bills, count_gps_bills), names_to = "bill_type", values_to = "count")
+
+ggplot(eda_plot, aes(x = year_session, y = count, color = bill_type)) +
+  geom_line() + geom_point() + 
+  scale_color_manual(values = c("count_gps_bills" = gps_green, "count_sp_bills" = sp_red, "count_all_bills" = "black"), 
+                     labels = c("count_gps_bills" = "GPS", "count_sp_bills" = "SP", "count_all_bills" = "All Bills")) +
+  labs(x = " ", y = " ", color = " ") +
+  theme_minimal() +
+  theme(legend.position = "right", legend.direction = "vertical", panel.grid.minor = element_blank()) +
+  guides(color = guide_legend(override.aes = list(linetype = "blank")))
+
+```

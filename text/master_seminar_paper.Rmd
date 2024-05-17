@@ -99,6 +99,9 @@ ches_2019 <- haven::read_dta(here("data", "CHES2019V3.dta"))
 # https://www.chesdata.eu/s/2014_CHES_dataset_means-2.dta
 ches_2014 <- haven::read_dta(here("data", "2014_CHES_dataset_means-2.dta"))
 
+load(file = here("data", "eda.Rda"))
+load(file = here("data", "all_businesses_eda.Rda"))
+load(file = here("data", "all_businesses_party.Rda"))
 ```
 
 ```{r, child = '00_title.Rmd'}

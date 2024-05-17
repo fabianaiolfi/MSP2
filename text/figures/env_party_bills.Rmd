@@ -1,0 +1,90 @@
+
+```{r env-party-bills, echo=FALSE, fig.pos="H", fig.height = 3, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Environmental Bills per Year by Party"}
+
+eda_environment_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_bills" = "n")
+
+eda_environment_sp_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_sp_bills" = "n")
+
+eda_environment_gps_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_gps_bills" = "n")
+
+eda_environment_svp_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("^SVP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_svp_bills" = "n")
+
+eda_environment_mitte_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("^M-E$|^CVP$", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_mitte_bills" = "n")
+
+eda_environment_fdp_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("FDP", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_fdp_bills" = "n")
+
+eda_environment_glp_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  dplyr::filter(grepl("glp", PartyAbbreviation)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_glp_bills" = "n")
+
+eda_plot <- eda_environment_bills %>% 
+  left_join(eda_environment_sp_bills, by = "year_session") %>% 
+  left_join(eda_environment_gps_bills, by = "year_session") %>% 
+  left_join(eda_environment_svp_bills, by = "year_session") %>% 
+  left_join(eda_environment_mitte_bills, by = "year_session") %>% 
+  left_join(eda_environment_fdp_bills, by = "year_session") %>% 
+  left_join(eda_environment_glp_bills, by = "year_session") %>% 
+  pivot_longer(cols = c(
+    count_environment_bills,
+    count_environment_sp_bills,
+    count_environment_gps_bills,
+    count_environment_svp_bills,
+    count_environment_mitte_bills,
+    count_environment_glp_bills,
+    count_environment_fdp_bills
+    ), names_to = "bill_type", values_to = "count")
+
+ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.factor(bill_type))) +
+  geom_line() + geom_point() + 
+  scale_color_manual(values = c("count_environment_bills" = "black",
+                                "count_environment_sp_bills" = sp_red,
+                                "count_environment_svp_bills" = "light green",
+                                "count_environment_mitte_bills" = "orange",
+                                "count_environment_fdp_bills" = "blue",
+                                "count_environment_glp_bills" = "aquamarine4",
+                                "count_environment_gps_bills" = gps_green), 
+                     labels = c("count_environment_bills" = "All Environmental Bills",
+                                "count_environment_sp_bills" = "SP",
+                                "count_environment_svp_bills" = "SVP",
+                                "count_environment_mitte_bills" = "Mitte",
+                                "count_environment_fdp_bills" = "FDP",
+                                "count_environment_glp_bills" = "GLP",
+                                "count_environment_gps_bills" = "GPS")) +
+  labs(x = " ", y = " ", color = " ") +
+  theme_minimal() +
+  theme(legend.position = "right", legend.direction = "vertical", panel.grid.minor = element_blank()) +
+  guides(color = guide_legend(override.aes = list(linetype = "blank")))
+
+```

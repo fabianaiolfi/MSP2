@@ -20,7 +20,11 @@ linear regression
 
 - returning to the hypothesis, we fail to reject the notion that an increase in public salience of environmental issues is associated with an increase in the content similarity between parliamentary bills. however, for this statement to hold, the semantic similarity must be lagged by one parliamentary session. furthermore, the results can only speak for the Swiss case.
 
-- so what does this mean?
+so what does this mean?
+- returning to the theory and based on the results presented above, we can assume that the sp does perceive the gps as an electoral threat and is reacting to this and the increased salience of environmental topics amongst the public
+- the sp reacts to this by introducing environmental bills that have become more similar to parliamentary bills introduced by the greens.
+- the sp sees potential in winning over green voters, who are ideologically much closer to their exisiting base than voters from other parties, by introducing parliamentary bills that are similar in content to those introduced by the GPS
+- this can be an indication that the sp is becoming more green, in an attempt to be more appealing towards green voters.
 
 
 <!--

@@ -241,7 +241,7 @@ ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
 set_tag <- "Umwelt"
 
@@ -342,6 +342,9 @@ eda_plot <- rbind(eda_environment_sp_bills_vote_share,
 ggplot(eda_plot, aes(x = LegislativePeriodNumber, y = bills_per_vote_share, color = PartyAbbreviation)) +
   geom_line() + geom_point()
 
+ggplot(eda_environment_sp_bills_vote_share, aes(x = SubmissionSession, y = bills_per_vote_share)) +
+  geom_line() + geom_point()
+
 ```
 
 
@@ -434,11 +437,23 @@ plot_time <- wc_all_bills %>%
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
 
+# Standard deviation of the median of the bills word count
+sd_bills <- plot_time %>% 
+  group_by(year_session) %>% 
+  summarise(sd = sd(SubmittedText_clean_wc, na.rm = T))
+round(sd(sd_bills$sd), 2)
+
 plot_time_environment <- wc_all_bills %>% 
   left_join(select(eda, BusinessShortNumber, year_session, TagNames), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
+
+# Standard deviation of the median of the bills word count
+sd_bills <- plot_time_environment %>% 
+  group_by(year_session) %>% 
+  summarise(sd = sd(SubmittedText_clean_wc, na.rm = T))
+round(sd(sd_bills$sd), 2)
 
 plot_time_sp <- wc_all_bills %>% 
   left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
@@ -459,12 +474,24 @@ plot_time_sp_environment <- wc_all_bills %>%
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
 
+# Standard deviation of the median of the bills word count
+sd_bills <- plot_time_sp_environment %>% 
+  group_by(year_session) %>% 
+  summarise(sd = sd(SubmittedText_clean_wc))
+round(sd(sd_bills$sd), 2)
+
 plot_time_greens_environment <- wc_all_bills %>% 
   left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("GRÜNE", PartyAbbreviation)) %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
+
+# Standard deviation of the median of the bills word count
+sd_bills <- plot_time_greens_environment %>% 
+  group_by(year_session) %>% 
+  summarise(sd = sd(SubmittedText_clean_wc, na.rm = T))
+round(sd(sd_bills$sd), 2)
 
 # Plots
 ggplot(plot_time, aes(x = as.factor(year_session), y = SubmittedText_clean_wc)) +

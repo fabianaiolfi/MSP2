@@ -40,6 +40,10 @@ header-includes:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# knitr::opts_knit$set(root.dir = normalizePath(dirname(rstudioapi::getActiveDocumentContext()$path)))
+# knitr::opts_chunk$set(fig.pos = 'H', out.extra = '')
+# knitr::opts_chunk$set(fig.pos = 'H')
+
 
 ## Setup
 library(tidyverse)
@@ -71,11 +75,17 @@ library(politicsR)
 library(scales)
 
 options(scipen = 0) # Enable scientific notation
+
+# Plot Setup
+gps_green <- "#84b514"
+sp_red <- "#e5002b"
+  
 ```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 
-# Add setup script here
+# Load objects
+ch_parties <- read_csv(here("data", "ch_parties.csv"))
 
 ```
 

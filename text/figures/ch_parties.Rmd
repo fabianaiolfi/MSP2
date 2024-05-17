@@ -1,0 +1,26 @@
+
+<!-- # ![Development of Party Strengths per Election Year (National Council)](../plots/ch_parties.pdf){width=50%}   -->
+<!-- # Source: Swiss Federal Statistical Office (https://www.bfs.admin.ch/bfs/en/home/statistics/catalogues-databases.assetdetail.27145667.html, retrieved 9 May 2024) -->
+
+```{r ch-parties, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 5, message=FALSE, warning=FALSE, fig.cap = "Development of Party Strengths per Election Year (National Council)"}
+ch_parties_long <- ch_parties %>% 
+  gather(key = party, value = strength, -year) %>% 
+  dplyr::filter(year != 2023) %>% 
+  dplyr::filter(party %in% c("sp", "gps")) %>% 
+  mutate(party = toupper(party)) %>% 
+  mutate(party = factor(party, levels = c("SP", "GPS")))
+
+ggplot(ch_parties_long, aes(x = year, y = strength, color = party)) +
+  geom_line() + geom_point() +
+  labs(x = "", y = "") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 25)) +
+  scale_x_continuous(breaks = ch_parties_long$year) +
+  scale_color_manual(values = c("GPS" = gps_green, "SP" = sp_red)) +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank()) +
+  theme(legend.position = "right") +
+  theme(legend.title = element_blank()) +
+  guides(color = guide_legend(override.aes = list(linetype = "blank")))
+```
+
+_Source: Swiss Federal Statistical Office (https://www.bfs.admin.ch/bfs/en/home/statistics/catalogues-databases.assetdetail.27145667.html, retrieved 9 May 2024)_

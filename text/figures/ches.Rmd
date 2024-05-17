@@ -1,0 +1,24 @@
+
+# ![Placement of Parties in Ideological Space](../plots/ches.pdf){width=50%}  
+# Source: 2014 and 2019 Chapel Hill Expert Surveys (https://www.chesdata.eu/ches-europe, retrieved 9 May 2024)
+
+ches_2014_clean <- ches_2014 %>%
+  dplyr::filter(country == 36) %>% 
+  select(party_id, party_name, lrgen, galtan)
+ches_2014_clean$year <- 2014
+
+ches_2019_clean <- ches_2019 %>%
+  dplyr::filter(country == 36) %>% 
+  select(party_id, party, lrgen, galtan) %>% 
+  rename(party_name = party)
+ches_2019_clean$year <- 2019
+  
+ches_clean <- bind_rows(ches_2014_clean, ches_2019_clean)
+ches_clean <- ches_clean %>% mutate(party_name = str_remove(party_name, "/.*")) # remove strings after forward slash in party_name
+
+ggplot(ches_clean, aes(x = lrgen, y = galtan, color = as.factor(year))) +
+  # geom_point() +
+  geom_label(aes(label = party_name), hjust = 0.5, vjust = 0.5) +
+  labs(x = "Left-Right Position", y = "Gal-Tan Position") +
+  xlim(0, 10) + ylim(0, 10) +
+  theme_minimal()

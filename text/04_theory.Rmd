@@ -4,4 +4,4 @@ How do political parties respond to the increased salience of environmental issu
 
 In order to win over green party voters, the left-wing parties will introduce parliamentary bills that are similar in content to bills proposed by the green party. By winning over these voters, left-wing parties gain an electoral advantage. This leads to the following hypothesis:
 
-**H1**: An increase in the public salience of environmental issues leads to an increase in the content similarity between parliamentary bills of mainstream left-wing parties and those of green parties on environmental issues.
+**Hypothesis**: An increase in the public salience of environmental issues leads to an increase in the content similarity between parliamentary bills of mainstream left-wing parties and those of green parties on environmental issues.

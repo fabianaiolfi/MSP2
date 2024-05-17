@@ -83,9 +83,9 @@ all_bills_joined <- inner_join(all_green_bills, all_sp_bills, by = "SubmissionSe
 sp_greens_all_bills_distance <- all_bills_joined %>%
   rowwise() %>%
   # Calculate Euclidean distances
-  # mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
   # Calculate cosine similarity
-  mutate(distance = 1 - sum(c_across(starts_with("V_green")) * c_across(starts_with("V_sp"))) / (sqrt(sum(c_across(starts_with("V_green"))^2)) * sqrt(sum(c_across(starts_with("V_sp"))^2)))) %>%
+  # mutate(distance = 1 - sum(c_across(starts_with("V_green")) * c_across(starts_with("V_sp"))) / (sqrt(sum(c_across(starts_with("V_green"))^2)) * sqrt(sum(c_across(starts_with("V_sp"))^2)))) %>%
   ungroup() %>% 
   select(SubmissionSession, distance)
 
@@ -125,9 +125,9 @@ environmental_bills_joined <- inner_join(green_environmental_bills, sp_environme
 sp_greens_environmental_bills_distance <- environmental_bills_joined %>%
   rowwise() %>%
   # Calculate Euclidean distances
-  # mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
+  mutate(distance = sqrt(sum((c_across(starts_with("V_green")) - c_across(starts_with("V_sp")))^2))) %>%
   # Calculate cosine similarity
-  mutate(distance = 1 - sum(c_across(starts_with("V_green")) * c_across(starts_with("V_sp"))) / (sqrt(sum(c_across(starts_with("V_green"))^2)) * sqrt(sum(c_across(starts_with("V_sp"))^2)))) %>%
+  # mutate(distance = 1 - sum(c_across(starts_with("V_green")) * c_across(starts_with("V_sp"))) / (sqrt(sum(c_across(starts_with("V_green"))^2)) * sqrt(sum(c_across(starts_with("V_sp"))^2)))) %>%
   ungroup() %>% 
   select(SubmissionSession, distance)
 

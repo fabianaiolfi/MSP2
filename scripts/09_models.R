@@ -27,8 +27,8 @@ gt_embeddings <- gt_climate_change_2004_2024 %>%
 gt_embeddings$climate_change_new_diff <- c(NA, diff(gt_embeddings$climate_change_new))
 gt_embeddings$distance_diff <- c(NA, diff(gt_embeddings$distance))
 
-hist(gt_embeddings$climate_change_new_diff)
-hist(gt_embeddings$distance_diff)
+# hist(gt_embeddings$climate_change_new_diff)
+# hist(gt_embeddings$distance_diff)
 
 # Add lag
 gt_embeddings <- gt_embeddings %>% mutate(distance_diff_lagged = dplyr::lag(distance_diff, n = 1, default = NA))
@@ -39,8 +39,13 @@ gt_embeddings <- gt_embeddings %>% drop_na()
 
 # Correlation -----------------------------------------------------------
 
-cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff)
-cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
+cor1 <- cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff)
+round(cor1$estimate, 2)
+round(cor1$p.value, 2)
+
+cor2 <- cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
+round(cor2$estimate, 2)
+round(cor2$p.value, 2)
 
 
 # Linear Regression -----------------------------------------------------------

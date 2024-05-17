@@ -22,8 +22,14 @@ load(file = here("data", "all_businesses_party.Rda"))
 load(file = here("data", "all_businesses_wc.Rda"))
 ```
 
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# Set timeframe from March 2004 to December 2023
+all_businesses_eda <- eda %>% left_join(select(all_businesses_eda, -TagNames, -SubmissionSession), by = "BusinessShortNumber")
+all_businesses_party <- eda %>% left_join(select(all_businesses_party, -PartyAbbreviation), by = "BusinessShortNumber")
+```
+
+
 ## Counts
-All Sessions (incl. 2024)
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 n_all_environmental <- all_businesses_eda %>% dplyr::filter(grepl("Umwelt", TagNames))
 

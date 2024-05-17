@@ -5,10 +5,12 @@ In this section, you will describe the precise method that you use to test the r
 -->
 
 #### Differencing and Time Lag
-Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables. In the next step, I lag the dependent variable by one unit, i.e., by one session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and the parliamentary bills they introduce as a reaction. In other words, I assume a delay in parties reacting to an increase in public salience.
+Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables.
+
+As a further exploration, I lag the dependent variable by one unit, i.e., by one session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and the parliamentary bills they introduce as a reaction. In other words, I assume a delay in parties reacting to an increase in public salience.
 
 ### Correlation
-In a first step, I calculate the correlation between the dependent and independent variables using the Pearson Correlation. This method is appropriate as an initial, simple examination to see if there is a correlation between the two variables. Since both variables need to be normally distributed for the correlation to hold, I log-transform the dependent variable. 
+In a first step, I calculate the correlation between the dependent and independent variables using the Pearson Correlation. This method is appropriate as an initial, simple examination to see if there is a correlation between the two variables.
 
 <!--
 - check assumptions: see https://ademos.people.uic.edu/Chapter22.html

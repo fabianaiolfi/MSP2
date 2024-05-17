@@ -1,0 +1,7 @@
+## Data and Methods
+
+```{r, child = '06_1_data_measurement.Rmd'}
+```
+
+```{r, child = '06_2_methods.Rmd'}
+```

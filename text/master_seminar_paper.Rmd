@@ -105,13 +105,16 @@ options(scipen = 0) # Enable scientific notation
 ```{r, child = '04_theory.Rmd'}
 ```
 
-```{r, child = '05_data_methods.Rmd'}
+```{r, child = '05_case_selection.Rmd'}
 ```
 
-```{r, child = '06_results.Rmd'}
+```{r, child = '06_data_methods.Rmd'}
 ```
 
-```{r, child = '07_conclusion.Rmd'}
+```{r, child = '07_results.Rmd'}
+```
+
+```{r, child = '08_conclusion.Rmd'}
 ```
 
 \newpage
@@ -122,10 +125,10 @@ options(scipen = 0) # Enable scientific notation
 
 \newpage
 
-```{r, child = '08_appendix.Rmd'}
+```{r, child = '09_appendix.Rmd'}
 ```
 
 <!-- \newpage -->
 
-```{r, eval=FALSE, child = '09_authorship.Rmd'}
+```{r, eval=FALSE, child = '10_authorship.Rmd'}
 ```

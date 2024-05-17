@@ -241,6 +241,110 @@ ggplot(eda_plot, aes(x = year_session, y = count, group = bill_type, color = as.
 ```
 
 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+set_tag <- "Umwelt"
+
+ch_parties$LegislativePeriodNumber <- 47:52
+
+ch_parties_long <- ch_parties %>% 
+  select(-year) %>% 
+  # wide to long
+  pivot_longer(!LegislativePeriodNumber, names_to = "PartyAbbreviation", values_to = "VoteShare") %>% 
+  mutate(PartyAbbreviation = case_when(PartyAbbreviation == "sp" ~ "SP",
+                                       PartyAbbreviation == "gps" ~ "GRÜNE",
+                                       PartyAbbreviation == "mitte" ~ "M-E",
+                                       T ~ PartyAbbreviation)) %>% 
+  mutate(PartyAbbreviation = toupper(PartyAbbreviation))
+
+session_leg_index <- all_sessions %>% 
+  select(ID, LegislativePeriodNumber) %>% 
+  distinct(ID, .keep_all = T)
+
+eda_environment_sp_bills_vote_share <- eda %>% 
+  select(-StartDate, -year_session) %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
+  left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
+  # group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
+  group_by(PartyAbbreviation, SubmissionSession) %>% 
+  count() %>% 
+  mutate(LegislativePeriodNumber = as.numeric(substr(SubmissionSession, 1, 2))) %>%
+  left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
+  rename("count_environment_bills" = "n") %>% 
+  mutate(bills_per_vote_share = count_environment_bills / VoteShare)
+
+eda_environment_gps_bills_vote_share <- eda %>% 
+  select(-StartDate, -year_session) %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
+  left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
+  group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
+  count() %>% 
+  left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
+  rename("count_environment_bills" = "n") %>% 
+  mutate(bills_per_vote_share = count_environment_bills / VoteShare)
+
+eda_environment_svp_bills_vote_share <- eda %>% 
+  select(-StartDate, -year_session) %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^SVP$", PartyAbbreviation)) %>% 
+  left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
+  group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
+  count() %>% 
+  left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
+  rename("count_environment_bills" = "n") %>% 
+  mutate(bills_per_vote_share = count_environment_bills / VoteShare)
+
+eda_environment_mitte_bills_vote_share <- eda %>% 
+  select(-StartDate, -year_session) %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^M-E$|^CVP$", PartyAbbreviation)) %>% 
+  mutate(PartyAbbreviation = "M-E") %>% 
+  left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
+  group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
+  count() %>% 
+  left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
+  rename("count_environment_bills" = "n") %>% 
+  mutate(bills_per_vote_share = count_environment_bills / VoteShare)
+
+eda_environment_fdp_bills_vote_share <- eda %>% 
+  select(-StartDate, -year_session) %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("^FDP$", PartyAbbreviation)) %>% 
+  left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
+  group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
+  count() %>% 
+  left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
+  rename("count_environment_bills" = "n") %>% 
+  mutate(bills_per_vote_share = count_environment_bills / VoteShare)
+
+eda_environment_glp_bills_vote_share <- eda %>% 
+  select(-StartDate, -year_session) %>% 
+  dplyr::filter(grepl(set_tag, TagNames)) %>% 
+  dplyr::filter(grepl("glp", PartyAbbreviation)) %>% 
+  mutate(PartyAbbreviation = "GLP") %>% 
+  left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
+  group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
+  count() %>% 
+  left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
+  rename("count_environment_bills" = "n") %>% 
+  mutate(bills_per_vote_share = count_environment_bills / VoteShare)
+
+eda_plot <- rbind(eda_environment_sp_bills_vote_share,
+                  eda_environment_gps_bills_vote_share,
+                  eda_environment_svp_bills_vote_share,
+                  eda_environment_mitte_bills_vote_share,
+                  eda_environment_fdp_bills_vote_share,
+                  eda_environment_glp_bills_vote_share
+                  )
+
+ggplot(eda_plot, aes(x = LegislativePeriodNumber, y = bills_per_vote_share, color = PartyAbbreviation)) +
+  geom_line() + geom_point()
+
+```
+
+
 
 ## Overall Bill Length
 

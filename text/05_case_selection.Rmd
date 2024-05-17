@@ -11,8 +11,9 @@ Second, Switzerland has an electoral system that accommodates smaller parties, a
 
 Third, I argue that the SP perceive the GPS as an electoral threat. The GPS has increased their vote share in the past 20 years, while the SP have lost vote share. Specifically, the GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period. See Figure \ref{fig:ch-parties}.
 
-…
+```{r, child = 'figures/ches.Rmd'}
+```
 
-I consider this electoral success of the GPS to have occurred at the expense of the SP. This is because both parties belong to the same party family and are thus ideologically close. Both parties highlight issues such as social welfare and gender equality and both are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]. When examining both parties in a two-dimensional left-right/liberal-authoritarian ideological space, the SP and GPS are their closest neighbors (see Figure X). Following this spatial argument, both parties are interested in canvassing the same group of voters.
+I consider this electoral success of the GPS to have occurred at the expense of the SP. This is because both parties belong to the same party family and are thus ideologically close. Both parties highlight issues such as social welfare and gender equality and both are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]. When examining both parties in a two-dimensional left-right/liberal-authoritarian ideological space, the SP and GPS are their closest neighbors (see Figure \ref{fig:ches}). Following this spatial argument, both parties are interested in canvassing the same group of voters.
 
 In sum, the SP emphasises environmental issues in an effort to win over voters from the GPS, a small party that it perceives to be an electoral threat. The SP does this by proposing parliamentary bills that cover environmental topics that are similar in content to GPS bills.

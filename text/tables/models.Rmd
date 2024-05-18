@@ -1,0 +1,51 @@
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Get Month for each session
+session_month <- all_sessions %>% 
+  dplyr::select(ID, EndDate) %>% 
+  # convert date to first of the month
+  mutate(Month = as.Date(paste0(format(EndDate, "%Y-%m"), "-01")))
+
+# Add Month to embeddings
+sp_greens_environmental_bills_distance_ft_embeddings <- sp_greens_environmental_bills_distance_ft_embeddings %>% 
+  left_join(dplyr::select(session_month, ID, Month), by = c("SubmissionSession" = "ID"))
+
+# Join Embedding Distances with Google Trends
+gt_embeddings <- gt_climate_change_2004_2024 %>% 
+  dplyr::select(Month, climate_change_new) %>% 
+  left_join(sp_greens_environmental_bills_distance_ft_embeddings, by = "Month") %>% 
+  dplyr::select(-SubmissionSession) %>% 
+  drop_na()
+
+# Calculate differences between rows
+gt_embeddings$climate_change_new_diff <- c(NA, diff(gt_embeddings$climate_change_new))
+gt_embeddings$distance_diff <- c(NA, diff(gt_embeddings$distance))
+
+# hist(gt_embeddings$climate_change_new_diff)
+# hist(gt_embeddings$distance_diff)
+
+# Add lag
+gt_embeddings <- gt_embeddings %>% mutate(distance_diff_lagged = dplyr::lag(distance_diff, n = 1, default = NA))
+  
+# Clean up dataframe
+gt_embeddings <- gt_embeddings %>% drop_na()
+```
+
+```{r models, echo=FALSE, message=FALSE, warning=FALSE, results = 'asis', fig.cap="counts"}
+
+model1 <- lm(distance_diff ~ climate_change_new_diff, gt_embeddings)
+model2 <- lm(distance_diff_lagged ~ climate_change_new_diff, gt_embeddings)
+
+model_table <- modelsummary(list("Model A" = model1,
+                                 "Model B (Lagged Independent Variable)" = model2),
+             title = "Linear Regression Model Results",
+             coef_map = c(`(Intercept)` = "Intercept",
+                          `climate_change_new_diff` = '“climate change” Search Term Popularity'),
+             gof_omit = "AIC|BIC|RMSE|Std.Errors|FE|F|Log.Lik.",
+             statistic = "({p.value})",
+             note = "Dependent variable: Eucledian distance between grouped bills. P-values in parentheses.",
+             stars = T
+             )
+model_table %>%
+  kable_styling(font_size = 10)
+```

@@ -1,6 +1,6 @@
 ## Results
 
-correlation
+### Correlation Results
 - i begin by presenting the results of the correlation between the change in topic salience and the change in semantic similarity
 - the correlation coefficient equals $0.19$ with borderline statistical significance at conventional levels ($p = 0.11$).
 - This suggests a positive but weak correlation, indicating that an increase in topic salience is associated with an increase in semantic distance between bills, i.e., bills being less similar. This would go against my theory and not support my hypothesis.
@@ -8,8 +8,13 @@ correlation
 - The correlation coefficient between topic salience and *lagged* semantic similarity equals $-0.22$ with statistical significance at conventional levels ($p = 0.06$). 
 - This indicates that an increase in public salience on environmental topics is associated with a decrease in semantic distance between parliamentary bills, lagged by one parliamentary session. This decrease in distance indicates that parliamentary bills become more similar
 
-linear regression
+### Linear Regression Results
+
+```{r, child = 'tables/models.Rmd'}
+```
+
 - in a next step, i present results from the linear regression model.
+- see Table \@ref(tab:models) for the results of the linear regression models.
 - the results from linear regression models are similar to the results from the correlations.
 - when using the un-lagged dependent variable, we observe a positive relationship between the two variables with borderline statistical significance.
 - the model with the lagged dependent variable displays a negative coefficient for the independent variable at a statistically significant level ($p < 0.1$).  this indicates that an increase in environmental topic salience is associated with a decrease in semantic distance in the *following* parliamentary session.

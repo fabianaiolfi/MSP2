@@ -22,6 +22,15 @@ In a second step, I model the relationship of the differences using linear regre
 
 **Model Specifications**
 
-Change in semantic distance between SP and Greens = β + change in Google Trends Topic Salience + error
+Model A
+\[
+\Delta \text{Semantic Distance between SP and Greens} = \beta + \Delta \text{Google Trends Topic Salience} + \varepsilon
+\]
 
-Lagged change in semantic distance between SP and Greens = β + change in Google Trends Topic Salience + error
+Model B
+\[
+\Delta \text{Semantic Distance}_{t} = \beta + \Delta \text{Google Trends Topic Salience}_{t-1} + \varepsilon
+\]
+
+- delta (Δ) indicates the change between two observations
+- t-1 indicates the lagged variable

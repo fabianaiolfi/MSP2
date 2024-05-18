@@ -27,7 +27,7 @@ ggplot() +
   geom_point(data = gt_climate_change_2004_2022, aes(x = Month, y = climate_change), color = "red") +
   geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new)) +
   geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new)) +
-  ylim(0, 100) +
+  # ylim(0, 100) +
   theme_minimal()
 
 # Compare Selects with Google Trends

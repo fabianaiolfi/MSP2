@@ -10,27 +10,27 @@ Due to the limited scope of this seminar paper, I keep the analysis simple by ex
 As a further exploration, I lag the dependent variable by one unit, i.e., by one session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and the parliamentary bills they introduce as a reaction. In other words, I assume a delay in parties reacting to an increase in public salience.
 
 ### Correlation
-In a first step, I calculate the correlation between the dependent and independent variables using the Pearson Correlation. This method is appropriate as an initial, simple examination to see if there is a correlation between the two variables.
+In the first step, I calculate the correlation between the dependent and independent variables using the Pearson correlation. This method is suitable as an initial, straightforward check to see if there is a correlation between the two variables. The Pearson correlation can be used because the data under examination are continuous, assume a linear relationship, contain few outliers and are normally distributed.
 
-<!--
-- check assumptions: see https://ademos.people.uic.edu/Chapter22.html
-- I then compare the unlagged and lagged dependent variables.
--->
+I also compare the unlagged and the lagged dependent variable to see if lagging the dependent variable makes a difference. This comparison helps to understand whether past values of the independent variable have an impact on the current dependent variable, thereby providing additional insight into the temporal dynamics of the relationship between the dependent and independent variables.
 
 ### Linear Regression
-In a second step, I model the relationship of the differences using linear regression to determine if there is a linear relationship between the two variables. Given the data, this is the best-suited method because it allows me to test the relationship between two continuous variables.
+In the second step, I model the relationship between the differences using an ordinary least squares (OLS) linear regression model. This helps to determine whether there is a statistically significant relationship between the dependent and independent variables, and quantifies the strength and direction of this relationship.
 
-**Model Specifications**
+Given the data, this is the most appropriate method because OLS regression is effective for continuous data and assumes a linear relationship between variables. It is also robust to outliers and provides easily interpretable coefficients, allowing us to understand how changes in the independent variables are related to changes in the dependent variable. In addition, OLS regression is appropriate for normally distributed data, which matches the characteristics of the dataset under consideration. This leads to the two model specifications:
 
-Model A
-\[
-\Delta \text{Semantic Distance between SP and Greens} = \beta + \Delta \text{Google Trends Topic Salience} + \varepsilon
-\]
+Model 1:
+\begin{equation*}
+\begin{aligned}
+\Delta \; Euclidean \; Distance = \beta \; + \; \Delta \; Search \; Term \; Popularity \; + \; \epsilon
+\end{aligned}
+\end{equation*}
 
-Model B
-\[
-\Delta \text{Semantic Distance}_{t} = \beta + \Delta \text{Google Trends Topic Salience}_{t-1} + \varepsilon
-\]
+Model 2:
+\begin{equation*}
+\begin{aligned}
+\Delta \; Euclidean \; Distance_{s+1} = \beta \; + \; \Delta \; Search \; Term \; Popularity_{s} \; + \; \epsilon
+\end{aligned}
+\end{equation*}
 
-- delta (Δ) indicates the change between two observations
-- t-1 indicates the lagged variable
+In these models, Delta (Δ) indicates the change between two observations, specifically between two parliamentary sessions. The variable $s+1$ represents the lagged variable, where s denotes the current parliamentary session and $s+1$ denotes the next session.

@@ -37,20 +37,25 @@ gt_embeddings <- gt_embeddings %>% drop_na()
 ```{r cor-plot, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Correlation Plots"}
 
 plot1 <- ggplot(gt_embeddings, aes(x = climate_change_new_diff, y = distance_diff)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = T) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm", se = TRUE, size = 0.5) +  # Thinner geom_smooth() line
   labs(title = NULL,
-       x = "Δ Search Popularity Climate Change",
-       y = "Δ Embedding Distance") +
-  theme_minimal()
+       x = expression(Delta ~ "Search Term Popularity"),  # Correctly render Δ
+       y = expression(Delta ~ "Euclidean Distance")) +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 10))  # Smaller label font size
 
 plot2 <- ggplot(gt_embeddings, aes(x = climate_change_new_diff, y = distance_diff_lagged)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = T) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm", se = TRUE, size = 0.5) +  # Thinner geom_smooth() line
   labs(title = NULL,
-       x = "Δ Search Popularity Climate Change",
-       y = "Δ Lagged Embedding Distance") +
-  theme_minimal()
+       x = expression(Delta ~ "Search Term Popularity")) +
+  scale_y_continuous(name = NULL, sec.axis = dup_axis(name = expression(Delta ~ "Lagged Euclidean Distance"))) +  # Add secondary y-axis on the right
+  theme_minimal() +
+  theme(axis.title = element_text(size = 10),  # Smaller label font size
+        axis.title.y.right = element_text(hjust = 0.5),  # Center y-axis label on the right
+        axis.title.y.left = element_blank(),  # Remove left y-axis title
+        axis.text.y.left = element_blank())  # Remove left y-axis labels
 
 grid.arrange(plot1, plot2, ncol = 2)
 

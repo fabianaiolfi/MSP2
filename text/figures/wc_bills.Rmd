@@ -1,0 +1,38 @@
+
+```{r wc-bills, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Word Count of Bills"}
+
+wc_plot <- all_businesses_wc %>% left_join(eda, by = "BusinessShortNumber")
+wc_all_bills <- wc_plot %>% dplyr::select(BusinessShortNumber, SubmittedText_clean_wc)
+# summary(wc_all_bills$SubmittedText_clean_wc)
+
+wc_environmental_bills <- wc_plot %>% 
+  dplyr::select(BusinessShortNumber, SubmittedText_clean_wc, TagNames) %>% 
+  dplyr::filter(grepl("Umwelt", TagNames))
+# summary(wc_environmental_bills$SubmittedText_clean_wc)
+
+# ggplot(all_businesses_wc, aes(x = SubmittedText_clean_wc)) +
+#   geom_boxplot() +
+#   theme_minimal()
+# 
+# ggplot(wc_environmental_bills, aes(x = SubmittedText_clean_wc)) +
+#   geom_boxplot() +
+#   theme_minimal()
+# 
+# ggplot() +
+#   geom_boxplot(data = all_businesses_wc, aes(x = SubmittedText_clean_wc, y = 0)) +
+#   geom_boxplot(data = wc_environmental_bills, aes(x = SubmittedText_clean_wc, y = 1)) +
+#   theme_minimal()
+
+ggplot() +
+  geom_boxplot(data = wc_environmental_bills, aes(x = SubmittedText_clean_wc, y = factor(0))) +
+  geom_boxplot(data = all_businesses_wc, aes(x = SubmittedText_clean_wc, y = factor(1))) +
+  theme_minimal() +
+  labs(x = "Number of Words", y = NULL) + # Set x-axis label and remove y-axis label
+  scale_y_discrete(breaks = NULL) + # Remove y-axis tick numbers
+  geom_label(aes(x = 1250, y = 2, label = "All Bills"), hjust = 0) + # Add label for All Bills)
+  geom_label(aes(x = 1250, y = 1, label = "Environmental Bills"), hjust = 0) + # Add label for All Bills)
+  theme(
+    axis.text.y = element_blank(), # Remove y-axis text
+    axis.ticks.y = element_blank()  # Remove y-axis ticks
+  )
+```

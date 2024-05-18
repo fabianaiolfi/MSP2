@@ -1,10 +1,16 @@
 
-```{r all-bills, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "All Bills per Year"}
+```{r all-bills, echo=FALSE, fig.pos="H", fig.height = 3, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Bills per Year"}
 
 eda_all_bills <- eda %>% 
   group_by(year_session) %>% 
   count() %>% 
   dplyr::rename("count_all_bills" = "n")
+
+eda_environment_bills <- eda %>% 
+  dplyr::filter(grepl("Umwelt", TagNames)) %>% 
+  group_by(year_session) %>% 
+  count() %>% 
+  dplyr::rename("count_environment_bills" = "n")
 
 eda_sp_bills <- eda %>% 
   dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
@@ -21,12 +27,21 @@ eda_gps_bills <- eda %>%
 eda_plot <- eda_all_bills %>% 
   left_join(eda_sp_bills, by = "year_session") %>% 
   left_join(eda_gps_bills, by = "year_session") %>% 
-  pivot_longer(cols = c(count_all_bills, count_sp_bills, count_gps_bills), names_to = "bill_type", values_to = "count")
+  left_join(eda_environment_bills, by = "year_session") %>% 
+  pivot_longer(cols = c(count_all_bills, count_sp_bills, count_gps_bills, count_environment_bills), names_to = "bill_type", values_to = "count")
 
 ggplot(eda_plot, aes(x = year_session, y = count, color = bill_type)) +
   geom_line() + geom_point() + 
-  scale_color_manual(values = c("count_gps_bills" = gps_green, "count_sp_bills" = sp_red, "count_all_bills" = "black"), 
-                     labels = c("count_gps_bills" = "GPS", "count_sp_bills" = "SP", "count_all_bills" = "All Bills")) +
+  scale_color_manual(values = c("count_gps_bills" = gps_green,
+                                "count_sp_bills" = sp_red,
+                                "count_all_bills" = "black",
+                                "count_environment_bills" = "light green"
+                                ), 
+                     labels = c("count_gps_bills" = "All GPS Bills",
+                                "count_sp_bills" = "All SP Bills",
+                                "count_all_bills" = "All Bills",
+                                "count_environment_bills" = "Environmental Bills"
+                                )) +
   labs(x = " ", y = " ", color = " ") +
   theme_minimal() +
   theme(legend.position = "right", legend.direction = "vertical", panel.grid.minor = element_blank()) +

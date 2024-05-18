@@ -1,5 +1,5 @@
 
-```{r ches, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 5, message=FALSE, warning=FALSE, fig.cap = "Placement of Parties in Ideological Space (Average of 2014 and 2019)"}
+```{r ches, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 5, message=FALSE, warning=FALSE, fig.cap = "Placement of Major Swiss Parties in Ideological Space (Average of 2014 and 2019)"}
 
 ches_2014_clean <- ches_2014 %>%
   dplyr::filter(country == 36) %>% 

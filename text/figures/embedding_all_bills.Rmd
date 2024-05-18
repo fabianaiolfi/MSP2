@@ -48,7 +48,7 @@ df_plot_env$SubmissionSession <- factor(df_plot_env$SubmissionSession,
                                     levels = unique(session_year_mapping$SubmissionSession))
 ```
 
-```{r embeddings-all-bills, echo=FALSE, fig.pos="H", fig.height = 3, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Semantic Distance over Time (Monthly and Yearly Average)"}
+```{r embeddings-all-bills, echo=FALSE, fig.pos="H", fig.height = 3, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Semantic Distance between SP and GPS Bills over Time (Monthly and Yearly Average)"}
 ggplot() +
   geom_line(data = df_plot_all, aes(x = StartDate, y = distance, color = "All Bills"), group = 1, color = "#DDDDDD") +
   geom_point(data = df_plot_all, aes(x = StartDate, y = distance, color = "All Bills"), shape = 21, fill = "#DDDDDD", color = "#DDDDDD", size = 1) +

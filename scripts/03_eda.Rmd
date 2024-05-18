@@ -24,8 +24,8 @@ load(file = here("data", "all_businesses_wc.Rda"))
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 # Set timeframe from March 2004 to December 2023
-all_businesses_eda <- eda %>% left_join(select(all_businesses_eda, -TagNames, -SubmissionSession), by = "BusinessShortNumber")
-all_businesses_party <- eda %>% left_join(select(all_businesses_party, -PartyAbbreviation), by = "BusinessShortNumber")
+all_businesses_eda <- eda %>% left_join(dplyr::select(all_businesses_eda, -TagNames, -SubmissionSession), by = "BusinessShortNumber")
+all_businesses_party <- eda %>% left_join(dplyr::select(all_businesses_party, -PartyAbbreviation), by = "BusinessShortNumber")
 ```
 
 
@@ -76,19 +76,19 @@ Dashed red vertical lines mark crises: The Fukushima nuclear accident (2011) and
 eda_all_bills <- eda %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_all_bills" = "n")
+  dplyr::rename("count_all_bills" = "n")
 
 eda_sp_bills <- eda %>% 
   dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_sp_bills" = "n")
+  dplyr::rename("count_sp_bills" = "n")
 
 eda_gps_bills <- eda %>% 
   dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_gps_bills" = "n")
+  dplyr::rename("count_gps_bills" = "n")
 
 eda_plot <- eda_all_bills %>% 
   left_join(eda_sp_bills, by = "year_session") %>% 
@@ -117,7 +117,7 @@ eda_environment_bills <- eda %>%
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_bills" = "n")
+  dplyr::rename("count_environment_bills" = "n")
 
 eda_plot <- eda_all_bills %>% 
   left_join(eda_environment_bills, by = "year_session") %>% 
@@ -150,49 +150,49 @@ eda_environment_bills <- eda %>%
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_bills" = "n")
+  dplyr::rename("count_environment_bills" = "n")
 
 eda_environment_sp_bills <- eda %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_sp_bills" = "n")
+  dplyr::rename("count_environment_sp_bills" = "n")
 
 eda_environment_gps_bills <- eda %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_gps_bills" = "n")
+  dplyr::rename("count_environment_gps_bills" = "n")
 
 eda_environment_svp_bills <- eda %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^SVP$", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_svp_bills" = "n")
+  dplyr::rename("count_environment_svp_bills" = "n")
 
 eda_environment_mitte_bills <- eda %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^M-E$|^CVP$", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_mitte_bills" = "n")
+  dplyr::rename("count_environment_mitte_bills" = "n")
 
 eda_environment_fdp_bills <- eda %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("FDP", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_fdp_bills" = "n")
+  dplyr::rename("count_environment_fdp_bills" = "n")
 
 eda_environment_glp_bills <- eda %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("glp", PartyAbbreviation)) %>% 
   group_by(year_session) %>% 
   count() %>% 
-  rename("count_environment_glp_bills" = "n")
+  dplyr::rename("count_environment_glp_bills" = "n")
 
 eda_plot <- eda_environment_bills %>% 
   left_join(eda_environment_sp_bills, by = "year_session") %>% 
@@ -248,7 +248,7 @@ set_tag <- "Umwelt"
 ch_parties$LegislativePeriodNumber <- 47:52
 
 ch_parties_long <- ch_parties %>% 
-  select(-year) %>% 
+  dplyr::select(-year) %>% 
   # wide to long
   pivot_longer(!LegislativePeriodNumber, names_to = "PartyAbbreviation", values_to = "VoteShare") %>% 
   mutate(PartyAbbreviation = case_when(PartyAbbreviation == "sp" ~ "SP",
@@ -258,11 +258,11 @@ ch_parties_long <- ch_parties %>%
   mutate(PartyAbbreviation = toupper(PartyAbbreviation))
 
 session_leg_index <- all_sessions %>% 
-  select(ID, LegislativePeriodNumber) %>% 
+  dplyr::select(ID, LegislativePeriodNumber) %>% 
   distinct(ID, .keep_all = T)
 
 eda_environment_sp_bills_vote_share <- eda %>% 
-  select(-StartDate, -year_session) %>% 
+  dplyr::select(-StartDate, -year_session) %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^SP$", PartyAbbreviation)) %>% 
   left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
@@ -271,33 +271,33 @@ eda_environment_sp_bills_vote_share <- eda %>%
   count() %>% 
   mutate(LegislativePeriodNumber = as.numeric(substr(SubmissionSession, 1, 2))) %>%
   left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
-  rename("count_environment_bills" = "n") %>% 
+  dplyr::rename("count_environment_bills" = "n") %>% 
   mutate(bills_per_vote_share = count_environment_bills / VoteShare)
 
 eda_environment_gps_bills_vote_share <- eda %>% 
-  select(-StartDate, -year_session) %>% 
+  dplyr::select(-StartDate, -year_session) %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^GRÜNE$", PartyAbbreviation)) %>% 
   left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
   group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
   count() %>% 
   left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
-  rename("count_environment_bills" = "n") %>% 
+  dplyr::rename("count_environment_bills" = "n") %>% 
   mutate(bills_per_vote_share = count_environment_bills / VoteShare)
 
 eda_environment_svp_bills_vote_share <- eda %>% 
-  select(-StartDate, -year_session) %>% 
+  dplyr::select(-StartDate, -year_session) %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^SVP$", PartyAbbreviation)) %>% 
   left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
   group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
   count() %>% 
   left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
-  rename("count_environment_bills" = "n") %>% 
+  dplyr::rename("count_environment_bills" = "n") %>% 
   mutate(bills_per_vote_share = count_environment_bills / VoteShare)
 
 eda_environment_mitte_bills_vote_share <- eda %>% 
-  select(-StartDate, -year_session) %>% 
+  dplyr::select(-StartDate, -year_session) %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^M-E$|^CVP$", PartyAbbreviation)) %>% 
   mutate(PartyAbbreviation = "M-E") %>% 
@@ -305,22 +305,22 @@ eda_environment_mitte_bills_vote_share <- eda %>%
   group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
   count() %>% 
   left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
-  rename("count_environment_bills" = "n") %>% 
+  dplyr::rename("count_environment_bills" = "n") %>% 
   mutate(bills_per_vote_share = count_environment_bills / VoteShare)
 
 eda_environment_fdp_bills_vote_share <- eda %>% 
-  select(-StartDate, -year_session) %>% 
+  dplyr::select(-StartDate, -year_session) %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("^FDP$", PartyAbbreviation)) %>% 
   left_join(session_leg_index, by = c("SubmissionSession" = "ID")) %>% 
   group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
   count() %>% 
   left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
-  rename("count_environment_bills" = "n") %>% 
+  dplyr::rename("count_environment_bills" = "n") %>% 
   mutate(bills_per_vote_share = count_environment_bills / VoteShare)
 
 eda_environment_glp_bills_vote_share <- eda %>% 
-  select(-StartDate, -year_session) %>% 
+  dplyr::select(-StartDate, -year_session) %>% 
   dplyr::filter(grepl(set_tag, TagNames)) %>% 
   dplyr::filter(grepl("glp", PartyAbbreviation)) %>% 
   mutate(PartyAbbreviation = "GLP") %>% 
@@ -328,7 +328,7 @@ eda_environment_glp_bills_vote_share <- eda %>%
   group_by(PartyAbbreviation, LegislativePeriodNumber) %>% 
   count() %>% 
   left_join(ch_parties_long, by = c("LegislativePeriodNumber", "PartyAbbreviation")) %>%
-  rename("count_environment_bills" = "n") %>% 
+  dplyr::rename("count_environment_bills" = "n") %>% 
   mutate(bills_per_vote_share = count_environment_bills / VoteShare)
 
 eda_plot <- rbind(eda_environment_sp_bills_vote_share,
@@ -355,22 +355,22 @@ ggplot(eda_environment_sp_bills_vote_share, aes(x = SubmissionSession, y = bills
 
 wc_plot <- all_businesses_wc %>% left_join(eda, by = "BusinessShortNumber")
 
-wc_all_bills <- wc_plot %>% select(BusinessShortNumber, SubmittedText_clean_wc)
+wc_all_bills <- wc_plot %>% dplyr::select(BusinessShortNumber, SubmittedText_clean_wc)
 
 wc_all_sp_bills <- wc_plot %>% dplyr::filter(grepl("SP", PartyAbbreviation))
 wc_all_gps_bills <- wc_plot %>% dplyr::filter(grepl("GRÜNE", PartyAbbreviation))
 
 wc_environmental_bills <- wc_plot %>% 
-  select(BusinessShortNumber, SubmittedText_clean_wc, TagNames) %>% 
+  dplyr::select(BusinessShortNumber, SubmittedText_clean_wc, TagNames) %>% 
   dplyr::filter(grepl("Umwelt", TagNames))
 
 wc_environmental_sp_bills <- wc_plot %>% 
-  select(BusinessShortNumber, SubmittedText_clean_wc, TagNames, PartyAbbreviation) %>% 
+  dplyr::select(BusinessShortNumber, SubmittedText_clean_wc, TagNames, PartyAbbreviation) %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   dplyr::filter(grepl("SP", PartyAbbreviation))
 
 wc_environmental_gps_bills <- wc_plot %>% 
-  select(BusinessShortNumber, SubmittedText_clean_wc, TagNames, PartyAbbreviation) %>% 
+  dplyr::select(BusinessShortNumber, SubmittedText_clean_wc, TagNames, PartyAbbreviation) %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   dplyr::filter(grepl("GRÜNE", PartyAbbreviation))
 
@@ -433,7 +433,7 @@ grid.arrange(environmental_bills_plot, environmental_sp_bills_plot, environmenta
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot_time <- wc_all_bills %>% 
-  left_join(select(eda, BusinessShortNumber, year_session), by = "BusinessShortNumber") %>% 
+  left_join(dplyr::select(eda, BusinessShortNumber, year_session), by = "BusinessShortNumber") %>% 
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
 
@@ -444,7 +444,7 @@ sd_bills <- plot_time %>%
 round(sd(sd_bills$sd), 2)
 
 plot_time_environment <- wc_all_bills %>% 
-  left_join(select(eda, BusinessShortNumber, year_session, TagNames), by = "BusinessShortNumber") %>% 
+  left_join(dplyr::select(eda, BusinessShortNumber, year_session, TagNames), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
@@ -456,19 +456,19 @@ sd_bills <- plot_time_environment %>%
 round(sd(sd_bills$sd), 2)
 
 plot_time_sp <- wc_all_bills %>% 
-  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
+  left_join(dplyr::select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("SP", PartyAbbreviation)) %>% 
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
 
 plot_time_greens <- wc_all_bills %>% 
-  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
+  left_join(dplyr::select(eda, BusinessShortNumber, year_session, PartyAbbreviation), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("GRÜNE", PartyAbbreviation)) %>% 
   drop_na(year_session) %>% 
   mutate(year_session = year(year_session))
 
 plot_time_sp_environment <- wc_all_bills %>% 
-  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
+  left_join(dplyr::select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("SP", PartyAbbreviation)) %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   drop_na(year_session) %>% 
@@ -481,7 +481,7 @@ sd_bills <- plot_time_sp_environment %>%
 round(sd(sd_bills$sd), 2)
 
 plot_time_greens_environment <- wc_all_bills %>% 
-  left_join(select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
+  left_join(dplyr::select(eda, BusinessShortNumber, year_session, PartyAbbreviation, TagNames), by = "BusinessShortNumber") %>% 
   dplyr::filter(grepl("GRÜNE", PartyAbbreviation)) %>% 
   dplyr::filter(grepl("Umwelt", TagNames)) %>% 
   drop_na(year_session) %>% 

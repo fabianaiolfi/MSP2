@@ -12,4 +12,5 @@
 		- delve into more time series specific analysis
 	- find more refined ways of measuring public salience of environmental topics, e.g. using news sources
 	- look at other countries
+	- what constitutes an “environmental” issue?
 -->

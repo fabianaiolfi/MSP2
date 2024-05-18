@@ -103,6 +103,7 @@ load(file = here("data", "eda.Rda"))
 load(file = here("data", "all_businesses_eda.Rda"))
 load(file = here("data", "all_businesses_party.Rda"))
 load(file = here("data", "all_businesses_wc.Rda"))
+load(file = here("data", "all_sessions.Rda"))
 
 # Selects 
 # https://www.swissubase.ch/en/researcher/my-downloads/107981/19952/download-details
@@ -120,6 +121,10 @@ gt_climate_change_2004_2022 <- gt_climate_change_2004_2022 %>% dplyr::rename(cli
 gt_climate_change_2004_2024 <- read_csv(here("data", "google_trends", "search_term", "climate_change_2004_2024.csv"), skip = 1)
 gt_climate_change_2004_2024$Month <- as.Date(paste0(gt_climate_change_2004_2024$Month, "-01"), format = "%Y-%m-%d")
 gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>% dplyr::rename(climate_change = `Climate Change: (Switzerland)`)
+
+# Embeddings
+sp_greens_all_bills_distance_ft_embeddings <- readRDS(file = here("data", "sp_greens_all_bills_distance_ft_embeddings.Rda"))
+sp_greens_environmental_bills_distance_ft_embeddings <- readRDS(file = here("data", "sp_greens_environmental_bills_distance_ft_embeddings.Rda"))
 ```
 
 ```{r, child = '00_title.Rmd'}

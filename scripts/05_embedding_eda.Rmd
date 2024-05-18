@@ -31,7 +31,7 @@ Dashed red vertical lines mark crises: The Fukushima nuclear accident (2011) and
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 df_plot <- sp_greens_all_bills_distance_ft_embeddings %>% 
-  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  left_join(dplyr::select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))
 
 df_plot_yearly_avg <- df_plot %>% 
@@ -40,7 +40,7 @@ df_plot_yearly_avg <- df_plot %>%
   mutate(session_year = as.Date(paste0(session_year, "-07-02"))) # Middle of the year
 
 session_year_mapping <- df_plot %>%
-  select(SubmissionSession, session_year) %>%
+  dplyr::select(SubmissionSession, session_year) %>%
   distinct() %>%
   arrange(SubmissionSession)
 
@@ -82,11 +82,11 @@ ggplot() +
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 df_plot <- sp_greens_all_bills_distance_glove_embeddings %>% 
-  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  left_join(dplyr::select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))
 
 session_year_mapping <- df_plot %>%
-  select(SubmissionSession, session_year) %>%
+  dplyr::select(SubmissionSession, session_year) %>%
   distinct() %>%
   arrange(SubmissionSession)
 
@@ -126,7 +126,7 @@ ggplot(df_plot, aes(x = SubmissionSession, y = distance)) +
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 df_plot <- sp_greens_environmental_bills_distance_ft_embeddings %>% 
-  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  left_join(dplyr::select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))
 
 df_plot_yearly_avg <- df_plot %>% 
@@ -135,7 +135,7 @@ df_plot_yearly_avg <- df_plot %>%
   mutate(session_year = as.Date(paste0(session_year, "-07-02"))) # Middle of the year
 
 session_year_mapping <- df_plot %>%
-  select(SubmissionSession, session_year) %>%
+  dplyr::select(SubmissionSession, session_year) %>%
   distinct() %>%
   arrange(SubmissionSession)
 
@@ -177,11 +177,11 @@ ggplot() +
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 df_plot <- sp_greens_environmental_bills_distance_glove_embeddings %>% 
-  left_join(select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  left_join(dplyr::select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
   mutate(session_year = year(StartDate))
 
 session_year_mapping <- df_plot %>%
-  select(SubmissionSession, session_year) %>%
+  dplyr::select(SubmissionSession, session_year) %>%
   distinct() %>%
   arrange(SubmissionSession)
 

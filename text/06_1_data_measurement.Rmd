@@ -79,11 +79,11 @@ To sum up, in order to measure the semantic similarity between the parliamentary
 
 I continue with an overview of descriptive statistics of the semantic similarity between bills introduced by the two parties over time.
 
-- When examining all types of bills put forward by the SP and the GPS, we can see that the average distance between all bills is roughly constant over time (see figure x)
-![](../plots/placeholder_embed_distance_all_bills.png)
+```{r, child = 'figures/embedding_all_bills.Rmd'}
+```
 
+- When examining all types of bills put forward by the SP and the GPS, we can see that the average distance between all bills is roughly constant over time (see figure \ref{fig:embeddings-all-bills})
 - on the other hand, when only examining environmental bills, we can see a clear downwards trend over the past twenty years. this downward line means that the distance between these bills has decreased over time, indicating that they have become semantically more similar
-![](../plots/placeholder_embed_distance_env_bills.png)
 - please note that the distance values cannot be interpreted by themselves. e.g., a distance of value $3$ has no meaning in and of itself. these values must be interpreted as a comparison. thus, a value of $2$ is lower than a value of $3$. in this context this means that two groups of bills with a shorter distance are semantically more similar
 
 <!--

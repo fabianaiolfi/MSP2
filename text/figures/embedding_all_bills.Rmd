@@ -1,0 +1,74 @@
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+df_plot_all <- sp_greens_all_bills_distance_ft_embeddings %>% 
+  left_join(dplyr::select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  mutate(session_year = year(StartDate))
+
+df_plot_all_yearly_avg <- df_plot_all %>% 
+  group_by(session_year) %>%
+  summarise(distance = mean(distance)) %>% 
+  mutate(session_year = as.Date(paste0(session_year, "-07-02"))) # Middle of the year
+
+session_year_mapping <- df_plot_all %>%
+  dplyr::select(SubmissionSession, session_year) %>%
+  distinct() %>%
+  arrange(SubmissionSession)
+
+# Generate labels, leaving blanks for repeated years
+unique_labels <- session_year_mapping$session_year
+# Keep only the first occurrence of each year, replace others with ""
+labels_for_plot <- ifelse(duplicated(unique_labels), "", as.character(unique_labels))
+
+# Make sure SubmissionSession is a factor in the order you want
+df_plot_all$SubmissionSession <- factor(df_plot_all$SubmissionSession,
+                                    levels = unique(session_year_mapping$SubmissionSession))
+
+df_plot_env <- sp_greens_environmental_bills_distance_ft_embeddings %>% 
+  left_join(dplyr::select(all_sessions, ID, StartDate), by = c("SubmissionSession" = "ID")) %>% 
+  mutate(session_year = year(StartDate))
+
+df_plot_env_yearly_avg <- df_plot_env %>% 
+  group_by(session_year) %>%
+  summarise(distance = mean(distance)) %>% 
+  mutate(session_year = as.Date(paste0(session_year, "-07-02"))) # Middle of the year
+
+session_year_mapping <- df_plot_env %>%
+  dplyr::select(SubmissionSession, session_year) %>%
+  distinct() %>%
+  arrange(SubmissionSession)
+
+# Generate labels, leaving blanks for repeated years
+unique_labels <- session_year_mapping$session_year
+# Keep only the first occurrence of each year, replace others with ""
+labels_for_plot <- ifelse(duplicated(unique_labels), "", as.character(unique_labels))
+
+# Make sure SubmissionSession is a factor in the order you want
+df_plot_env$SubmissionSession <- factor(df_plot_env$SubmissionSession,
+                                    levels = unique(session_year_mapping$SubmissionSession))
+```
+
+```{r embeddings-all-bills, echo=FALSE, fig.pos="H", fig.height = 3, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Semantic Distance over Time"}
+ggplot() +
+  geom_line(data = df_plot_all, aes(x = StartDate, y = distance, color = "All Bills"), group = 1, color = "#DDDDDD") +
+  geom_point(data = df_plot_all, aes(x = StartDate, y = distance, color = "All Bills"), shape = 21, fill = "#DDDDDD", color = "#DDDDDD", size = 1) +
+
+  geom_line(data = df_plot_env, aes(x = StartDate, y = distance, color = "Environmental Bills"), group = 1, color = "#DDDDDD") +
+  geom_point(data = df_plot_env, aes(x = StartDate, y = distance, color = "Environmental Bills"), shape = 21, fill = "#DDDDDD", color = "#DDDDDD", size = 1) +
+
+  geom_line(data = df_plot_all_yearly_avg, aes(x = as.Date(session_year), y = distance, color = "All Bills")) +
+  geom_point(data = df_plot_all_yearly_avg, aes(x = as.Date(session_year), y = distance, color = "All Bills"), size = 1) +
+
+  geom_line(data = df_plot_env_yearly_avg, aes(x = as.Date(session_year), y = distance, color = "Environmental Bills")) +
+  geom_point(data = df_plot_env_yearly_avg, aes(x = as.Date(session_year), y = distance, color = "Environmental Bills"), size = 1) +
+
+  ylim(0, 15) +
+  xlab("") + ylab("Euclidean Distance") +
+  theme_minimal() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.position = "bottom") +
+  scale_color_manual(values = c("All Bills" = "black", "Environmental Bills" = "light green")) +
+  labs(color = "") +
+  guides(color = guide_legend(override.aes = list(linetype = "blank")))
+```

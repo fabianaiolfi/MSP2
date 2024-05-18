@@ -42,11 +42,12 @@ gt_embeddings <- gt_embeddings %>% drop_na()
 cor1 <- cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff)
 round(cor1$estimate, 2)
 round(cor1$p.value, 2)
+plot(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff)
 
 cor2 <- cor.test(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
 round(cor2$estimate, 2)
 round(cor2$p.value, 2)
-
+plot(gt_embeddings$climate_change_new_diff, gt_embeddings$distance_diff_lagged)
 
 # Linear Regression -----------------------------------------------------------
 

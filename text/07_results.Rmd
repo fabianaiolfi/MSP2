@@ -1,6 +1,10 @@
 ## Results
 
 ### Correlation Results
+
+```{r, child = 'figures/cor_plot.Rmd'}
+```
+
 - i begin by presenting the results of the correlation between the change in topic salience and the change in semantic similarity
 - the correlation coefficient equals $0.19$ with borderline statistical significance at conventional levels ($p = 0.11$).
 - This suggests a positive but weak correlation, indicating that an increase in topic salience is associated with an increase in semantic distance between bills, i.e., bills being less similar. This would go against my theory and not support my hypothesis.

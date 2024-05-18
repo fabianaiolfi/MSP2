@@ -104,6 +104,8 @@ load(file = here("data", "all_businesses_eda.Rda"))
 load(file = here("data", "all_businesses_party.Rda"))
 load(file = here("data", "all_businesses_wc.Rda"))
 load(file = here("data", "all_sessions.Rda"))
+load(file = here("data", "google_trends", "search_term", "gt_climate_change_2004_2024.Rda"))
+gt_climate_change_2004_2024_cor_plot <- gt_climate_change_2004_2024
 
 # Selects 
 # https://www.swissubase.ch/en/researcher/my-downloads/107981/19952/download-details

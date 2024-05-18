@@ -38,17 +38,18 @@ selects_yearly_share <- yearly_share %>%
 ```
 
 
-```{r gt-index, echo=FALSE, fig.pos="H", fig.height = 3.5, fig.width = 7, message=FALSE, warning=FALSE, fig.cap = "'climate change' Search Term Popularity (Monthly Average)"}
+```{r gt-index, echo=FALSE, fig.pos="H", fig.height = 3.5, fig.width = 7, message=FALSE, warning=FALSE, fig.cap = '"climate change" Search Term Popularity (Monthly Average)'}
 
 ggplot() +
-  geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change, color = "Data for Entire Time Series")) +
-  geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change, color = "Data for Entire Time Series"), size = 0.5) +
   
   geom_line(data = gt_climate_change_2004_2022, aes(x = Month, y = climate_change, color = "Data covering 2004-2022")) +
   geom_point(data = gt_climate_change_2004_2022, aes(x = Month, y = climate_change, color = "Data covering 2004-2022"), size = 0.5) +
   
   geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new, color = "Re-Indexed Data for Entire Time Series")) +
   geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new, color = "Re-Indexed Data for Entire Time Series"), size = 0.5) +
+
+  geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change, color = "Data for Entire Time Series")) +
+  geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change, color = "Data for Entire Time Series"), size = 0.5) +
   
   xlab("") + ylab("Search Term Popularity") + 
   ylim(0, 100) +

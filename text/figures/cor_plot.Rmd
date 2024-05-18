@@ -1,6 +1,5 @@
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-sp_greens_environmental_bills_distance_ft_embeddings <- readRDS(file = here("data", "sp_greens_environmental_bills_distance_ft_embeddings.Rda"))
+```{r, echo=FALSE, fig.pos="H", message=FALSE, warning=FALSE}
 
 # Get Month for each session
 session_month <- all_sessions %>% 
@@ -31,24 +30,37 @@ gt_embeddings <- gt_embeddings %>% mutate(distance_diff_lagged = dplyr::lag(dist
   
 # Clean up dataframe
 gt_embeddings <- gt_embeddings %>% drop_na()
+
 ```
 
-```{r models, echo=FALSE, message=FALSE, warning=FALSE, results = 'asis', fig.cap="counts"}
 
-model1 <- lm(distance_diff ~ climate_change_new_diff, gt_embeddings)
-model2 <- lm(distance_diff_lagged ~ climate_change_new_diff, gt_embeddings)
+```{r cor-plot, echo=FALSE, fig.pos="H", fig.height = 2.5, fig.width = 6, message=FALSE, warning=FALSE, fig.cap = "Correlation Plots"}
 
-model_table <- modelsummary(list("Model A" = model1,
-                                 "Model B (Lagged Independent Variable)" = model2),
-             title = "Linear Regression Model Results",
-             coef_map = c(`(Intercept)` = "Intercept",
-                          `climate_change_new_diff` = '“climate change” Search Term Popularity'),
-             gof_omit = "AIC|BIC|RMSE|Std.Errors|FE|F|Log.Lik.",
-             statistic = "({p.value})",
-             note = "Dependent variable: Eucledian distance between grouped bills. P-values in parentheses.",
-             stars = T
-             )
+plot1 <- ggplot(gt_embeddings, aes(x = climate_change_new_diff, y = distance_diff)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = T) +
+  labs(title = NULL,
+       x = "Δ Search Popularity Climate Change",
+       y = "Δ Embedding Distance") +
+  theme_minimal()
 
-model_table %>%
-  kable_styling(font_size = 10)
+plot2 <- ggplot(gt_embeddings, aes(x = climate_change_new_diff, y = distance_diff_lagged)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = T) +
+  labs(title = NULL,
+       x = "Δ Search Popularity Climate Change",
+       y = "Δ Lagged Embedding Distance") +
+  theme_minimal()
+
+grid.arrange(plot1, plot2, ncol = 2)
+
 ```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+rm(session_month,
+   sp_greens_environmental_bills_distance_ft_embeddings,
+   gt_embeddings)
+```
+
+

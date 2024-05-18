@@ -10,19 +10,6 @@ wc_environmental_bills <- wc_plot %>%
   dplyr::filter(grepl("Umwelt", TagNames))
 # summary(wc_environmental_bills$SubmittedText_clean_wc)
 
-# ggplot(all_businesses_wc, aes(x = SubmittedText_clean_wc)) +
-#   geom_boxplot() +
-#   theme_minimal()
-# 
-# ggplot(wc_environmental_bills, aes(x = SubmittedText_clean_wc)) +
-#   geom_boxplot() +
-#   theme_minimal()
-# 
-# ggplot() +
-#   geom_boxplot(data = all_businesses_wc, aes(x = SubmittedText_clean_wc, y = 0)) +
-#   geom_boxplot(data = wc_environmental_bills, aes(x = SubmittedText_clean_wc, y = 1)) +
-#   theme_minimal()
-
 ggplot() +
   geom_boxplot(data = wc_environmental_bills, aes(x = SubmittedText_clean_wc, y = factor(0))) +
   geom_boxplot(data = all_businesses_wc, aes(x = SubmittedText_clean_wc, y = factor(1))) +

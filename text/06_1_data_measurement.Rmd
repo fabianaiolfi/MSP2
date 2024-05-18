@@ -50,8 +50,9 @@ Figure \ref{fig:wc-bills} displays that the number of words in all bills (median
 I turn to Google Trends^[https://trends.google.com, retrieved 12 May 2024] as an alternative way to measure public salience. Google Trends is a tool that enables the evaluation of public interest in specific search terms and topics [@nghiemAnalysisCapacityGoogle2016 10]. Data on Google Trends are available from 2004 onwards. I examine the monthly popularity of the search term “climate change” in Switzerland between January 2004 and May 2024. I pick the search term “climate change” because it is largely congruent with the same issues that the Selects question described above touches upon. It is thus an adequat way of measuring public salience of environemtal topics.
 
 <!-- compare selects with google trends -->
-A brief visual comparison of both measures show that both Selects and Google Trends generally follow a similar trend line on environmental issues. This underlines the legitimacy of using Google Trends as a way of measuring public salience of environmental topics.
-![](../plots/placeholder_google_trends_selects.png)
+A brief visual comparison of both measures show that both Selects and Google Trends generally follow a similar trend line on environmental issues. This underlines the legitimacy of using Google Trends as a way of measuring public salience of environmental topics. See Figure \ref{fig:gt-selects}.
+```{r, child = 'figures/gt_selects.Rmd'}
+```
 
 
 ### Operationalisation

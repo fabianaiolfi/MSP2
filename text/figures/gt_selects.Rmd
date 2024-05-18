@@ -1,0 +1,92 @@
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+
+# Load Data -----------------------------------------------------------
+
+
+# Prep Data -----------------------------------------------------------
+
+selects_df <- selects %>%
+  dplyr::select(year, userid, weighttot, mip1, mip2) %>% 
+  left_join(mip_labels, by = c("mip1" = "value")) %>% 
+  dplyr::rename(mip1_name = name) %>% 
+  left_join(mip_labels, by = c("mip2" = "value")) %>% 
+  dplyr::rename(mip2_name = name)
+
+# Calculating the total weight for "environment&energy" per year
+env_energy_weights <- selects_df %>%
+  dplyr::filter(mip1_name == "environment&energy") %>%
+  group_by(year) %>%
+  summarize(weight_for_env_energy = sum(weighttot, na.rm = TRUE))
+
+# Calculating the total weight per year for all tags
+total_weights_per_year <- selects_df %>%
+  group_by(year) %>%
+  summarize(total_weight = sum(weighttot, na.rm = TRUE))
+
+yearly_share <- left_join(env_energy_weights, total_weights_per_year, by = "year") %>%
+  mutate(share = weight_for_env_energy / total_weight)
+
+
+# Re-Index -----------------------------------------------------------
+
+# Remove missing values at start of timeline
+gt_climate_change_2004_2022 <- gt_climate_change_2004_2022 %>% dplyr::filter(Month > "2007-02-01")
+gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>% dplyr::filter(Month > "2007-02-01")
+
+# "Lift up" values to have same starting point
+gt_climate_change_2004_2024$lifted <- gt_climate_change_2004_2024$climate_change + (gt_climate_change_2004_2022$climate_change[1] - gt_climate_change_2004_2024$climate_change[1])
+
+# Calculate index compared to first value
+gt_climate_change_2004_2024$index <- gt_climate_change_2004_2022$climate_change[1] / gt_climate_change_2004_2024$lifted
+
+# Calculate new climate change value
+gt_climate_change_2004_2024$climate_change_new <- gt_climate_change_2004_2024$lifted / gt_climate_change_2004_2024$index
+
+# Replace values bigger than 100 with 100
+gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>% 
+  mutate(climate_change_new = case_when(climate_change_new > 100 ~ 100,
+                                        T ~ climate_change_new))
+
+# Average for each year
+gt_climate_change_2004_2024_avg <- gt_climate_change_2004_2024 %>% 
+  mutate(year = year(Month)) %>% 
+  group_by(year) %>% 
+  mutate(year_avg = mean(climate_change_new)) %>% 
+  distinct(year, .keep_all = T)
+
+# Compare Selects with Google Trends
+selects_yearly_share <- yearly_share %>% 
+  mutate(year = as.Date(paste0(year, "-01-01"), format = "%Y-%m-%d"))
+
+```
+
+
+```{r gt-selects, echo=FALSE, fig.pos="H", fig.height = 3.5, fig.width = 7, message=FALSE, warning=FALSE, fig.cap = "Google Trends and Selects Comparison"}
+
+ggplot() +
+  geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new, color = "'climate change' search term\npopularity (monthly average)"), size = 1) +
+  geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new, color = "'climate change' search term\npopularity (monthly average)")) +
+  geom_line(data = gt_climate_change_2004_2024_avg, aes(x = Month, y = year_avg, color = "'climate change' search term\npopularity (yearly average)")) +
+  geom_point(data = gt_climate_change_2004_2024_avg, aes(x = Month, y = year_avg, color = "'climate change' search term\npopularity (yearly average)"), size = 1) +
+  geom_point(data = selects_yearly_share, aes(x = year, y = (share * 100) + 49, color = "% Select respondents environment\nis most important problem"), size = 1) +
+  geom_line(data = selects_yearly_share, aes(x = year, y = (share * 100) + 49, color = "% Select respondents environment\nis most important problem")) +
+  xlim(as.Date("2003-01-01"), as.Date("2022-12-31")) +
+  scale_y_continuous(
+    "Google Trends", 
+    sec.axis = sec_axis(~ . - 49, name = "Selects")
+  ) +
+  labs(x = NULL, color = "Legend") +
+  scale_color_manual(
+    values = c("'climate change' search term\npopularity (monthly average)" = "#DDDDDD", "'climate change' search term\npopularity (yearly average)" = "black", "% Select respondents environment\nis most important problem" = "red")
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.y.right = element_text(color = "red"),  # Make y-axis labels on the right red
+    axis.title.y.right = element_text(color = "red"),
+    legend.position = "bottom"
+  ) +
+  guides(color = guide_legend(override.aes = list(linetype = "blank"))) +
+  theme(legend.title = element_blank())
+
+```

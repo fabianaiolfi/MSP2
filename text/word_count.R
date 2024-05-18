@@ -70,6 +70,7 @@ folder_path <- "text/"
 total_words <- count_words_in_rmd(folder_path)
 cat("Total words in all Rmd files:", total_words)
 
+# 240518: 5681
 # 240517: 5693
 # 240514: 4556
 # 240512: 4171

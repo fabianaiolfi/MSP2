@@ -1,0 +1,63 @@
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+
+# Load Data -----------------------------------------------------------
+
+
+# Re-Index -----------------------------------------------------------
+
+# Remove missing values at start of timeline
+gt_climate_change_2004_2022 <- gt_climate_change_2004_2022 %>% dplyr::filter(Month > "2007-02-01")
+gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>% dplyr::filter(Month > "2007-02-01")
+
+# "Lift up" values to have same starting point
+gt_climate_change_2004_2024$lifted <- gt_climate_change_2004_2024$climate_change + (gt_climate_change_2004_2022$climate_change[1] - gt_climate_change_2004_2024$climate_change[1])
+
+# Calculate index compared to first value
+gt_climate_change_2004_2024$index <- gt_climate_change_2004_2022$climate_change[1] / gt_climate_change_2004_2024$lifted
+
+# Calculate new climate change value
+gt_climate_change_2004_2024$climate_change_new <- gt_climate_change_2004_2024$lifted / gt_climate_change_2004_2024$index
+
+# Replace values bigger than 100 with 100
+gt_climate_change_2004_2024 <- gt_climate_change_2004_2024 %>% 
+  mutate(climate_change_new = case_when(climate_change_new > 100 ~ 100,
+                                        T ~ climate_change_new))
+
+# Average for each year
+gt_climate_change_2004_2024_avg <- gt_climate_change_2004_2024 %>% 
+  mutate(year = year(Month)) %>% 
+  group_by(year) %>% 
+  mutate(year_avg = mean(climate_change_new)) %>% 
+  distinct(year, .keep_all = T)
+
+# Compare Selects with Google Trends
+selects_yearly_share <- yearly_share %>% 
+  mutate(year = as.Date(paste0(year, "-01-01"), format = "%Y-%m-%d"))
+
+```
+
+
+```{r gt-index, echo=FALSE, fig.pos="H", fig.height = 3.5, fig.width = 7, message=FALSE, warning=FALSE, fig.cap = "'climate change' Search Term Popularity (Monthly Average)"}
+
+ggplot() +
+  geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change, color = "Data for Entire Time Series")) +
+  geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change, color = "Data for Entire Time Series"), size = 0.5) +
+  
+  geom_line(data = gt_climate_change_2004_2022, aes(x = Month, y = climate_change, color = "Data covering 2004-2022")) +
+  geom_point(data = gt_climate_change_2004_2022, aes(x = Month, y = climate_change, color = "Data covering 2004-2022"), size = 0.5) +
+  
+  geom_line(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new, color = "Re-Indexed Data for Entire Time Series")) +
+  geom_point(data = gt_climate_change_2004_2024, aes(x = Month, y = climate_change_new, color = "Re-Indexed Data for Entire Time Series"), size = 0.5) +
+  
+  xlab("") + ylab("Search Term Popularity") + 
+  ylim(0, 100) +
+  theme_minimal() +
+  scale_color_manual(values = c("Data for Entire Time Series" = "red",
+                                "Data covering 2004-2022" = "blue",
+                                "Re-Indexed Data for Entire Time Series" = "green")) +
+  labs(color = "") +
+  guides(color = guide_legend(override.aes = list(linetype = "blank"))) +
+  theme(legend.position = "bottom")
+
+```

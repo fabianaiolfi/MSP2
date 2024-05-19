@@ -42,10 +42,10 @@ model_table <- modelsummary(list("Model A" = model1,
                                  "Model B (Lagged Independent Variable)" = model2),
              title = "Linear Regression Model Results",
              coef_map = c(`(Intercept)` = "Intercept",
-                          `climate_change_new_diff` = '“climate change” Search Term Popularity'),
+                          `climate_change_new_diff` = 'Δ Search Term Popularity'),
              gof_omit = "AIC|BIC|RMSE|Std.Errors|FE|F|Log.Lik.",
              statistic = "({p.value})",
-             note = "Dependent variable: Eucledian distance between grouped bills. P-values in parentheses.",
+             note = "Dependent variable: Δ Eucledian distance between grouped bills; p-values in parentheses.",
              stars = T
              )
 

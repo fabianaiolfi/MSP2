@@ -7,7 +7,7 @@ In this section, you will describe the precise method that you use to test the r
 #### Differencing and Time Lag
 Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables.
 
-As a further exploration, I lag the dependent variable by one unit, i.e., by one session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and the parliamentary bills they introduce as a reaction. In other words, I assume a delay in parties reacting to an increase in public salience.
+As a further exploration, I lag the dependent variable by one unit, i.e., by one parliamentary session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and their parliamentary bills they introduce. In other words, I assume a delay in parties reacting to an change in public salience.
 
 ### Correlation
 In the first step, I calculate the correlation between the dependent and independent variables using the Pearson correlation. This method is suitable as an initial, straightforward check to see if there is a correlation between the two variables. The Pearson correlation can be used because the data under examination are continuous, assume a linear relationship, contain few outliers and are normally distributed.
@@ -15,22 +15,22 @@ In the first step, I calculate the correlation between the dependent and indepen
 I also compare the un-lagged and the lagged dependent variable to see if lagging the dependent variable makes a difference. This comparison helps to understand whether past values of the independent variable have an impact on the current dependent variable, thereby providing additional insight into the temporal dynamics of the relationship between the dependent and independent variables.
 
 ### Linear Regression
-In the second step, I model the relationship between the differences using an ordinary least squares (OLS) linear regression model. This helps to determine whether there is a statistically significant relationship between the dependent and independent variables, and quantifies the strength and direction of this relationship.
+In a second step, I model the relationship between the differences using an ordinary least squares (OLS) linear regression model. This helps to determine whether there is a statistically significant relationship between the dependent and independent variables, and quantifies the strength and direction of this relationship.
 
-Given the data, this is the most appropriate method because OLS regression is effective for continuous data and assumes a linear relationship between variables. It is also robust to outliers and provides easily interpretable coefficients, allowing us to understand how changes in the independent variables are related to changes in the dependent variable. In addition, OLS regression is appropriate for normally distributed data, which matches the characteristics of the dataset under consideration. This leads to the two model specifications:
+Given the data, this is the most appropriate method because OLS regression is effective for continuous data and assumes a linear relationship between variables. It is also robust to outliers and is appropriate for normally distributed data, which matches the characteristics of the dataset under consideration. This leads to the two model specifications:
 
 Model 1:
 \begin{equation*}
 \begin{aligned}
-\Delta \; Euclidean \; Distance = \beta \; + \; \Delta \; Search \; Term \; Popularity \; + \; \epsilon
+\Delta \; Euclidean \; Distance = \beta_0 \; + \; \beta_1 \; \Delta \; Search \; Term \; Popularity \; + \; \epsilon
 \end{aligned}
 \end{equation*}
 
 Model 2:
 \begin{equation*}
 \begin{aligned}
-\Delta \; Euclidean \; Distance_{s+1} = \beta \; + \; \Delta \; Search \; Term \; Popularity_{s} \; + \; \epsilon
+\Delta \; Euclidean \; Distance_{s+1} = \beta_0 \; + \; \beta_1 \; \Delta \; Search \; Term \; Popularity_{s} \; + \; \epsilon
 \end{aligned}
 \end{equation*}
 
-In these models, Delta (Δ) indicates the change between two observations, specifically between two parliamentary sessions. The variable $s+1$ represents the lagged variable, where s denotes the current parliamentary session and $s+1$ denotes the next session.
+In these models, Delta (Δ) indicates the change between two observations, specifically between two parliamentary sessions. $s+1$ represents the lagged variable, where s denotes the current parliamentary session and $s+1$ denotes the next session.

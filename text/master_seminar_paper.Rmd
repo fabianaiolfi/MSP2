@@ -178,7 +178,12 @@ sp_greens_environmental_bills_distance_ft_embeddings <- readRDS(file = here("dat
 ```{r, child = '09_appendix.Rmd'}
 ```
 
-<!-- \newpage -->
+\newpage
 
-```{r, eval=FALSE, child = '10_authorship.Rmd'}
+```{r, child = '10_authorship.Rmd'}
+```
+
+\newpage
+
+```{r, child = '11_ai.Rmd'}
 ```

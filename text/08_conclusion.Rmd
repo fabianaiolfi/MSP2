@@ -1,6 +1,18 @@
 ## Conclusion
 
-[…]
+- this paper sets out to examine why parliamentary bills on environemntal topics introduced by mainstream left parties and green parties have become more similar in content over the past twenty years
+
+theory
+- to answer this question, i turn to literature on political agendas, specifically “party system agendas”. 
+- in this context, parties place issues on their agendas that are salient to the public. also, parties respond to each other’s agendas.
+- research shows that parties that are ideologically close to each other tend to be more responsive to each other’s agendas.
+- one way of placing issues on the agenda is by introducing parliamentary bills that touch upon such issues
+
+- swiss case: …
+
+- results:
+
+- future research:
 
 <!--
 - Future research:

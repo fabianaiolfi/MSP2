@@ -7,4 +7,4 @@ All scripts used to prepare data and build models are available on Github:
 
 ### Use of Artificial Intelligence
 
-OpenAI's ChatGPT 4 and 4o^[https://openai.com/chatgpt, retrieved 19 May 2024] and DeepL Write^[https://www.deepl.com/en/write, retrieved 19 May 2024] were used in a supporting manner to edit texts and develop R scripts. Prompts can be made available upon request: fabian.aiolfi@stud.unilu.ch
+OpenAI's ChatGPT 4 and 4o^[https://openai.com/chatgpt, retrieved 19 May 2024] and DeepL Write^[https://www.deepl.com/en/write, retrieved 19 May 2024] were used in a supporting manner to edit texts and develop R scripts. ChatGPT prompts can be made available upon request: fabian.aiolfi@stud.unilu.ch

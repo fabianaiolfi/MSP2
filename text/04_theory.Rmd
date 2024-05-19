@@ -2,6 +2,6 @@
 
 How do political parties respond to the increased salience of environmental issues? Research shows that when environmental issues become more important to voters, political parties adjust their agendas to address these issues. Specifically, under the condition that left-wing parties consider the green parties to be an electoral threat, we expect mainstream left-wing parties to place environmental issues on the “party system agenda” through the introduction of parliamentary bills. 
 
-In order to win over green party voters, the left-wing parties will introduce parliamentary bills that are similar in content to bills proposed by the green party. By winning over these voters, left-wing parties gain an electoral advantage. This leads to the following hypothesis:
+In order to win over green party voters, left-wing parties will introduce parliamentary bills that are similar in content to bills proposed by the green party. By winning over these voters, left-wing parties gain an electoral advantage. This leads to the following hypothesis:
 
 **Hypothesis**: An increase in the public salience of environmental issues leads to an increase in the content similarity between parliamentary bills of mainstream left-wing parties and those of green parties on environmental issues.

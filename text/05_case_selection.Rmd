@@ -2,7 +2,7 @@
 
 In order to test this hypothesis, I turn to Switzerland. Specifically, I examine the Swiss mainstream left-wing party (Swiss Social Democrats, German: “Sozialdemokratische Partei der Schweiz”, SP) and the Swiss green party (Swiss Green Party, German: “Grüne Schweiz”, GPS). Switzerland, the SP and the GPS are suited for the following reasons.
 
-First, environemental issues have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and place environemental issues on their agenda.
+First, environmental issues have become more salient in Switzerland over the past twenty years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and place environmental issues on their agenda.
 
 Second, Switzerland has an electoral system that accommodates smaller parties, as highlighted by @linderSchweizerischeDemokratieInstitutionen2017a [102]. The electoral success of small parties such as the GPS (see Figure \ref{fig:ch-parties}) further highlights how the Swiss electoral system accommodates and fosters small parties.
 
@@ -14,6 +14,6 @@ Third, I argue that the SP perceive the GPS as an electoral threat. The GPS has 
 ```{r, child = 'figures/ches.Rmd'}
 ```
 
-I consider this electoral success of the GPS to have occurred at the expense of the SP. This is because both parties belong to the same party family and are thus ideologically close. Both parties highlight issues such as social welfare and gender equality and both are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]. When examining both parties in a two-dimensional left-right/liberal-authoritarian ideological space, the SP and GPS are their closest neighbors (see Figure \ref{fig:ches}). Following this spatial argument, both parties are interested in canvassing the same group of voters.
+I consider this electoral success of the GPS to have occurred at the expense of the SP. This is because both parties belong to the same party family and are thus ideologically close. Both parties highlight issues such as social welfare and gender equality and both are pro-union [@linderSchweizerischeDemokratieInstitutionen2017a 132, 136, 137]. When examining both parties in a two-dimensional left-right/liberal-authoritarian ideological space, the SP and GPS are their closest neighbours (see Figure \ref{fig:ches}). Following this spatial argument, both parties are interested in canvassing the same group of voters.
 
 In sum, the SP emphasises environmental issues in an effort to win over voters from the GPS, a small party that it perceives to be an electoral threat. The SP does this by proposing parliamentary bills that cover environmental topics that are similar in content to GPS bills.

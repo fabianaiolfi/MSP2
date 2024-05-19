@@ -12,7 +12,7 @@ As a further exploration, I lag the dependent variable by one unit, i.e., by one
 ### Correlation
 In the first step, I calculate the correlation between the dependent and independent variables using the Pearson correlation. This method is suitable as an initial, straightforward check to see if there is a correlation between the two variables. The Pearson correlation can be used because the data under examination are continuous, assume a linear relationship, contain few outliers and are normally distributed.
 
-I also compare the unlagged and the lagged dependent variable to see if lagging the dependent variable makes a difference. This comparison helps to understand whether past values of the independent variable have an impact on the current dependent variable, thereby providing additional insight into the temporal dynamics of the relationship between the dependent and independent variables.
+I also compare the un-lagged and the lagged dependent variable to see if lagging the dependent variable makes a difference. This comparison helps to understand whether past values of the independent variable have an impact on the current dependent variable, thereby providing additional insight into the temporal dynamics of the relationship between the dependent and independent variables.
 
 ### Linear Regression
 In the second step, I model the relationship between the differences using an ordinary least squares (OLS) linear regression model. This helps to determine whether there is a statistically significant relationship between the dependent and independent variables, and quantifies the strength and direction of this relationship.

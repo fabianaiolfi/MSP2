@@ -38,8 +38,8 @@ gt_embeddings <- gt_embeddings %>% drop_na()
 model1 <- lm(distance_diff ~ climate_change_new_diff, gt_embeddings)
 model2 <- lm(distance_diff_lagged ~ climate_change_new_diff, gt_embeddings)
 
-model_table <- modelsummary(list("Model A" = model1,
-                                 "Model B (Lagged Independent Variable)" = model2),
+model_table <- modelsummary(list("Model 1" = model1,
+                                 "Model 2 (Lagged Independent Variable)" = model2),
              title = "Linear Regression Model Results",
              coef_map = c(`(Intercept)` = "Intercept",
                           `climate_change_new_diff` = 'Δ Search Term Popularity'),

@@ -36,7 +36,7 @@ nice to have:
 
 In summary, while the total number of parliamentary bills has increased over the past 20 years, the number of environmental bills remained largely unchanged until the late 2010s. It was during this period that there was a notable increase in the number of environmental bills introduced in the Swiss parliament. The GPS appears to be a driving force behind many of these bills, with the SP also introducing a significant number of environmental bills compared to other major parties in the Swiss parliament.
 
-In the next step, I examine the lengths of the bills introduced by counting the number of words in each bill. This is relevant because measuring content similartiy by calculating the embedding of a bill requires calculating the embedding of each word. Consequently, the more words in a single bill, the more information is available, leading to a more precise placement of the bill in semantic space. If the number of words varied significantly between bills, this could have a negative impact on the accuracy of the analysis.
+In the next step, I examine the lengths of the bills introduced by counting the number of words in each bill. This is relevant because measuring content similarity by calculating the embedding of a bill requires calculating the embedding of each word. Consequently, the more words in a single bill, the more information is available, leading to a more precise placement of the bill in semantic space. If the number of words varied significantly between bills, this could have a negative impact on the accuracy of the analysis.
 
 ```{r, child = 'figures/wc_bills.Rmd'}
 ```

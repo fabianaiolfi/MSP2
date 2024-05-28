@@ -4,6 +4,50 @@
 In this section, you will describe the precise method that you use to test the relationship between your dependent variable and your independent variable.
 -->
 
+#### Semantic Similarity using Word Embeddings
+In order to test the hypothesis, it is necessary to measure the content similarity between parliamentary bills. This leads into the realm of natural language processing (NLP) and approaches that use text as data [@rodriguezWordEmbeddingsWhat2022]. In NLP terms, how can the semantic similarity between documents, in particular parliamentary bills, be calculated [@aliSemanticSimilarityMeasures2018 907]?
+
+The “Word Mover's Distance” is a method proposed by @wangMeasurementTextSimilarity2020 [4] for measuring the semantic distance between documents. This technique applies the concept of text representation in semantic space as a means of measuring similarity. The underlying principle is to represent a text as a point in a multidimensional semantic space [@jurafskySpeechLanguageProcessing2009 109]. In this space, texts that are semantically similar are positioned closer to each other than texts that are dissimilar. Consequently, the distance between two texts in this space can be used to make a statement about their semantic similarity.
+
+In order to place text in this semantic space, the meaning of a text must be converted into embeddings. These embeddings are learned representations of word meanings [@jurafskySpeechLanguageProcessing2009 97]. In short, these representations are computed using the probability of a word appearing near another word in the same text [@jurafskySpeechLanguageProcessing2009 122]. The representations take the form of vectors [@jurafskySpeechLanguageProcessing2009 109], which are simply a list of numbers [@jurafskySpeechLanguageProcessing2009 111] that represent the location of a text in semantic space.
+
+Computing probabilities of words appearing near other words is a cumbersome and computationally expensive endeavour. As an alternative, datasets of existing probabilities can be used. For example, Facebook AI Research distributes “pre-trained word vectors” through fastText,^[https://fasttext.cc/, retrieved 17 May 204] an open-source word embeddings library. I apply fastText in this paper for the following three reasons. First, fastText provides word embeddings for the German language,^[https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.de.300.vec.gz, retrieved 17 May 2024] which is essential in order to place parliamentary bills written in German in semantic space. Second, fastText elegantly deals with unknown words, i.e., words that are new to the model.^[For a more detailed explanation of how fastText handles unknown words, please see @jurafskySpeechLanguageProcessing2009 [127].] Third, fastText is open source, thus ensuring reproducibility.
+
+Embeddings are good at recognising synonyms, e.g., showing that the words “car” and “automobile” have a high semantic similarity [@jurafskySpeechLanguageProcessing2009 121]. This principle of embedding single words can be extended to whole documents, where a document represents a point in the semantic space instead of a single word [@leDistributedRepresentationsSentences2014]. Thus embeddings can be used to measure the similarity between documents, in this case parliamentary bills. In political science, embeddings have also been used to measure the positions of candidates [@caseMeasuringStrategicPositioning2023 11] and party ideology [@rheaultWordEmbeddingsAnalysis2020 29]. Word and document embeddings are thus a tried and tested technique for analysing political texts. 
+
+Parties introduce different numbers of bills in each parliamentary session.^[The Swiss parliament meets in four ordinary three-week sessions per year. Additionally, the parliament assembles for further sessions, named “special” or “extraordinary” sessions that deal with issues that were not dealt with in the ordinary sessions (https://www.parlament.ch/en/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=197, retrieved 10 May 2024).] For this reason, and also because it does not make sense to compare single parliamentary bills with each other, I group all bills put forward by a party in a session and calculate the “middle point” of these bills in the semantic space. This middle point can be found by calculating the average position of all documents in a group.
+
+This centroid represents the overall semantic content of all bills in a group. In other words, the “middle point” reflects the overall semantic content of a party in a session. It effectively summarizes the collective characteristics or the “average” bill within a group, thus identifying the group’s central tendencies. The distance between two groups in semantic space, i.e., two middle points, can be calculated using the Euclidean distance. This measure requires the coordinates of two points in order to calculate the distance between these points. The coordinates of the middle points are given by the vectors, thus calculating the distance can be performed with the programming language R [@rcoreteamLanguageEnvironmentStatistical2022] by applying the following formula [@tabakGeometry2008 150]:
+
+\[
+distance(\mathbf{p}, \mathbf{q}) = \sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}
+\]
+
+$p$ and $q$ represent two points in an $n$-dimensional space. These points are expressed as embeddings, i.e., vectors or lists of numbers representing their coordinates. The variable $i$ represents the $i$-th coordinate of a point in the $n$-dimensional space.
+
+To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I place these bills in semantic space. I then group the bills by party and session and then calculate the middle point of each group. Using the Euclidean distance, I calculate the distance between the middle points of groups in semantic space. The more semantically similar two groups of bills are, the smaller the distance between them in semantic space.
+
+I continue with an overview of descriptive statistics of the semantic similarity between bills introduced by the two parties over time.
+
+```{r, child = 'figures/embedding_all_bills.Rmd'}
+```
+
+Looking at all types of bills proposed by the SP and the GPS, we can see that the average distance between all bills has remained roughly constant over time (see the black line in Figure \ref{fig:embeddings-all-bills}). On the other hand, if we consider only environmental bills, there is a clear downward trend over the last 20 years (see the green line in Figure \ref{fig:embeddings-all-bills}). This downward trend indicates that the distance between these bills has decreased over time, suggesting that they have become more semantically similar.
+
+Figure \ref{fig:embeddings-all-bills} shows both the semantic distances per session in grey and the distances averaged by year in black and green. Averaging by year facilitates visual interpretation by smoothing out fluctuations. However, this method has the caveat that all sessions are given the same weight, which may distort perception as some sessions contain fewer bills than others.
+
+It is important to note that the distance values themselves cannot be interpreted in isolation. For example, a distance value of $3$ has no inherent meaning. These values must be interpreted comparatively. So a distance value of $2$ is smaller than a distance of $3$, meaning that two groups of parliamentary bills with a smaller distance are semantically more similar.
+
+<!--
+to do:
+- does one party move closer to the other party or do both parties move?
+-->
+
+<!--
+nice to have:
+- differentiate between bills that only have the tag “environment” and bills with the most common co-tag, e.g. “environment” and “finance” 
+-->
+
 #### Differencing and Time Lag
 Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables.
 

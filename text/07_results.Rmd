@@ -1,6 +1,42 @@
 ## Results
 
-### Correlation Results
+### Descriptive Analysis
+
+```{r, child = 'tables/counts.Rmd'}
+```
+
+Table \ref{tab:counts} gives an overview of the number of bills introduced in the Swiss parliament between March 2004 and December 2023. During this period, approximately 12.7% of all bills introduced contained the tag "environment". The SP introduced more than twice as many bills in all categories as the GPS, but around 400 fewer bills on environmental issues. Approximately 10.5% of SP bills dealt with environmental issues, while almost 30% of GPS bills dealt with environmental issues. These differences are logical as the SP has more seats in parliament than the GPS (see Figure \ref{fig:ch-parties}) and environmental issues are more central to the GPS agenda.
+
+```{r, child = 'figures/all_bills.Rmd'}
+```
+
+Figure \ref{fig:all-bills} shows how the number of all parliamentary bills has increased over the last 20 years. The number of bills introduced by the SP and the GPS has remained mostly constant, except for an increase after the 2019 election, when the GPS achieved its best election result in history. Comparing the number of bills with an environmental label with all bills, the number of environmental bills remained more or less constant until the early 2010s. After this period, there was a slow increase until the late 2010s, followed by a sharp increase.
+
+```{r, child = 'figures/env_party_bills.Rmd'}
+```
+
+If we break down the number of environmental bills by party (Figure \ref{fig:env-party-bills}), we can see that all parties introduced roughly the same number of these bills until the late 2010s. Around 2019, all parties started to introduce more environmental bills, with the SP and GPS leading the way. After this brief spike, all parties except the GPS reduced their number of environmental bills. Again, this makes intuitive sense, as the GPS owns green issues and had just come off a very successful election in 2019.
+
+<!--
+nice to have:
+- bills by party strength, incl. graph
+- show number of bills by party strength; divide number of bills from a party by seats in parliament
+-->
+
+In summary, while the total number of parliamentary bills has increased over the past 20 years, the number of environmental bills remained largely unchanged until the late 2010s. It was during this period that there was a notable increase in the number of environmental bills introduced in the Swiss parliament. The GPS appears to be a driving force behind many of these bills, with the SP also introducing a significant number of environmental bills compared to other major parties in the Swiss parliament.
+
+In the next step, I examine the lengths of the bills introduced by counting the number of words in each bill. This is relevant because measuring content similarity by calculating the embedding of a bill requires calculating the embedding of each word. Consequently, the more words in a single bill, the more information is available, leading to a more precise placement of the bill in semantic space. If the number of words varied significantly between bills, this could have a negative impact on the accuracy of the analysis.
+
+```{r, child = 'figures/wc_bills.Rmd'}
+```
+
+Figure \ref{fig:wc-bills} shows that the number of words in all bills (median: 72 words) and the number of words in environmental bills (median: 74 words) are almost the same. Over time, the number of words in bills remains stable, with the standard deviation of the median for each year being 7.72 for all bills and 12.49 for environmental bills. A similar stability is observed for environmental bills introduced by the SP and the GPS, with the standard deviation of the median over time being 13.77 for SP bills and 14.95 for GPS bills. 
+
+In summary, this brief examination of bill length shows that the number of words per bill remains fairly consistent over time. This consistency is beneficial for the application of a text-as-data approach, as it ensures that a comparable amount of data is available per bill throughout the period under study.
+
+### Inferential Analysis
+
+#### Correlation Results
 
 ```{r, child = 'figures/cor_plot.Rmd'}
 ```
@@ -9,7 +45,7 @@ First, I present the results of the correlation between the change in search ter
 
 However, when the time lag is applied to the Euclidean distance, the results point in the opposite direction. The correlation coefficient between the change in search term popularity and the *lagged* change of Euclidean distance is $-0.22$, with statistical significance at conventional levels $(p = 0.06)$. This indicates that an increase of the popularity of the search term “climate change” is associated with a decrease in Euclidean distance between parliamentary bills introduced by the SP and the GPS, lagged by one parliamentary session. This decrease in distance suggests that SP and GPS parliamentary bills become more similar when public attention to environmental issues increases.
 
-### Linear Regression Results
+#### Linear Regression Results
 
 ```{r, child = 'tables/models.Rmd'}
 ```

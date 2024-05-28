@@ -11,39 +11,7 @@ Central to my analysis is a parliamentary bill’s submitted text. This section 
 
 Due to Switzerland’s four official languages, parliamentary items of business can be written either in German, French, Italian or Romansh. The Federal Administration (German: “Bundesverwaltung”) translates most items of business in  to German, French and Italian. Some are only translated into German and French.^[https://www.parlament.ch/de/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=206, retrieved 14 May 2024] In the context of this research, I have chosen to use parliamentary bills in German, as my German is more proficient than my French, simplifying the examination process.
 
-The bills under examination were introduced between March 2004 and December 2023. I choose this time frame because it coincides with the electoral rise of the GPS and also covers a substantial period before the increased public salience of environmental issues starting in the beginning of the 2010s. This allows for a before-after comparison. I continue with a brief overview of descriptive statistics of the parliamentary bills.
-
-```{r, child = 'tables/counts.Rmd'}
-```
-
-Table \ref{tab:counts} gives an overview of the number of bills introduced in the Swiss parliament between March 2004 and December 2023. During this period, approximately 12.7% of all bills introduced contained the tag "environment". The SP introduced more than twice as many bills in all categories as the GPS, but around 400 fewer bills on environmental issues. Approximately 10.5% of SP bills dealt with environmental issues, while almost 30% of GPS bills dealt with environmental issues. These differences are logical as the SP has more seats in parliament than the GPS (see Figure \ref{fig:ch-parties}) and environmental issues are more central to the GPS agenda.
-
-```{r, child = 'figures/all_bills.Rmd'}
-```
-
-Figure \ref{fig:all-bills} shows how the number of all parliamentary bills has increased over the last 20 years. The number of bills introduced by the SP and the GPS has remained mostly constant, except for an increase after the 2019 election, when the GPS achieved its best election result in history. Comparing the number of bills with an environmental label with all bills, the number of environmental bills remained more or less constant until the early 2010s. After this period, there was a slow increase until the late 2010s, followed by a sharp increase.
-
-```{r, child = 'figures/env_party_bills.Rmd'}
-```
-
-If we break down the number of environmental bills by party (Figure \ref{fig:env-party-bills}), we can see that all parties introduced roughly the same number of these bills until the late 2010s. Around 2019, all parties started to introduce more environmental bills, with the SP and GPS leading the way. After this brief spike, all parties except the GPS reduced their number of environmental bills. Again, this makes intuitive sense, as the GPS owns green issues and had just come off a very successful election in 2019.
-
-<!--
-nice to have:
-- bills by party strength, incl. graph
-- show number of bills by party strength; divide number of bills from a party by seats in parliament
--->
-
-In summary, while the total number of parliamentary bills has increased over the past 20 years, the number of environmental bills remained largely unchanged until the late 2010s. It was during this period that there was a notable increase in the number of environmental bills introduced in the Swiss parliament. The GPS appears to be a driving force behind many of these bills, with the SP also introducing a significant number of environmental bills compared to other major parties in the Swiss parliament.
-
-In the next step, I examine the lengths of the bills introduced by counting the number of words in each bill. This is relevant because measuring content similarity by calculating the embedding of a bill requires calculating the embedding of each word. Consequently, the more words in a single bill, the more information is available, leading to a more precise placement of the bill in semantic space. If the number of words varied significantly between bills, this could have a negative impact on the accuracy of the analysis.
-
-```{r, child = 'figures/wc_bills.Rmd'}
-```
-
-Figure \ref{fig:wc-bills} shows that the number of words in all bills (median: 72 words) and the number of words in environmental bills (median: 74 words) are almost the same. Over time, the number of words in bills remains stable, with the standard deviation of the median for each year being 7.72 for all bills and 12.49 for environmental bills. A similar stability is observed for environmental bills introduced by the SP and the GPS, with the standard deviation of the median over time being 13.77 for SP bills and 14.95 for GPS bills. 
-
-In summary, this brief examination of bill length shows that the number of words per bill remains fairly consistent over time. This consistency is beneficial for the application of a text-as-data approach, as it ensures that a comparable amount of data is available per bill throughout the period under study.
+The bills under examination were introduced between March 2004 and December 2023. I choose this time frame because it coincides with the electoral rise of the GPS and also covers a substantial period before the increased public salience of environmental issues starting in the beginning of the 2010s. This allows for a before-after comparison.
 
 #### Public Salience of Environmental Issues
 @luthElectoralImportanceEvolution2022 [171] use the “Swiss Election Study” (Selects)^[https://forscenter.ch/projects/selects/, retrieved 12 May 2024] to measure the salience of environmental issues in the public sphere. In this survey, respondents are asked what their “most important problem” is (Variable “mip1”). I calculate the share of respondents who chose “Environment & Energy” as their most important problem from a list of different issues.^[All issues respondents could pick as their “most important problem”: Agriculture, economics, education and youth & culture, environment & energy, European integration, finances & taxes, gender issues & discrimination, immigration & asylum, international relations&conflicts and foreign policy & army, labour market, law & order, political system and parties & politicians, public health, public service & infrastructure, regions & national cohesion, social security, other problems, no problem, don’t know / no answer / wildcode.] This provides a solid measurement of the public salience of environmental issues. However, the Selects survey is only carried out every four years during Swiss parliamentary elections, thus providing only four data points in my time range of examination (2007, 2011, 2015 and 2019). This stands in contrast to the number of sessions in this time period that I will use to group parliamentary bills by (see “Operationalisation” further below). I thus need a way of measuring public salience of environmental topics on a more frequent basis.
@@ -62,49 +30,17 @@ A brief visual comparison of both measures show that both Selects and Google Tre
 Step 2: Measurement – if you create a new measure using the data, explain how you do so. This could include describing coding procedures, the creation of an index, or other forms of measurement.
 -->
 
-#### Dependent Variable: Semantic Similarity using Word Embeddings
-In order to test the hypothesis, it is necessary to measure the content similarity between parliamentary bills. This leads into the realm of natural language processing (NLP) and approaches that use text as data [@rodriguezWordEmbeddingsWhat2022]. In NLP terms, how can the semantic similarity between documents, in particular parliamentary bills, be calculated [@aliSemanticSimilarityMeasures2018 907]?
-
-The “Word Mover's Distance” is a method proposed by @wangMeasurementTextSimilarity2020 [4] for measuring the semantic distance between documents. This technique applies the concept of text representation in semantic space as a means of measuring similarity. The underlying principle is to represent a text as a point in a multidimensional semantic space [@jurafskySpeechLanguageProcessing2009 109]. In this space, texts that are semantically similar are positioned closer to each other than texts that are dissimilar. Consequently, the distance between two texts in this space can be used to make a statement about their semantic similarity.
-
-In order to place text in this semantic space, the meaning of a text must be converted into embeddings. These embeddings are learned representations of word meanings [@jurafskySpeechLanguageProcessing2009 97]. In short, these representations are computed using the probability of a word appearing near another word in the same text [@jurafskySpeechLanguageProcessing2009 122]. The representations take the form of vectors [@jurafskySpeechLanguageProcessing2009 109], which are simply a list of numbers [@jurafskySpeechLanguageProcessing2009 111] that represent the location of a text in semantic space.
-
-Computing probabilities of words appearing near other words is a cumbersome and computationally expensive endeavour. As an alternative, datasets of existing probabilities can be used. For example, Facebook AI Research distributes “pre-trained word vectors” through fastText,^[https://fasttext.cc/, retrieved 17 May 204] an open-source word embeddings library. I apply fastText in this paper for the following three reasons. First, fastText provides word embeddings for the German language,^[https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.de.300.vec.gz, retrieved 17 May 2024] which is essential in order to place parliamentary bills written in German in semantic space. Second, fastText elegantly deals with unknown words, i.e., words that are new to the model.^[For a more detailed explanation of how fastText handles unknown words, please see @jurafskySpeechLanguageProcessing2009 [127].] Third, fastText is open source, thus ensuring reproducibility.
-
-Embeddings are good at recognising synonyms, e.g., showing that the words “car” and “automobile” have a high semantic similarity [@jurafskySpeechLanguageProcessing2009 121]. This principle of embedding single words can be extended to whole documents, where a document represents a point in the semantic space instead of a single word [@leDistributedRepresentationsSentences2014]. Thus embeddings can be used to measure the similarity between documents, in this case parliamentary bills. In political science, embeddings have also been used to measure the positions of candidates [@caseMeasuringStrategicPositioning2023 11] and party ideology [@rheaultWordEmbeddingsAnalysis2020 29]. Word and document embeddings are thus a tried and tested technique for analysing political texts. 
-
-Parties introduce different numbers of bills in each parliamentary session.^[The Swiss parliament meets in four ordinary three-week sessions per year. Additionally, the parliament assembles for further sessions, named “special” or “extraordinary” sessions that deal with issues that were not dealt with in the ordinary sessions (https://www.parlament.ch/en/%C3%BCber-das-parlament/parlamentsw%C3%B6rterbuch/parlamentsw%C3%B6rterbuch-detail?WordId=197, retrieved 10 May 2024).] For this reason, and also because it does not make sense to compare single parliamentary bills with each other, I group all bills put forward by a party in a session and calculate the “middle point” of these bills in the semantic space. This middle point can be found by calculating the average position of all documents in a group.
-
-This centroid represents the overall semantic content of all bills in a group. In other words, the “middle point” reflects the overall semantic content of a party in a session. It effectively summarizes the collective characteristics or the “average” bill within a group, thus identifying the group’s central tendencies. The distance between two groups in semantic space, i.e., two middle points, can be calculated using the Euclidean distance. This measure requires the coordinates of two points in order to calculate the distance between these points. The coordinates of the middle points are given by the vectors, thus calculating the distance can be performed with the programming language R [@rcoreteamLanguageEnvironmentStatistical2022] by applying the following formula [@tabakGeometry2008 150]:
-
-\[
-distance(\mathbf{p}, \mathbf{q}) = \sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}
-\]
-
-$p$ and $q$ represent two points in an $n$-dimensional space. These points are expressed as embeddings, i.e., vectors or lists of numbers representing their coordinates. The variable $i$ represents the $i$-th coordinate of a point in the $n$-dimensional space.
-
-To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I place these bills in semantic space. I then group the bills by party and session and then calculate the middle point of each group. Using the Euclidean distance, I calculate the distance between the middle points of groups in semantic space. The more semantically similar two groups of bills are, the smaller the distance between them in semantic space.
-
-I continue with an overview of descriptive statistics of the semantic similarity between bills introduced by the two parties over time.
-
-```{r, child = 'figures/embedding_all_bills.Rmd'}
-```
-
-Looking at all types of bills proposed by the SP and the GPS, we can see that the average distance between all bills has remained roughly constant over time (see the black line in Figure \ref{fig:embeddings-all-bills}). On the other hand, if we consider only environmental bills, there is a clear downward trend over the last 20 years (see the green line in Figure \ref{fig:embeddings-all-bills}). This downward trend indicates that the distance between these bills has decreased over time, suggesting that they have become more semantically similar.
-
-Figure \ref{fig:embeddings-all-bills} shows both the semantic distances per session in grey and the distances averaged by year in black and green. Averaging by year facilitates visual interpretation by smoothing out fluctuations. However, this method has the caveat that all sessions are given the same weight, which may distort perception as some sessions contain fewer bills than others.
-
-It is important to note that the distance values themselves cannot be interpreted in isolation. For example, a distance value of $3$ has no inherent meaning. These values must be interpreted comparatively. So a distance value of $2$ is smaller than a distance of $3$, meaning that two groups of parliamentary bills with a smaller distance are semantically more similar.
+#### Dependent Variable: Semantic Similarity between Parliamentary Bills
 
 <!--
-to do:
-- does one party move closer to the other party or do both parties move?
+ACM: So, in the data section, you can describe what your variables will be and that you will build them using embeddings applied to your raw data.
 -->
 
-<!--
-nice to have:
-- differentiate between bills that only have the tag “environment” and bills with the most common co-tag, e.g. “environment” and “finance” 
--->
+- in order to measure the semantic similarity between parliamentary bills, i apply word embeddings
+- i operationalise the similarity between parliamentary bills as the distance of groups of bills in high-dimensional vector space.
+- i do this by using word embeddings to place parliamentary bills in high-dimensional semantic vector space, whereby distances between document correspond to their semantic similarity
+- bills that are furhter apart, thus have a higher distance value between each other and are thus less similar.
+
 
 #### Independent Variable: Measuring Salience of Environmental Issues with Google Trends
 Google Trends provides a positive integer value to measure the “search interest” of a term within a specific time frame and geographic region.^[https://trends.google.com, retrieved 13 May 2024] These values are scaled between 0 and 100, reflecting a topic's proportion relative to all searches across all topics.^[https://support.google.com/trends/answer/4365533?hl=en&ref_topic=6248052&sjid=14532437735057784414-EU, retrieved 13 May 2024] When examining the search term "climate change" in Switzerland between February 2007 and May 2024, there is an outlier in April 2022 (see red line in Figure \ref{fig:gt-index}). This is likely due to the United Nation’s Intergovernmental Panel on Climate Change (IPCC) report published in April 2022,^[https://www.ipcc.ch/report/sixth-assessment-report-working-group-3, retrieved 18 May 2024] which was widely discussed in the media.

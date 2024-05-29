@@ -4,7 +4,6 @@ Mit meiner Unterschrift bestätige ich, dass ich die vorliegende Arbeit selbstst
 
 \vspace{1em}
 \vspace{1em}
-\vspace{1em}
-\vspace{1em}
+![Image Title](Signature.png){width=15%}\
 
 [Fabian Aiolfi]

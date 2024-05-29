@@ -1,5 +1,5 @@
 ---
-title: “Climate Consciousness and Congressional Convergence: Increased Environmental Public Salience and Content Similarity in Swiss Left-Wing and Green Bills.“
+title: "Climate Consciousness and Congressional Convergence: Increased Environmental Public Salience and Content Similarity in Swiss Left-Wing and Green Environmental Bills."
 output: 
   bookdown::pdf_document2:
     latex_engine: xelatex

@@ -17,12 +17,6 @@ Figure \ref{fig:all-bills} shows how the number of all parliamentary bills has i
 
 If we break down the number of environmental bills by party (Figure \ref{fig:env-party-bills}), we can see that all parties introduced roughly the same number of these bills until the late 2010s. Around 2019, all parties started to introduce more environmental bills, with the SP and GPS leading the way. After this brief spike, all parties except the GPS reduced their number of environmental bills. Again, this makes intuitive sense, as the GPS owns green issues and had just come off a very successful election in 2019.
 
-<!--
-nice to have:
-- bills by party strength, incl. graph
-- show number of bills by party strength; divide number of bills from a party by seats in parliament
--->
-
 In summary, while the total number of parliamentary bills has increased over the past 20 years, the number of environmental bills remained largely unchanged until the late 2010s. It was during this period that there was a notable increase in the number of environmental bills introduced in the Swiss parliament. The GPS appears to be a driving force behind many of these bills, with the SP also introducing a significant number of environmental bills compared to other major parties in the Swiss parliament.
 
 In the next step, I examine the lengths of the bills introduced by counting the number of words in each bill. This is relevant because measuring content similarity by calculating the embedding of a bill requires calculating the embedding of each word. Consequently, the more words in a single bill, the more information is available, leading to a more precise placement of the bill in semantic space. If the number of words varied significantly between bills, this could have a negative impact on the accuracy of the analysis.

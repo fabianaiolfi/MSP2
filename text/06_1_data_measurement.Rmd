@@ -1,9 +1,5 @@
 ### Data
 
-<!--
-Step 1: State what data you use and why. Justify your choice of data. Cite the data and say where it is available
--->
-
 #### Parliamentary Bills
 My analysis covers 2756 parliamentary bills^[Parliamentary bills include the following nine types of parliamentary proposals that can be introduced in the Swiss parliament (translation provided by the Swiss parliament unless stated otherwise): Parliamentary Initiative (“Parlamentarische Initiative”), Question (“Anfrage”), Urgent Question (own translation: “Dringliche Anfrage”), Interpellation (“Interpellation”), Urgent Interpellation (own translation: “Dringliche Interpellation”), Motions (“Motion”), Postulates (“Postulat”), Question Time – Question (“Fragestunde – Frage”), Petitions (“Petition”)] that include the tag “Environment” (German: “Umwelt”).^[Employees of the Parliamentary Services tag bills with one or several of the following terms that were developed by the Parliamentary Library (Source: Personal email communication with the media spokesperson for the Parliamentary Services): National Policy ("Staatspolitik"), General Law ("Recht Allgemein"), International Politics ("Internationale Politik"), Economy ("Wirtschaft"), Parliament ("Parlament"), Finance ("Finanzwesen"), Social Issues ("Soziale Fragen"), Transportation ("Verkehr"), Environment ("Umwelt"), Urban Planning and Housing ("Raumplanung und Wohnungswesen"), Health ("Gesundheit"), Education ("Bildung"), Media and Communication ("Medien und Kommunikation"), Security Policy ("Sicherheitspolitik"), Agriculture ("Landwirtschaft"), Migration ("Migration"), Science and Research ("Wissenschaft und Forschung"), European Policy ("Europapolitik"), Culture ("Kultur"), Energy ("Energie"), Civil Law ("Zivilrecht"), Employment and Labor ("Beschäftigung und Arbeit"), Human Rights ("Menschenrechte"), Criminal Law ("Strafrecht"), International Law ("Internationales Recht"), Taxation ("Steuer"), Social Protection ("Sozialer Schutz"), Judiciary ("Gerichtswesen”). Own translation from German to English.] These bills were introduced by the SP party (1169 bills) and GPS party (1587 bills) or by their members of parliament in both chambers of the Swiss parliament, namely the National Council (“Nationalrat”) or the Council of States (“Ständerat”). The parliamentary bills are provided by the open data webservices of the Swiss parliament.^[https://www.parlament.ch/de/%C3%BCber-das-parlament/fakten-und-zahlen/open-data-web-services, retrieved 12 May 2024] These webservices are made accessible for further analysis through the R package “swissparl” [@zumbachSwissparlInterfaceWebservices2021].
 
@@ -18,7 +14,6 @@ The bills under examination were introduced between March 2004 and December 2023
 
 I turn to Google Trends^[https://trends.google.com, retrieved 12 May 2024] as an alternative way to measure public salience. Google Trends is a tool that enables the evaluation of public interest in specific search terms and topics [@nghiemAnalysisCapacityGoogle2016 10]. Data on Google Trends are available from 2004 onwards. I examine the monthly popularity of the search term “climate change” in Switzerland, where data are available between February 2007 and May 2024. I pick the search term “climate change” because it is largely congruent with the same issues that the Selects question described above touches upon. It is thus an adequate way of measuring public salience of environmental topics.
 
-<!-- compare selects with google trends -->
 A brief visual comparison of both measures show that both Selects and Google Trends generally follow a similar trend line on environmental issues (see Figure \ref{fig:gt-selects}). This underlines the legitimacy of using Google Trends as a way of measuring public salience of environmental topics.
 
 ```{r, child = 'figures/gt_selects.Rmd'}
@@ -26,20 +21,9 @@ A brief visual comparison of both measures show that both Selects and Google Tre
 
 
 ### Operationalisation
-<!--
-Step 2: Measurement – if you create a new measure using the data, explain how you do so. This could include describing coding procedures, the creation of an index, or other forms of measurement.
--->
 
 #### Dependent Variable: Semantic Similarity between Parliamentary Bills
-
-<!--
-ACM: So, in the data section, you can describe what your variables will be and that you will build them using embeddings applied to your raw data.
--->
-
-- in order to measure the semantic similarity between parliamentary bills, i apply word embeddings
-- i operationalise the similarity between parliamentary bills as the distance of groups of bills in high-dimensional vector space.
-- i do this by using word embeddings to place parliamentary bills in high-dimensional semantic vector space, whereby distances between document correspond to their semantic similarity
-- bills that are furhter apart, thus have a higher distance value between each other and are thus less similar.
+The dependent variable of my model is the semantic similarity between parliamentary bills. Using word embeddings, a natural language processing (NLP) technique, I map parliamentary bills into a high-dimensional vector space and measure the distance between them. This distance correlates with their content overlap: bills with similar content are closer together in the vector space, while those with less similar content are further apart.
 
 
 #### Independent Variable: Measuring Salience of Environmental Issues with Google Trends

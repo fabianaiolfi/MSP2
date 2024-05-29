@@ -1,11 +1,7 @@
 ### Methods
 
-<!--
-In this section, you will describe the precise method that you use to test the relationship between your dependent variable and your independent variable.
--->
-
 #### Semantic Similarity using Word Embeddings
-In order to test the hypothesis, it is necessary to measure the content similarity between parliamentary bills. This leads into the realm of natural language processing (NLP) and approaches that use text as data [@rodriguezWordEmbeddingsWhat2022]. In NLP terms, how can the semantic similarity between documents, in particular parliamentary bills, be calculated [@aliSemanticSimilarityMeasures2018 907]?
+In order to test the hypothesis, it is necessary to measure the content similarity between parliamentary bills. This leads to NLP approaches that use text as data [@rodriguezWordEmbeddingsWhat2022]. In NLP terms, how can the semantic similarity between documents, in particular parliamentary bills, be calculated [@aliSemanticSimilarityMeasures2018 907]?
 
 The “Word Mover's Distance” is a method proposed by @wangMeasurementTextSimilarity2020 [4] for measuring the semantic distance between documents. This technique applies the concept of text representation in semantic space as a means of measuring similarity. The underlying principle is to represent a text as a point in a multidimensional semantic space [@jurafskySpeechLanguageProcessing2009 109]. In this space, texts that are semantically similar are positioned closer to each other than texts that are dissimilar. Consequently, the distance between two texts in this space can be used to make a statement about their semantic similarity.
 
@@ -37,16 +33,6 @@ Looking at all types of bills proposed by the SP and the GPS, we can see that th
 Figure \ref{fig:embeddings-all-bills} shows both the semantic distances per session in grey and the distances averaged by year in black and green. Averaging by year facilitates visual interpretation by smoothing out fluctuations. However, this method has the caveat that all sessions are given the same weight, which may distort perception as some sessions contain fewer bills than others.
 
 It is important to note that the distance values themselves cannot be interpreted in isolation. For example, a distance value of $3$ has no inherent meaning. These values must be interpreted comparatively. So a distance value of $2$ is smaller than a distance of $3$, meaning that two groups of parliamentary bills with a smaller distance are semantically more similar.
-
-<!--
-to do:
-- does one party move closer to the other party or do both parties move?
--->
-
-<!--
-nice to have:
-- differentiate between bills that only have the tag “environment” and bills with the most common co-tag, e.g. “environment” and “finance” 
--->
 
 #### Differencing and Time Lag
 Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables.

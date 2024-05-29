@@ -23,7 +23,7 @@ A brief visual comparison of both measures show that both Selects and Google Tre
 ### Operationalisation
 
 #### Dependent Variable: Semantic Similarity between Parliamentary Bills
-The dependent variable of my model is the semantic similarity between parliamentary bills. Using word embeddings, a natural language processing (NLP) technique, I map parliamentary bills into a high-dimensional vector space and measure the distance between them. This distance correlates with their content overlap: bills with similar content are closer together in the vector space, while those with less similar content are further apart.
+The dependent variable of my model is the semantic similarity between parliamentary bills. Using word embeddings, a natural language processing (NLP) technique, I map parliamentary bills into a high-dimensional vector space and measure the distance between them. This distance correlates with their content overlap. Bills with similar content are closer together in the vector space, while those with less similar content are further apart.
 
 
 #### Independent Variable: Measuring Salience of Environmental Issues with Google Trends

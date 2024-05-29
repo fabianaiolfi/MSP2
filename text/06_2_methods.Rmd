@@ -23,19 +23,8 @@ $p$ and $q$ represent two points in an $n$-dimensional space. These points are e
 
 To sum up, in order to measure the semantic similarity between the parliamentary bills introduced by the SP and GPS, I place these bills in semantic space. I then group the bills by party and session and then calculate the middle point of each group. Using the Euclidean distance, I calculate the distance between the middle points of groups in semantic space. The more semantically similar two groups of bills are, the smaller the distance between them in semantic space.
 
-I continue with an overview of descriptive statistics of the semantic similarity between bills introduced by the two parties over time.
-
-```{r, child = 'figures/embedding_all_bills.Rmd'}
-```
-
-Looking at all types of bills proposed by the SP and the GPS, we can see that the average distance between all bills has remained roughly constant over time (see the black line in Figure \ref{fig:embeddings-all-bills}). On the other hand, if we consider only environmental bills, there is a clear downward trend over the last 20 years (see the green line in Figure \ref{fig:embeddings-all-bills}). This downward trend indicates that the distance between these bills has decreased over time, suggesting that they have become more semantically similar.
-
-Figure \ref{fig:embeddings-all-bills} shows both the semantic distances per session in grey and the distances averaged by year in black and green. Averaging by year facilitates visual interpretation by smoothing out fluctuations. However, this method has the caveat that all sessions are given the same weight, which may distort perception as some sessions contain fewer bills than others.
-
-It is important to note that the distance values themselves cannot be interpreted in isolation. For example, a distance value of $3$ has no inherent meaning. These values must be interpreted comparatively. So a distance value of $2$ is smaller than a distance of $3$, meaning that two groups of parliamentary bills with a smaller distance are semantically more similar.
-
 #### Differencing and Time Lag
-Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my new independent and dependent variables.
+Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my independent and dependent variables.
 
 As a further exploration, I lag the dependent variable by one unit, i.e., by one parliamentary session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and their parliamentary bills they introduce. In other words, I assume a delay in parties reacting to an change in public salience.
 

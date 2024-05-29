@@ -28,6 +28,17 @@ Figure \ref{fig:wc-bills} shows that the number of words in all bills (median: 7
 
 In summary, this brief examination of bill length shows that the number of words per bill remains fairly consistent over time. This consistency is beneficial for the application of a text-as-data approach, as it ensures that a comparable amount of data is available per bill throughout the period under study.
 
+I continue with an overview of descriptive statistics of the semantic similarity between bills introduced by the two parties over time.
+
+```{r, child = 'figures/embedding_all_bills.Rmd'}
+```
+
+Looking at all types of bills proposed by the SP and the GPS, we can see that the average distance between all bills has remained roughly constant over time (see the black line in Figure \ref{fig:embeddings-all-bills}). On the other hand, if we consider only environmental bills, there is a clear downward trend over the last 20 years (see the green line in Figure \ref{fig:embeddings-all-bills}). This downward trend indicates that the distance between these bills has decreased over time, suggesting that they have become more semantically similar.
+
+Figure \ref{fig:embeddings-all-bills} shows both the semantic distances per session in grey and the distances averaged by year in black and green. Averaging by year facilitates visual interpretation by smoothing out fluctuations. However, this method has the caveat that all sessions are given the same weight, which may distort perception as some sessions contain fewer bills than others.
+
+It is important to note that the distance values themselves cannot be interpreted in isolation. For example, a distance value of $3$ has no inherent meaning. These values must be interpreted comparatively. So a distance value of $2$ is smaller than a distance of $3$, meaning that two groups of parliamentary bills with a smaller distance are semantically more similar.
+
 ### Inferential Analysis
 
 #### Correlation Results
@@ -46,7 +57,7 @@ However, when the time lag is applied to the Euclidean distance, the results poi
 
 Next, I present the results of the linear regression model. The results from the linear regression models, displayed in Table \ref{tab:models}, are consistent with the results from the correlations. Using the un-lagged dependent variable (Model 1), we observe a positive relationship between the two variables with borderline statistical significance. Model 2, which applies the lagged dependent variable, shows a negative coefficient for the independent variable at a statistically significant level $(p < 0.1)$. This indicates that an increase in the change of the search term popularity is associated with a decrease in the change of the Euclidean distance in the following parliamentary session.
 
-I assume that the difference between the un-lagged and lagged dependent variables in both the correlation analysis and the linear regression models is due to the delayed response of political actions to public opinion. In this research, parliamentary bills are introduced as a reaction to the public's interest in topics. However, this reaction does not occur immediately. The process of introducing parliamentary bills takes time, as they need to be written and political allies must be secured. This lag shows that it takes time for public opinion to affect legislation.
+I assume that the difference between the un-lagged and lagged dependent variables in both the correlation analysis and the linear regression models is due to the delayed response of political actions to public opinion. In this research, parliamentary bills are introduced as a reaction to the public's interest in topics. However, this reaction does not occur immediately. The process of introducing parliamentary bills takes time, as they need to be written and political allies must be secured. This lag shows that it takes time for public opinion to affect the legislative process.
 
 A caveat regarding the linear regression model results is that the coefficient value cannot be interpreted beyond its sign. The informative value of the coefficient is limited because the distance value between groups of bills can only indicate whether two groups are closer or further apart compared to other groups. Thus we can only interpret the polarity sign of the coefficients and conclude that an increase in the change in search term popularity is associated with a decrease in the Euclidean distance of groups of bills in semantic space.
 
@@ -58,4 +69,4 @@ This may be an indication that the SP is becoming more environmentally oriented 
 
 The SP's strategic shift could have wider implications for Swiss politics. If the SP continues to prioritise environmental issues, and public concern about these issues grows, it could intensify competition for environmentally conscious voters. According to the “party system agenda” theory, this will force other parties to adapt their agendas to include environmental issues. Consequently, this dynamic could lead to a more environmentally friendly legislative agenda overall, as parties compete for the support of an electorate that increasingly prioritises environmental concerns.
 
-In conclusion, the results suggest that the increased public salience of environmental issues leads parties, especially those with overlapping ideological bases such as the SP and GPS, to introduce more similar parliamentary bills. This strategy reflects parties' responsiveness to voters' environmental concerns and their efforts to remain competitive in an evolving political landscape.
+In conclusion, the results suggest that the increased public salience of environmental issues leads parties, especially those with overlapping ideological bases such as the SP and GPS, to introduce more similar parliamentary bills on environmental issues. This strategy reflects parties' responsiveness to voters' environmental concerns and their efforts to remain competitive in an evolving political landscape.

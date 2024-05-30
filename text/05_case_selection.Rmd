@@ -1,13 +1,13 @@
 ## Case Selection: Switzerland
 
+```{r, child = 'figures/ch_parties.Rmd'}
+```
+
 In order to test this hypothesis, I turn to Switzerland. Specifically, I examine the Swiss mainstream left-wing party (Swiss Social Democrats, German: “Sozialdemokratische Partei der Schweiz”, SP) and the Swiss green party (Swiss Green Party, German: “Grüne Schweiz”, GPS). Switzerland, the SP and the GPS are suited for the following reasons.
 
 First, environmental issues have become more salient in Switzerland over the past 20 years. @luthElectoralImportanceEvolution2022 [171] show that the electoral importance of energy and environmental issues among Swiss voters has increased between 2002 and 2022. This increase in salience is driven by voters [@luthElectoralImportanceEvolution2022 184], thus political parties need to respond to this development and place environmental issues on their agenda.
 
 Second, Switzerland has an electoral system that accommodates smaller parties, as highlighted by @linderSchweizerischeDemokratieInstitutionen2017a [102]. The electoral success of small parties such as the GPS (see Figure \ref{fig:ch-parties}) further highlights how the Swiss electoral system accommodates and fosters small parties.
-
-```{r, child = 'figures/ch_parties.Rmd'}
-```
 
 Third, I argue that the SP perceives the GPS as an electoral threat. The GPS has increased their vote share in the past 20 years, while the SP have lost vote share. Specifically, the GPS has increased its share of votes in the Swiss National Council from 7.43% in 2003 to 13.24% in 2019, while the SP has decreased its share from 23.33% to 16.84% over the same period, as shown in Figure \ref{fig:ch-parties}.
 

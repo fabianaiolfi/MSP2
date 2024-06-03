@@ -3,7 +3,7 @@
 ### Reproducibility
 
 All scripts used to prepare data and build models are available on Github:  
-\url{https://github.com/fabianaiolfi/MSP2/}  
+\url{https://github.com/fabianaiolfi/MSP2}  
 
 ### Use of Artificial Intelligence
 

@@ -26,7 +26,7 @@ To sum up, in order to measure the semantic similarity between the parliamentary
 #### Differencing and Time Lag
 Due to the limited scope of this seminar paper, I keep the analysis simple by examining the variable change between observations instead of creating a time series model. The purpose of using the change between observations is to explore a potential relationship between the variables without considering the factor of time. To retrieve the difference, I calculate the change in both the independent and dependent variables from one parliamentary session to the next and use these as my independent and dependent variables.
 
-As a further exploration, I lag the dependent variable by one unit, i.e., by one parliamentary session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and their parliamentary bills they introduce. In other words, I assume a delay in parties reacting to an change in public salience.
+As a further exploration, I lag the dependent variable by one unit, i.e., by one parliamentary session. This approach aims to model the delayed effect of environmental topics in the public sphere on parties and their parliamentary bills they introduce. In other words, I assume a delay in parties reacting to a change in public salience.
 
 ### Correlation
 In the first step, I calculate the correlation between the dependent and independent variables using the Pearson correlation. This method is suitable as an initial, straightforward check to see if there is a correlation between the two variables. The Pearson correlation can be used because the data under examination are continuous, assume a linear relationship, contain few outliers and are normally distributed.
@@ -52,4 +52,4 @@ Model 2:
 \end{aligned}
 \end{equation*}
 
-In these models, Delta (Δ) indicates the change between two observations, specifically between two parliamentary sessions. $s+1$ represents the lagged variable, where s denotes the current parliamentary session and $s+1$ denotes the next session.
+In these models, Delta (Δ) indicates the change between two observations, specifically between two parliamentary sessions. $s+1$ represents the lagged variable, where $s$ denotes the current parliamentary session and $s+1$ stands for the next session.
